@@ -20,7 +20,7 @@ const Hero = () => {
             </div>
 
             <a
-              className="my-1 text-sm font-medium text-emerald-400 dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 lg:mx-4 lg:my-0"
+              className="my-1 text-sm font-medium text-emerald-400 dark:text-gray-200 hover:text-emerald-500 dark:hover:text-emerald-500 lg:mx-4 lg:my-0"
               href="#"
               data-bs-toggle="modal"
               data-bs-target="#heroModal"
@@ -58,7 +58,7 @@ const Hero = () => {
                   </p>
 
                   <div className="flex flex-col mt-8 space-y-3 lg:space-y-0 lg:flex-row">
-                    <button className="w-full px-4 py-2 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-emerald-400 rounded-full lg:w-auto lg:mx-4 hover:bg-blue-400 focus:outline-none focus:bg-blue-400">
+                    <button className="w-full px-4 py-2 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-emerald-400 rounded-full lg:w-auto lg:mx-4 hover:bg-emerald-500 focus:outline-none focus:bg-emerald-500">
                       <Link to="/home">Get started</Link>
                     </button>
                   </div>
