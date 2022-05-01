@@ -2,7 +2,7 @@ import { Fragment } from "react";
 import { Link } from "react-router-dom";
 import "tw-elements";
 
-const Modal = () => {
+const HomeModal = () => {
   return (
     <Fragment>
       <div
@@ -89,4 +89,4 @@ const Modal = () => {
   );
 };
 
-export default Modal;
+export default HomeModal;

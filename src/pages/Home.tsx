@@ -1,6 +1,6 @@
 import Header from "../layouts/Header";
 import MainComponent from "../components/MainComponent";
-import Modal from "../components/UI/Modal";
+import Modal from "../components/UI/HomeModal";
 import Layout from "../layouts/Layout";
 
 const Home = () => {
