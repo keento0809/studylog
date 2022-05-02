@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import { Link } from "react-router-dom";
 import Footer from "../layouts/Footer";
-import HeroModal from "../components/UI/HeroModal";
+import HeroModal from "../components/UI/Modal/HeroModal";
 
 const Hero = () => {
   return (
