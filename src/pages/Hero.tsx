@@ -11,12 +11,13 @@ const Hero = () => {
         <nav className="">
           <div className="container flex items-center justify-between px-6 py-3 mx-auto">
             <div>
-              <a
+              <Link
                 className="text-2xl font-bold text-gray-800 dark:text-white lg:text-3xl hover:text-gray-700 dark:hover:text-gray-300"
-                href="#"
+                // href="#"
+                to="/home"
               >
                 StudyLog
-              </a>
+              </Link>
             </div>
 
             <a

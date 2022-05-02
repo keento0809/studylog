@@ -1,4 +1,5 @@
 import { useState, Fragment } from "react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [isShow, setIsShow] = useState(false);
@@ -12,12 +13,13 @@ const Header = () => {
           <div className="md:flex md:items-center md:justify-between">
             <div className="flex items-center justify-between">
               <div className="text-xl font-semibold text-gray-700">
-                <a
+                <Link
                   className="text-2xl font-bold text-gray-800 transition-colors duration-200 transform dark:text-white lg:text-3xl hover:text-gray-700 dark:hover:text-gray-300"
-                  href="#"
+                  // href="#"
+                  to="/home"
                 >
                   StudyLog
-                </a>
+                </Link>
               </div>
 
               <div className="flex md:hidden" onClick={handleToggleModal}>
