@@ -4,6 +4,7 @@ import Home from "./Home";
 import MyInfo from "./MyInfo";
 import Analysis from "./Analysis";
 import Logs from "./Logs";
+import MapTry from "../components/Try/MapTry";
 
 const Main = () => {
   return (
@@ -13,6 +14,8 @@ const Main = () => {
       <Route path="/myinfo" element={<MyInfo />} />
       <Route path="/analysis" element={<Analysis />} />
       <Route path="/logs" element={<Logs />} />
+      {/* temporary */}
+      <Route path="/maptry" element={<MapTry />} />
     </Routes>
   );
 };
