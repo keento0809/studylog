@@ -21,15 +21,15 @@ const LogCard = () => {
           />
         </svg>
 
-        <h1 className="mx-3 text-lg font-semibold text-white">Focusing</h1>
+        <h1 className="mx-3 text-lg font-semibold text-white">22/05/01</h1>
       </div>
 
       <div className="px-6 py-4">
-        <h1 className="text-xl font-semibold text-gray-800 dark:text-white">
+        {/* <h1 className="text-xl font-semibold text-gray-800 dark:text-white">
           22/05/01
-        </h1>
+        </h1> */}
 
-        <p className="py-2 text-gray-700 dark:text-gray-400">
+        <p className="text-xs py-2 text-gray-700 dark:text-gray-400">
           Full Stack maker & UI / UX Designer , love hip hop music Author of
           Building UI.
         </p>
@@ -51,7 +51,7 @@ const LogCard = () => {
                 />
               </svg>
 
-              <h1 className="px-2 text-sm">4 hours</h1>
+              <h1 className="px-2 text-xs">4 hours</h1>
             </div>
 
             <div className="flex items-center mt-4 text-gray-700 dark:text-gray-200">
@@ -69,11 +69,11 @@ const LogCard = () => {
                 />
               </svg>
 
-              <h1 className="px-2 text-sm">$3.50</h1>
+              <h1 className="px-2 text-xs">$3.50</h1>
             </div>
           </div>
 
-          <div className="flex items-center mt-4 text-gray-700 dark:text-gray-200">
+          <div className="flex justify-center items-center mt-4 text-gray-700 dark:text-gray-200">
             <svg
               className="w-6 h-6 fill-current"
               viewBox="0 0 24 24"
@@ -92,7 +92,7 @@ const LogCard = () => {
               />
             </svg>
 
-            <h1 className="px-2 text-sm">Address</h1>
+            <h1 className="px-2 text-xs">Address</h1>
           </div>
         </div>
 

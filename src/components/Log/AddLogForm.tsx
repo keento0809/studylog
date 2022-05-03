@@ -113,10 +113,21 @@ const AddLogForm = () => {
           </div>
 
           <div className="flex flex-col mt-6 space-y-3 sm:space-y-0 sm:flex-row sm:justify-center sm:-mx-2">
-            <div className="flex flex-row items-end justify-center">
+            <div className="flex flex-col items-start">
+              <label htmlFor="" className="block pl-4">
+                Date *
+              </label>
+              <input
+                ref={hourInputRef}
+                type="date"
+                className="w-6/12 mr-auto px-4 py-2 text-gray-700 bg-white border rounded-full sm:mx-2 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-emerald-500 dark:focus:border-emerald-500 focus:outline-none focus:ring focus:ring-emerald-500 focus:ring-opacity-40"
+                placeholder="Hour"
+              />
+            </div>
+            <div className="flex flex-row items-start">
               <div className="flex flex-col items-start">
                 <label htmlFor="" className="block pl-4">
-                  Hour
+                  Hour *
                 </label>
                 <input
                   ref={hourInputRef}
@@ -140,7 +151,7 @@ const AddLogForm = () => {
 
             <div className="flex flex-col items-start">
               <label htmlFor="" className="pl-4">
-                Summary
+                Summary *
               </label>
               <input
                 ref={summaryInputRef}
