@@ -1,6 +1,5 @@
 import axios from "axios";
-import React, { useRef } from "react";
-import { collapseTextChangeRangesAcrossMultipleVersions } from "typescript";
+import React, { useRef, useState } from "react";
 import { GoogleGeocodingRes, StudyLogObj } from "../../models/Model";
 
 const AddLogForm = () => {
@@ -10,8 +9,19 @@ const AddLogForm = () => {
   const costInputRef = useRef<HTMLInputElement>(null);
   const summaryInputRef = useRef<HTMLInputElement>(null);
 
+  const [isMapping, setIsMapping] = useState(false);
+
   const GOOGLE_API_KEY = process.env.REACT_APP_GOOGLE_API_KEY;
   var google = window.google;
+
+  // testing
+  // const defaultMap = new google.maps.Map(
+  //   document.getElementById("defaultMap")!,
+  //   {
+  //     center: { lat: 10, lng: 10 },
+  //     zoom: 8,
+  //   }
+  // );
 
   function handleSearchAddress(event: React.FormEvent) {
     event.preventDefault();
@@ -28,6 +38,7 @@ const AddLogForm = () => {
           throw new Error("Request failed.");
         }
         const locationInfo = res.data.results[0].geometry.location;
+        console.log(locationInfo);
         const map = new google.maps.Map(document.getElementById("mapping")!, {
           center: locationInfo,
           zoom: 15,
@@ -169,7 +180,12 @@ const AddLogForm = () => {
           </div>
         </div>
       </form>
-      <div id="mapping" style={{ width: "100%", height: "200px" }}></div>
+      {isMapping && (
+        <div id="mapping" style={{ width: "100%", height: "200px" }}></div>
+      )}
+      {!isMapping && (
+        <div id="defaultMap" style={{ width: "100%", height: "200px" }}></div>
+      )}
     </div>
   );
 };

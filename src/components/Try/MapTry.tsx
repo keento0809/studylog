@@ -4,6 +4,7 @@ import { Wrapper, Status } from "@googlemaps/react-wrapper";
 import useDeepCompareEffect from "use-deep-compare-effect";
 import { createCustomEqual } from "fast-equals";
 import { isLatLngLiteral } from "@googlemaps/typescript-guards";
+import Layout from "../../layouts/Layout";
 
 const render = (status: Status) => {
   return <h1>{status}</h1>;
@@ -11,10 +12,10 @@ const render = (status: Status) => {
 
 const MapTry: React.VFC = () => {
   const [clicks, setClicks] = React.useState<google.maps.LatLng[]>([]);
-  const [zoom, setZoom] = React.useState(8); // initial zoom
+  const [zoom, setZoom] = React.useState(12); // initial zoom
   const [center, setCenter] = React.useState<google.maps.LatLngLiteral>({
-    lat: 0,
-    lng: 0,
+    lat: 49.2846717,
+    lng: -123.1200546,
   });
 
   const onClick = (e: google.maps.MapMouseEvent) => {
@@ -91,21 +92,23 @@ const MapTry: React.VFC = () => {
 
   return (
     <div>
-      <Wrapper apiKey={process.env.REACT_APP_GOOGLE_API_KEY!} render={render}>
-        {/* need to add Map component here */}
-        {/* <p>Map Test</p> */}
-        <Map
-          center={center}
-          onClick={onClick}
-          onIdle={onIdle}
-          zoom={zoom}
-          style={{ flexGrow: "1", height: "100%" }}
-        >
-          {clicks.map((latLng, i) => (
-            <Marker key={i} position={latLng} />
-          ))}
-        </Map>
-      </Wrapper>
+      <Layout>
+        <Wrapper apiKey={process.env.REACT_APP_GOOGLE_API_KEY!} render={render}>
+          {/* need to add Map component here */}
+          <Map
+            center={center}
+            onClick={onClick}
+            onIdle={onIdle}
+            zoom={zoom}
+            // style={{ flexGrow: "1", height: "100%" }}
+            style={{ width: "100%", height: "200px" }}
+          >
+            {clicks.map((latLng, i) => (
+              <Marker key={i} position={latLng} />
+            ))}
+          </Map>
+        </Wrapper>
+      </Layout>
       {form}
     </div>
   );

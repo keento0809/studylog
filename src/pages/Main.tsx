@@ -3,9 +3,10 @@ import Hero from "./Hero";
 import Home from "./Home";
 import MyInfo from "./MyInfo";
 import Analysis from "./Analysis";
-import Logs from "./Logs";
+import History from "./History";
 import MapTry from "../components/Try/MapTry";
 import NotFound from "./NotFound";
+import FirstMap from "../components/Try/FirstMap";
 
 const Main = () => {
   return (
@@ -14,9 +15,11 @@ const Main = () => {
       <Route path="/home" element={<Home />} />
       <Route path="/myinfo" element={<MyInfo />} />
       <Route path="/analysis" element={<Analysis />} />
-      <Route path="/logs" element={<Logs />} />
+      <Route path="/history" element={<History />} />
       {/* temporary */}
       <Route path="/maptry" element={<MapTry />} />
+      {/* temporary */}
+      <Route path="/firstmap" element={<FirstMap />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
