@@ -4,7 +4,11 @@ const Analysis = () => {
   return (
     <Layout>
       <div className="">
-        <p>I'm going to add analysis here.</p>
+        <div className="py-3 text-center">
+          <h1 className="text-3xl font-semibold text-gray-800 dark:text-gray-100">
+            Analysis
+          </h1>
+        </div>
       </div>
     </Layout>
   );

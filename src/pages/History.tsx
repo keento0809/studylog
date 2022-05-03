@@ -2,13 +2,13 @@ import Layout from "../layouts/Layout";
 // temporary
 import LogCard from "../components/UI/Card/LogCard";
 
-const Logs = () => {
+const History = () => {
   return (
     <Layout>
       <div className="text-center">
         <div className="py-3">
           <h1 className="text-3xl font-semibold text-gray-800 dark:text-gray-100">
-            Log History
+            History
           </h1>
         </div>
         {/* temporary: need to set max-height and overflow: scroll */}
@@ -22,4 +22,4 @@ const Logs = () => {
   );
 };
 
-export default Logs;
+export default History;
