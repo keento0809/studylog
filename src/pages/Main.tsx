@@ -7,6 +7,7 @@ import History from "./History";
 import MapTry from "../components/Try/MapTry";
 import NotFound from "./NotFound";
 import FirstMap from "../components/Try/FirstMap";
+import AntChart from "../components/Try/AntChart";
 
 const Main = () => {
   return (
@@ -20,6 +21,8 @@ const Main = () => {
       <Route path="/maptry" element={<MapTry />} />
       {/* temporary */}
       <Route path="/firstmap" element={<FirstMap />} />
+      {/* temporary */}
+      <Route path="/antchart" element={<AntChart />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

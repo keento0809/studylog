@@ -183,9 +183,6 @@ const AddLogForm = () => {
       {isMapping && (
         <div id="mapping" style={{ width: "100%", height: "200px" }}></div>
       )}
-      {!isMapping && (
-        <div id="defaultMap" style={{ width: "100%", height: "200px" }}></div>
-      )}
     </div>
   );
 };
