@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <footer className="bg-white dark:bg-gray-800 fixed bottom-0 w-full border-t border-emerald-300">
-      <div className="container px-6 py-8 mx-auto">
+      <div className="container px-6 py-6 mx-auto">
         <div className="text-center">
           <a
             href="#"
@@ -12,9 +12,9 @@ const Footer = () => {
             StudyLog
           </a>
 
-          <p className="max-w-md mx-auto mt-2 text-gray-500 dark:text-gray-400">
+          {/* <p className="max-w-md mx-auto mt-2 text-gray-500 dark:text-gray-400">
             Lorem ipsum dolor sit amet consectetur.
-          </p>
+          </p> */}
 
           {/* <div className="flex flex-col mt-4 sm:flex-row sm:items-center sm:justify-center">
             <button className="w-3/6 mx-auto px-5 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-blue-600 rounded-full sm:mx-2 sm:order-2 sm:w-auto hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80">

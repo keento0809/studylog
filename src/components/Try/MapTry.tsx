@@ -1,7 +1,9 @@
 import * as React from "react";
 import * as ReactDom from "react-dom/client";
 import { Wrapper, Status } from "@googlemaps/react-wrapper";
-import useDeepCompareEffectForMaps from "use-deep-compare-effect";
+import useDeepCompareEffect from "use-deep-compare-effect";
+import { createCustomEqual } from "fast-equals";
+import { isLatLngLiteral } from "@googlemaps/typescript-guards";
 
 const render = (status: Status) => {
   return <h1>{status}</h1>;
@@ -91,7 +93,18 @@ const MapTry: React.VFC = () => {
     <div>
       <Wrapper apiKey={process.env.REACT_APP_GOOGLE_API_KEY!} render={render}>
         {/* need to add Map component here */}
-        <p>Map Test</p>
+        {/* <p>Map Test</p> */}
+        <Map
+          center={center}
+          onClick={onClick}
+          onIdle={onIdle}
+          zoom={zoom}
+          style={{ flexGrow: "1", height: "100%" }}
+        >
+          {clicks.map((latLng, i) => (
+            <Marker key={i} position={latLng} />
+          ))}
+        </Map>
       </Wrapper>
       {form}
     </div>
@@ -156,5 +169,60 @@ const Map: React.FC<MapProps> = ({
     </>
   );
 };
+
+const Marker: React.FC<google.maps.MarkerOptions> = (options) => {
+  const [marker, setMarker] = React.useState<google.maps.Marker>();
+
+  React.useEffect(() => {
+    if (!marker) {
+      setMarker(new google.maps.Marker());
+    }
+    // remove marker from map on unmount
+    return () => {
+      if (marker) {
+        marker.setMap(null);
+      }
+    };
+  }, [marker]);
+
+  React.useEffect(() => {
+    if (marker) {
+      marker.setOptions(options);
+    }
+  }, [marker, options]);
+
+  return null;
+};
+
+const deepCompareEqualsForMaps = createCustomEqual(
+  (deepEqual) => (a: any, b: any) => {
+    if (
+      isLatLngLiteral(a) ||
+      a instanceof google.maps.LatLng ||
+      isLatLngLiteral(b) ||
+      b instanceof google.maps.LatLng
+    ) {
+      return new google.maps.LatLng(a).equals(new google.maps.LatLng(b));
+    }
+    return deepEqual(a, b);
+  }
+);
+
+function useDeepCompareMemoize(value: any) {
+  const ref = React.useRef();
+
+  if (!deepCompareEqualsForMaps(value, ref.current)) {
+    ref.current = value;
+  }
+
+  return ref.current;
+}
+
+function useDeepCompareEffectForMaps(
+  callback: React.EffectCallback,
+  dependencies: any[]
+) {
+  React.useEffect(callback, dependencies.map(useDeepCompareMemoize));
+}
 
 export default MapTry;

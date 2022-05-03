@@ -16,6 +16,11 @@ const HeroModal = () => {
               <div className="">
                 <p>I'll add descriptions of this app.</p>
               </div>
+              <div className="text-center pt-6">
+                <button className="w-1/3 px-4 py-1 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-emerald-400 rounded-full sm:mx-2 hover:bg-emerald-500 focus:outline-none focus:bg-emerald-500">
+                  Close
+                </button>
+              </div>
             </div>
           </div>
         </div>
