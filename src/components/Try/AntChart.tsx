@@ -47,7 +47,7 @@ const AntChart: React.FC = () => {
   // };
 
   return (
-    <HomeCard label="Hours">
+    <HomeCard label="Hours" isHome={false}>
       <Line {...config} onReady={(chartInstance) => (chart = chartInstance)} />
     </HomeCard>
   );

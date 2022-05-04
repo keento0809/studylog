@@ -10,7 +10,7 @@ const MainComponent = () => {
   const [isAlert, setIsAlert] = React.useState(false);
 
   return (
-    <div className="pb-48">
+    <div className="">
       <AddLogForm setIsAlert={setIsAlert} />
       <HomeHourChart />
       <HomeCostChart />

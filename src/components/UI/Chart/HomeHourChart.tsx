@@ -17,7 +17,7 @@ const HomeHistoryChart: React.FC = () => {
 
         const loadedHours = [];
         for (const key in result) {
-          loadedHours.push(result[key].hour);
+          loadedHours.push(parseFloat(result[key].hour));
         }
         console.log(loadedHours);
         setHourData(loadedHours);
@@ -40,7 +40,7 @@ const HomeHistoryChart: React.FC = () => {
 
   return (
     <div>
-      <HomeCard label="Hours">
+      <HomeCard label="Hours" isHome={true}>
         <TinyArea {...config} />
       </HomeCard>
     </div>
