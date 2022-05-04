@@ -8,7 +8,7 @@ const Header = () => {
 
   return (
     <Fragment>
-      <nav className="bg-white shadow dark:bg-gray-800">
+      <nav className="fixed top-0 left-0 w-full z-10 bg-white shadow dark:bg-gray-800">
         <div className="container px-6 py-3 mx-auto">
           <div className="md:flex md:items-center md:justify-between">
             <div className="flex items-center justify-between">
