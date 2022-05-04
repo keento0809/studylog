@@ -13,26 +13,23 @@ const HomeHistoryChart: React.FC = () => {
     axios
       .get("https://studylog-8e387-default-rtdb.firebaseio.com/studylogs.json")
       .then((data) => {
-        // console.log(data.data);
         const result = data.data;
 
         const loadedHours = [];
         for (const key in result) {
           loadedHours.push(result[key].hour);
         }
-        // console.log(loadedHours);
+        console.log(loadedHours);
         setHourData(loadedHours);
       })
       .catch((error) => console.log(error.message));
   };
   // original
-  const data = [
-    264, 417, 438, 887, 309, 397, 550, 575, 563, 430, 525, 592, 492, 467, 513,
-    546, 983, 340, 539, 243, 226, 192,
-  ];
+  // const data = [264, 417, 0.5, 887];
   const config = {
     height: 60,
     autoFit: false,
+    // data,
     data: hourData,
     smooth: true,
   };

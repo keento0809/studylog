@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 // import { setTimeout } from "timers/promises";
 import {
   GoogleGeocodingRes,
@@ -10,6 +10,7 @@ import {
 const AddLogForm = ({ setIsAlert }: PropsSetIsAlert) => {
   // declare useRef
   const locationInputRef = useRef<HTMLInputElement>(null);
+  const DateInputRef = useRef<HTMLInputElement>(null);
   const hourInputRef = useRef<HTMLInputElement>(null);
   const costInputRef = useRef<HTMLInputElement>(null);
   const summaryInputRef = useRef<HTMLInputElement>(null);
@@ -61,19 +62,24 @@ const AddLogForm = ({ setIsAlert }: PropsSetIsAlert) => {
     const enteredHour = hourInputRef.current?.value;
     const enteredCost = costInputRef.current?.value;
     const enteredSummary = summaryInputRef.current?.value;
+    const enteredDate = DateInputRef.current!.value;
 
-    if (
-      enteredHour === undefined ||
-      enteredCost === undefined ||
-      enteredSummary === undefined
-    ) {
+    // validate date
+    if (enteredDate > newDate || enteredDate === "") {
+      alert("Invalid date input.");
+      return;
+    }
+
+    // validate other inputs
+    if (enteredHour === "" || enteredCost === "" || enteredSummary === "") {
       alert("Invalid input");
       return;
     }
     const studyLog: StudyLogObj = {
-      hour: enteredHour,
-      cost: enteredCost,
-      summary: enteredSummary,
+      date: enteredDate,
+      hour: enteredHour!,
+      cost: enteredCost!,
+      summary: enteredSummary!,
     };
 
     const sendRequest = async () => {
@@ -97,6 +103,30 @@ const AddLogForm = ({ setIsAlert }: PropsSetIsAlert) => {
     };
     sendRequest();
   }
+
+  let newDate: string;
+
+  useEffect(() => {
+    const today = new Date();
+
+    const year = today.getFullYear();
+    const month = today.getMonth() + 1;
+    const day = today.getDate();
+
+    // original code
+    // newDate = `${month}/${day}/${year}`;
+    newDate = `${year}-${month < 10 ? "0" : ""}${month}-${
+      day < 10 ? "0" : ""
+    }${day}`;
+    console.log(newDate);
+  }, []);
+
+  // function handleCheckDate() {
+  //   if (DateInputRef.current!.value > newDate) {
+  //     alert("You cannot put date after today.");
+  //     return;
+  //   }
+  // }
 
   return (
     <div className="">
@@ -137,7 +167,8 @@ const AddLogForm = ({ setIsAlert }: PropsSetIsAlert) => {
                 Date *
               </label>
               <input
-                ref={hourInputRef}
+                ref={DateInputRef}
+                // onChange={handleCheckDate}
                 type="date"
                 className="w-6/12 mr-auto px-4 py-2 text-gray-700 bg-white border rounded-full sm:mx-2 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-emerald-500 dark:focus:border-emerald-500 focus:outline-none focus:ring focus:ring-emerald-500 focus:ring-opacity-40"
                 placeholder="Hour"
@@ -157,7 +188,7 @@ const AddLogForm = ({ setIsAlert }: PropsSetIsAlert) => {
               </div>
               <div className="flex flex-col items-start">
                 <label htmlFor="" className="block pl-4">
-                  Cost
+                  Cost *
                 </label>
                 <input
                   ref={costInputRef}
