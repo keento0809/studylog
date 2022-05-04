@@ -2,7 +2,7 @@ import { Fragment } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import "tw-elements";
 
-const navMenuLabels = ["MyInfo", "Analysis", "History", "Logout", "Username"];
+const navMenuLabels = ["Home", "Analysis", "History", "Logout", "MyInfo"];
 
 const HomeModal = () => {
   // declare navigate
@@ -104,7 +104,7 @@ const HomeModal = () => {
               <div className="text-center pt-6">
                 <button
                   data-bs-dismiss="modal"
-                  className="w-2/3 px-4 py-1 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-emerald-400 rounded-full sm:mx-2 hover:bg-emerald-500 focus:outline-none focus:bg-emerald-500"
+                  className="w-4/5 py-1 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-emerald-400 rounded-full sm:mx-2 hover:bg-emerald-500 focus:outline-none focus:bg-emerald-500"
                 >
                   Close
                 </button>

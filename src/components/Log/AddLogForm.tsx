@@ -1,8 +1,13 @@
 import axios from "axios";
 import React, { useRef, useState } from "react";
-import { GoogleGeocodingRes, StudyLogObj } from "../../models/Model";
+// import { setTimeout } from "timers/promises";
+import {
+  GoogleGeocodingRes,
+  StudyLogObj,
+  PropsSetIsAlert,
+} from "../../models/Model";
 
-const AddLogForm = () => {
+const AddLogForm = ({ setIsAlert }: PropsSetIsAlert) => {
   // declare useRef
   const locationInputRef = useRef<HTMLInputElement>(null);
   const hourInputRef = useRef<HTMLInputElement>(null);
@@ -86,6 +91,9 @@ const AddLogForm = () => {
       hourInputRef.current!.value = "";
       costInputRef.current!.value = "";
       summaryInputRef.current!.value = "";
+
+      setIsAlert(true);
+      window.setTimeout(() => setIsAlert(false), 1000);
     };
     sendRequest();
   }
