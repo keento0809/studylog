@@ -9,6 +9,12 @@ export interface PropsChildrenWithLabel {
   label: string;
 }
 
+export interface PropsForHomeCard {
+  children?: ReactNode;
+  label: string;
+  isHome: boolean;
+}
+
 export interface GoogleGeocodingRes {
   results: { geometry: { location: { lat: number; lng: number } } };
   status: "OK" | "ZERO_RESULTS";
@@ -27,4 +33,9 @@ export interface PropsSetIsAlert {
 
 export interface PropsIsAlert {
   isAlert: boolean;
+}
+
+export interface DataObj {
+  date: string;
+  value: number;
 }

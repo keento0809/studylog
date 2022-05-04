@@ -1,5 +1,6 @@
 import Layout from "../layouts/Layout";
-import AntChart from "../components/Try/AntChart";
+import AnalysisHourChart from "../components/UI/Chart/AnalysisHourChart";
+import AnalysisCostChart from "../components/UI/Chart/AnalysisCostChart";
 
 const Analysis = () => {
   return (
@@ -12,8 +13,8 @@ const Analysis = () => {
         </div>
         <div className="mx-auto">
           {/* temporary */}
-          <AntChart />
-          <AntChart />
+          <AnalysisHourChart />
+          <AnalysisCostChart />
         </div>
       </div>
     </Layout>

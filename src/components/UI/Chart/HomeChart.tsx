@@ -39,7 +39,7 @@ const HomeChart: React.FC = () => {
 
   return (
     <div>
-      <HomeCard label="Costs">
+      <HomeCard label="Costs" isHome={false}>
         <TinyArea {...config} />
       </HomeCard>
     </div>
