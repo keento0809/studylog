@@ -54,10 +54,36 @@ import HomeCard from "../UI/Card/HomeCard";
 // };
 
 const AntChart: React.FC = () => {
+  // original
   const data = [
     264, 417, 438, 887, 309, 397, 550, 575, 563, 430, 525, 592, 492, 467, 513,
     546, 983, 340, 539, 243, 226, 192,
   ];
+  // test
+  //   const data: { hour: number }[] = [
+  //     { hour: 264 },
+  //     { hour: 417 },
+  //     { hour: 438 },
+  //     { hour: 887 },
+  //     { hour: 309 },
+  //     { hour: 397 },
+  //     { hour: 550 },
+  //     { hour: 575 },
+  //     { hour: 563 },
+  //     { hour: 430 },
+  //     { hour: 525 },
+  //     { hour: 592 },
+  //     { hour: 492 },
+  //     { hour: 467 },
+  //     { hour: 513 },
+  //     { hour: 546 },
+  //     { hour: 983 },
+  //     { hour: 340 },
+  //     { hour: 539 },
+  //     { hour: 243 },
+  //     { hour: 226 },
+  //     { hour: 192 },
+  //   ];
 
   const config = {
     height: 60,
@@ -70,9 +96,9 @@ const AntChart: React.FC = () => {
       <HomeCard>
         <TinyArea {...config} />
       </HomeCard>
-      <HomeCard>
+      {/* <HomeCard>
         <TinyArea {...config} />
-      </HomeCard>
+      </HomeCard> */}
     </div>
   );
 };

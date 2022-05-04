@@ -16,6 +16,8 @@ const History = () => {
           {/* I'm gonna add logList here. */}
           <LogCard />
           <LogCard />
+          <LogCard />
+          <LogCard />
         </div>
       </div>
     </Layout>
