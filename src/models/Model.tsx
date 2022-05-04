@@ -15,6 +15,7 @@ export interface GoogleGeocodingRes {
 }
 
 export interface StudyLogObj {
+  date: string;
   hour: string;
   cost: string;
   summary: string;

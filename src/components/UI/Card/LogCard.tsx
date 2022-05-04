@@ -6,7 +6,7 @@ import {
   ChevronUpIcon,
 } from "@heroicons/react/solid";
 
-const LogCard = ({ hour, cost, summary }: StudyLogObj) => {
+const LogCard = ({ date, hour, cost, summary }: StudyLogObj) => {
   const [isShown, setIsShown] = useState(false);
 
   const handleToggleAccordion = () => {
@@ -19,7 +19,7 @@ const LogCard = ({ hour, cost, summary }: StudyLogObj) => {
         <div className="flex flex-row items-center">
           <CalendarIcon className="block h-5 w-5 text-white" />
           {/* props.date */}
-          <h1 className="mx-3 text-lg font-semibold text-white">22/05/01</h1>
+          <h1 className="mx-3 text-lg font-semibold text-white">{date}</h1>
         </div>
         <div className="flex flex-row justify-end items-center">
           {/* props.hour */}
@@ -109,7 +109,9 @@ const LogCard = ({ hour, cost, summary }: StudyLogObj) => {
                 />
               </svg>
               {/* props.address */}
-              <h1 className="px-2 text-xs leading-6">Address</h1>
+              <h1 className="px-2 text-xs leading-6">
+                833 Granville St, Vancouver, BC
+              </h1>
             </div>
           </div>
         </div>

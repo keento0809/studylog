@@ -3,41 +3,46 @@ import Layout from "../layouts/Layout";
 // temporary
 import LogCard from "../components/UI/Card/LogCard";
 import { StudyLogObj } from "../models/Model";
-import axios from "axios";
 
 const History = () => {
   // declare useState
   const [studyLogs, setStudyLogs] = useState<any>([[]]);
+  const [sortedStudyLogs, setSortedStudyLogs] = useState<any>([[]]);
+  // const [logDates, setLogDates] = useState<any>([[]]);
 
   const getStudyLogs = async () => {
-    // axios
-    //   .get("https://studylog-8e387-default-rtdb.firebaseio.com/studylogs.json")
-    //   .then((data) => {
-
-    //     // setStudyLogs(loadedData);
-    //   })
-    //   .catch((error) => console.log(error.message));
     const response = await fetch(
       "https://studylog-8e387-default-rtdb.firebaseio.com/studylogs.json"
     );
     const data = await response.json();
 
     const loadedData = [];
+    const loadedDates = [];
+
     for (const key in data) {
       loadedData.push({
+        date: data[key].date,
         cost: data[key].cost,
         hour: data[key].hour,
         summary: data[key].summary,
       });
+      loadedDates.push({
+        date: data[key].date,
+      });
     }
-    console.log(loadedData);
     setStudyLogs(loadedData);
   };
-  console.log(studyLogs);
 
   useEffect(() => {
     getStudyLogs();
   }, []);
+
+  useEffect(() => {
+    const sortedArr = studyLogs.sort(function (a: StudyLogObj, b: StudyLogObj) {
+      return a.date < b.date ? 1 : -1;
+    });
+    setSortedStudyLogs(sortedArr);
+  }, [studyLogs]);
 
   return (
     <Layout>
@@ -49,14 +54,12 @@ const History = () => {
         </div>
         {/* temporary: need to set max-height and overflow: scroll */}
         <ul className="">
-          {/* I'm gonna add logList here. */}
-          {studyLogs.map((log: StudyLogObj, index: string) => {
+          {/* test */}
+          {sortedStudyLogs.map((log: StudyLogObj, index: string) => {
             return (
               <li key={index}>
-                {/* <p>{log.hour}</p>
-                <p>{log.cost}</p>
-                <p>{log.summary}</p> */}
                 <LogCard
+                  date={log.date}
                   hour={log.hour}
                   cost={log.cost}
                   summary={log.summary}
@@ -64,10 +67,6 @@ const History = () => {
               </li>
             );
           })}
-          {/* <LogCard />
-          <LogCard />
-          <LogCard />
-          <LogCard /> */}
         </ul>
       </div>
     </Layout>
