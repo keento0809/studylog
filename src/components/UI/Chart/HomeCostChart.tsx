@@ -13,14 +13,14 @@ const HomeCostChart: React.FC = () => {
     axios
       .get("https://studylog-8e387-default-rtdb.firebaseio.com/studylogs.json")
       .then((data) => {
-        console.log(data.data);
+        // console.log(data.data);
         const result = data.data;
 
         const loadedCosts = [];
         for (const key in result) {
           loadedCosts.push(result[key].cost);
         }
-        console.log(loadedCosts);
+        // console.log(loadedCosts);
         setCostData(loadedCosts);
       })
       .catch((error) => console.log(error.message));
