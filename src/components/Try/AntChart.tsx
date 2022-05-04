@@ -93,7 +93,7 @@ const AntChart: React.FC = () => {
   };
   return (
     <div>
-      <HomeCard>
+      <HomeCard label="TEST">
         <TinyArea {...config} />
       </HomeCard>
       {/* <HomeCard>

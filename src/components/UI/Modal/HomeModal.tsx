@@ -61,7 +61,7 @@ const HomeModal = () => {
                 </span>
               </div>
 
-              <div className="flex items-center mt-4 md:mt-0">
+              {/* <div className="flex items-center mt-4 md:mt-0">
                 <button
                   className="hidden mx-4 text-gray-600 transition-colors duration-200 transform md:block dark:text-gray-200 hover:text-gray-700 dark:hover:text-gray-400 focus:text-gray-700 dark:focus:text-gray-400 focus:outline-none"
                   aria-label="show notifications"
@@ -99,12 +99,12 @@ const HomeModal = () => {
                     {navMenuLabels[4]}
                   </h3>
                 </button>
-              </div>
+              </div> */}
 
               <div className="text-center pt-6">
                 <button
                   data-bs-dismiss="modal"
-                  className="w-4/5 py-1 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-emerald-400 rounded-full sm:mx-2 hover:bg-emerald-500 focus:outline-none focus:bg-emerald-500"
+                  className="w-full px-3 py-1 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-emerald-400 rounded-full sm:mx-2 hover:bg-emerald-500 focus:outline-none focus:bg-emerald-500"
                 >
                   Close
                 </button>
