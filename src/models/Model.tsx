@@ -4,6 +4,11 @@ export interface PropsChildren {
   children?: ReactNode;
 }
 
+export interface PropsChildrenWithLabel {
+  children?: ReactNode;
+  label: string;
+}
+
 export interface GoogleGeocodingRes {
   results: { geometry: { location: { lat: number; lng: number } } };
   status: "OK" | "ZERO_RESULTS";
