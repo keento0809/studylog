@@ -3,8 +3,7 @@ import { StudyLogObj } from "../../../models/Model";
 import {
   CalendarIcon,
   ChevronDownIcon,
-  ClockIcon,
-  CurrencyDollarIcon,
+  ChevronUpIcon,
 } from "@heroicons/react/solid";
 
 const LogCard = ({ hour, cost, summary }: StudyLogObj) => {
@@ -25,10 +24,18 @@ const LogCard = ({ hour, cost, summary }: StudyLogObj) => {
         <div className="flex flex-row justify-end items-center">
           {/* props.hour */}
           <h1 className="mx-3 text-lg font-semibold text-white">{hour} hrs</h1>
-          <ChevronDownIcon
-            onClick={handleToggleAccordion}
-            className="block h-5 w-5 text-white"
-          />
+          {!isShown && (
+            <ChevronDownIcon
+              onClick={handleToggleAccordion}
+              className="block h-5 w-5 text-white"
+            />
+          )}
+          {isShown && (
+            <ChevronUpIcon
+              onClick={handleToggleAccordion}
+              className="block h-5 w-5 text-white"
+            />
+          )}
         </div>
       </div>
 

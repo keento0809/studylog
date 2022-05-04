@@ -14,3 +14,11 @@ export interface StudyLogObj {
   cost: string;
   summary: string;
 }
+
+export interface PropsSetIsAlert {
+  setIsAlert: (value: boolean) => void;
+}
+
+export interface PropsIsAlert {
+  isAlert: boolean;
+}
