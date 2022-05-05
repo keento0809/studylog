@@ -144,7 +144,7 @@ const AddLogForm = ({ setIsAlert }: PropsSetIsAlert) => {
           type="text"
           placeholder="Search here"
         />
-        <button className="w-1/3 px-4 py-3 ml-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-emerald-400 rounded-full sm:mx-2 hover:bg-emerald-500 focus:outline-none focus:bg-emerald-500">
+        <button className="w-1/3 px-4 py-3 ml-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-emerald-400 rounded-full sm:mx-2 hover:bg-emerald-500 focus:outline-none focus:bg-emerald-500 dark:bg-emerald-500">
           Search
         </button>
       </form>
@@ -163,7 +163,7 @@ const AddLogForm = ({ setIsAlert }: PropsSetIsAlert) => {
 
           <div className="flex flex-col mt-6 space-y-3 sm:space-y-0 sm:flex-row sm:justify-center sm:-mx-2">
             <div className="flex flex-col items-start">
-              <label htmlFor="" className="block pl-4">
+              <label htmlFor="" className="block pl-4 dark:text-gray-100">
                 Date *
               </label>
               <input
@@ -176,7 +176,7 @@ const AddLogForm = ({ setIsAlert }: PropsSetIsAlert) => {
             </div>
             <div className="flex flex-row items-start">
               <div className="flex flex-col items-start">
-                <label htmlFor="" className="block pl-4">
+                <label htmlFor="" className="block pl-4 dark:text-gray-100">
                   Hour *
                 </label>
                 <input
@@ -187,7 +187,7 @@ const AddLogForm = ({ setIsAlert }: PropsSetIsAlert) => {
                 />
               </div>
               <div className="flex flex-col items-start">
-                <label htmlFor="" className="block pl-4">
+                <label htmlFor="" className="block pl-4 dark:text-gray-100">
                   Cost *
                 </label>
                 <input
@@ -200,7 +200,7 @@ const AddLogForm = ({ setIsAlert }: PropsSetIsAlert) => {
             </div>
 
             <div className="flex flex-col items-start">
-              <label htmlFor="" className="pl-4">
+              <label htmlFor="" className="pl-4 dark:text-gray-100">
                 Summary *
               </label>
               <input
@@ -212,7 +212,7 @@ const AddLogForm = ({ setIsAlert }: PropsSetIsAlert) => {
             </div>
 
             <div className="py-4">
-              <button className="w-full px-4 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-emerald-400 rounded-full sm:mx-2 hover:bg-emerald-500 focus:outline-none focus:bg-emerald-500">
+              <button className="w-full px-4 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-emerald-400 rounded-full sm:mx-2 hover:bg-emerald-500 focus:outline-none focus:bg-emerald-500 dark:bg-emerald-500">
                 ADD
               </button>
             </div>

@@ -6,9 +6,11 @@ const HomeCard = ({ children, label, isHome }: PropsForHomeCard) => {
     <div
       className={`${
         isHome ? "hover:opacity-50 relative" : ""
-      } w-full p-6 mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 text-center mb-4`}
+      } w-full p-6 mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-700 text-center mb-4`}
     >
-      <h3 className="text-xl pt-3 pb-6 font-bold">{label}</h3>
+      <h3 className="text-xl pt-3 pb-6 font-bold dark:text-slate-100">
+        {label}
+      </h3>
       {/* overlay button */}
       <div
         className={`hidden ${

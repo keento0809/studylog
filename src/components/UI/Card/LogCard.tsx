@@ -14,8 +14,8 @@ const LogCard = ({ date, hour, cost, summary }: StudyLogObj) => {
   };
 
   return (
-    <div className="max-w-sm mx-auto my-4 overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800">
-      <div className="flex items-center justify-between px-6 py-3 bg-emerald-400">
+    <div className="max-w-sm mx-auto my-4 overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-700">
+      <div className="flex items-center justify-between px-6 py-3 bg-emerald-400 dark:bg-emerald-500">
         <div className="flex flex-row items-center">
           <CalendarIcon className="block h-5 w-5 text-white" />
           {/* props.date */}
@@ -42,7 +42,7 @@ const LogCard = ({ date, hour, cost, summary }: StudyLogObj) => {
       {isShown && (
         <div className="px-6 py-4">
           {/* props.summary */}
-          <p className="text-lg py-2 text-gray-700 dark:text-gray-400 font-bold">
+          <p className="text-lg py-2 text-gray-700 dark:text-slate-100 font-bold">
             {/* Full Stack maker & UI / UX Designer , love hip hop music Author of
             Building UI. */}
             {summary}
