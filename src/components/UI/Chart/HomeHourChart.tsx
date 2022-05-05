@@ -7,7 +7,7 @@ import axios from "axios";
 const HomeHistoryChart: React.FC = () => {
   // declare useState
   // I need to fix this part
-  const [hourData, setHourData] = useState<any>([]);
+  const [hourData, setHourData] = useState<number[]>([]);
   // fetch data from firebase
   const fetchingData = () => {
     axios
