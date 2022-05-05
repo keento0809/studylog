@@ -1,10 +1,19 @@
-import { useState, Fragment } from "react";
+import React, { useContext, useState, Fragment } from "react";
 import { Link } from "react-router-dom";
+import { lightModeValue } from "../models/Model";
+import LightModeContext from "../contexts/lightmode-context";
 
 const Header = () => {
+  // declare useState
   const [isShow, setIsShow] = useState(false);
+  // declare useContext
+  const lightModeCtx = useContext<any>(LightModeContext);
 
-  const handleToggleModal = () => {};
+  const handleToggleMode = () => {
+    lightModeCtx.toggleMode();
+    console.log(lightModeCtx.isLightMode);
+    window.document.documentElement.classList.toggle("dark");
+  };
 
   return (
     <Fragment>
@@ -13,16 +22,33 @@ const Header = () => {
           <div className="md:flex md:items-center md:justify-between">
             <div className="flex items-center justify-between">
               <div className="text-xl font-semibold text-gray-700">
-                <Link
-                  className="text-2xl font-bold text-gray-800 transition-colors duration-200 transform dark:text-white lg:text-3xl hover:text-gray-700 dark:hover:text-gray-300"
-                  // href="#"
-                  to="/home"
-                >
-                  StudyLog
-                </Link>
+                <div className="flex flex-row items-center">
+                  <Link
+                    className="text-2xl font-bold text-gray-800 transition-colors duration-200 transform dark:text-white lg:text-3xl hover:text-gray-700 dark:hover:text-gray-300"
+                    // href="#"
+                    to="/home"
+                  >
+                    StudyLog
+                  </Link>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="inline-block ml-4 h-6 w-6 text-gray-700 dark:text-slate-100"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                    onClick={handleToggleMode}
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+                    />
+                  </svg>
+                </div>
               </div>
 
-              <div className="flex md:hidden" onClick={handleToggleModal}>
+              <div className="flex md:hidden">
                 <button
                   type="button"
                   className="text-gray-500 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 focus:outline-none focus:text-gray-600 dark:focus:text-gray-400"

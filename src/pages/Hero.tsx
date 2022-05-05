@@ -1,9 +1,13 @@
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Footer from "../layouts/Footer";
 import HeroModal from "../components/UI/Modal/HeroModal";
 
 const Hero = () => {
+  useEffect(() => {
+    window.document.documentElement.classList.add("dark");
+  }, []);
+
   return (
     <Fragment>
       <HeroModal />
@@ -59,7 +63,7 @@ const Hero = () => {
                   </p>
 
                   <div className="flex flex-col mt-8 space-y-3 lg:space-y-0 lg:flex-row">
-                    <button className="w-full px-4 py-2 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-emerald-400 rounded-full lg:w-auto lg:mx-4 hover:bg-emerald-500 focus:outline-none focus:bg-emerald-500">
+                    <button className="w-full px-4 py-2 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-emerald-400 dark:bg-emerald-500 rounded-full lg:w-auto lg:mx-4 hover:bg-emerald-500 focus:outline-none focus:bg-emerald-500">
                       <Link to="/home">Get started</Link>
                     </button>
                   </div>

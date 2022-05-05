@@ -6,8 +6,8 @@ import { StudyLogObj } from "../models/Model";
 
 const History = () => {
   // declare useState
-  const [studyLogs, setStudyLogs] = useState<any>([[]]);
-  const [sortedStudyLogs, setSortedStudyLogs] = useState<any>([[]]);
+  const [studyLogs, setStudyLogs] = useState<StudyLogObj[]>([]);
+  const [sortedStudyLogs, setSortedStudyLogs] = useState<StudyLogObj[]>([]);
   // const [logDates, setLogDates] = useState<any>([[]]);
 
   const getStudyLogs = async () => {
@@ -16,7 +16,7 @@ const History = () => {
     );
     const data = await response.json();
 
-    const loadedData = [];
+    const loadedData: StudyLogObj[] = [];
     const loadedDates = [];
 
     for (const key in data) {
@@ -55,7 +55,7 @@ const History = () => {
         {/* temporary: need to set max-height and overflow: scroll */}
         <ul className="">
           {/* test */}
-          {sortedStudyLogs.map((log: StudyLogObj, index: string) => {
+          {sortedStudyLogs.map((log, index) => {
             return (
               <li key={index}>
                 <LogCard

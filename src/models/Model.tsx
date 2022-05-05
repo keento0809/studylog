@@ -49,3 +49,8 @@ export interface DataObj {
   date: string;
   value: number;
 }
+
+export interface lightModeValue {
+  isLightMode: boolean;
+  toggleMode: () => void;
+}

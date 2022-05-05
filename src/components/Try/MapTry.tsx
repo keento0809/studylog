@@ -5,6 +5,7 @@ import useDeepCompareEffect from "use-deep-compare-effect";
 import { createCustomEqual } from "fast-equals";
 import { isLatLngLiteral } from "@googlemaps/typescript-guards";
 import Layout from "../../layouts/Layout";
+import axios from "axios";
 
 const render = (status: Status) => {
   return <h1>{status}</h1>;
@@ -18,8 +19,12 @@ const MapTry: React.VFC = () => {
     lng: -123.1200546,
   });
 
+  // declare useRef
+  const locationInputRef = React.useRef<HTMLInputElement>(null);
+
   const onClick = (e: google.maps.MapMouseEvent) => {
     // avoid directly mutating state
+    console.log(e.latLng!.toJSON().lat, e.latLng!.toJSON().lng);
     setClicks([...clicks, e.latLng!]);
   };
 
@@ -90,11 +95,46 @@ const MapTry: React.VFC = () => {
     </div>
   );
 
+  const handleSearchAddress = (e: React.FormEvent) => {
+    e.preventDefault();
+    const enteredLocation = locationInputRef.current!.value;
+    const GOOGLE_API_KEY = process.env.REACT_APP_GOOGLE_API_KEY;
+
+    axios
+      .get(
+        `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURI(
+          enteredLocation
+        )}&key=${GOOGLE_API_KEY}`
+      )
+      .then((res) => {
+        if (res.data.status !== "OK") throw new Error("Request Failed.");
+        const result = res.data.results[0].geometry.location;
+        // result contains lat and lng
+        setCenter(result);
+      })
+      .catch((error) => console.log(error.message));
+  };
+
   return (
     <div>
       <Layout>
         <Wrapper apiKey={process.env.REACT_APP_GOOGLE_API_KEY!} render={render}>
           {/* need to add Map component here */}
+          <form
+            action=""
+            className="googleMap-search py-4"
+            onSubmit={handleSearchAddress}
+          >
+            <input
+              ref={locationInputRef}
+              className="w-3/5 mr-auto px-4 py-2 text-gray-700 bg-white border rounded-full sm:mx-2 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-emerald-500 dark:focus:border-emerald-500 focus:outline-none focus:ring focus:ring-emerald-500 focus:ring-opacity-40"
+              type="text"
+              placeholder="Search here"
+            />
+            <button className="w-1/3 px-4 py-3 ml-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-emerald-400 rounded-full sm:mx-2 hover:bg-emerald-500 focus:outline-none focus:bg-emerald-500 dark:bg-emerald-500">
+              Search
+            </button>
+          </form>
           <Map
             center={center}
             onClick={onClick}
@@ -108,8 +148,8 @@ const MapTry: React.VFC = () => {
             ))}
           </Map>
         </Wrapper>
+        {form}
       </Layout>
-      {form}
     </div>
   );
 };

@@ -3,11 +3,12 @@ import { Line } from "@ant-design/charts";
 import { TinyArea } from "@ant-design/charts";
 import HomeCard from "../Card/HomeCard";
 import axios from "axios";
+import { CostDataObj } from "../../../models/Model";
 
 const HomeCostChart: React.FC = () => {
   // declare useState
   // I need to fix this part
-  const [costData, setCostData] = useState<any>([]);
+  const [costData, setCostData] = useState<number[]>([]);
   // fetch data from firebase
   const fetchingData = () => {
     axios
