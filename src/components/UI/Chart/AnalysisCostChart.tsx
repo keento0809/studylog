@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Line } from "@ant-design/charts";
 import HomeCard from "../Card/HomeCard";
-import { DataObj } from "../../../models/Model";
+import { DataObj, CostDataObj } from "../../../models/Model";
 import axios from "axios";
 
 const AnalysisCostChart = () => {
@@ -21,7 +21,14 @@ const AnalysisCostChart = () => {
             value: result[key].cost,
           });
         }
-        setDataForChart(loadedDataForChart);
+        // test
+        const sortedArr = loadedDataForChart.sort(function (
+          a: CostDataObj,
+          b: CostDataObj
+        ) {
+          return a.date > b.date ? 1 : -1;
+        });
+        setDataForChart(sortedArr);
       })
       .catch((error) => console.log(error.message));
   };
