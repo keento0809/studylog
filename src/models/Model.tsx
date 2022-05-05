@@ -27,6 +27,16 @@ export interface StudyLogObj {
   summary: string;
 }
 
+export interface CostDataObj {
+  date: string;
+  value: string;
+}
+
+export interface HourDataObj {
+  date: string;
+  value: number;
+}
+
 export interface PropsSetIsAlert {
   setIsAlert: (value: boolean) => void;
 }
