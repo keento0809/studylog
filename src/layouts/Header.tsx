@@ -20,7 +20,7 @@ const Header = () => {
       <nav className="fixed top-0 left-0 w-full z-10 bg-white shadow dark:bg-gray-800">
         <div className="container px-6 py-3 mx-auto">
           <div className="md:flex md:items-center md:justify-between">
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between w-full">
               <div className="text-xl font-semibold text-gray-700">
                 <div className="flex flex-row items-center">
                   <Link
@@ -67,7 +67,7 @@ const Header = () => {
                 </div>
               </div>
 
-              <div className="flex md:hidden">
+              <div className="flex lg:hidden">
                 <button
                   type="button"
                   className="text-gray-500 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 focus:outline-none focus:text-gray-600 dark:focus:text-gray-400"
