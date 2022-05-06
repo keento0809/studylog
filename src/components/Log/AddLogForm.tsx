@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, Fragment } from "react";
 // import { setTimeout } from "timers/promises";
 import {
   GoogleGeocodingRes,
@@ -128,31 +128,33 @@ const AddLogForm = ({ setIsAlert }: PropsSetIsAlert) => {
   //   }
   // }
 
+  console.log("test: is rendering?");
+
   return (
-    <div className="">
-      {/* <h1 className="text-3xl font-semibold text-gray-800 dark:text-gray-100">
-        Add New Log
-      </h1> */}
+    <Fragment>
       <form
-        action=""
-        className="googleMap-search py-4"
-        onSubmit={handleSearchAddress}
+        className="bg-white py-8 dark:bg-gray-800"
+        onSubmit={handleSubmitLog}
       >
-        <input
-          ref={locationInputRef}
-          className="w-3/5 mr-auto px-4 py-2 text-gray-700 bg-white border rounded-full sm:mx-2 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-emerald-500 dark:focus:border-emerald-500 focus:outline-none focus:ring focus:ring-emerald-500 focus:ring-opacity-40"
-          type="text"
-          placeholder="Search here"
-        />
-        <button className="w-1/3 px-4 py-3 ml-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-emerald-400 rounded-full sm:mx-2 hover:bg-emerald-500 focus:outline-none focus:bg-emerald-500 dark:bg-emerald-500">
-          Search
-        </button>
-      </form>
-      <form className="bg-white dark:bg-gray-800" onSubmit={handleSubmitLog}>
-        <div className="max-w-3xl py-3 mx-auto text-center">
+        <div className="max-w-3xl mx-auto text-center">
           <h1 className="text-3xl font-semibold text-gray-800 dark:text-gray-100">
             Add New Log
           </h1>
+          <form
+            action=""
+            className="googleMap-search pt-6"
+            onSubmit={handleSearchAddress}
+          >
+            <input
+              ref={locationInputRef}
+              className="w-3/5 mr-auto px-4 py-2 text-gray-700 bg-white border rounded-full sm:mx-2 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-emerald-500 dark:focus:border-emerald-500 focus:outline-none focus:ring focus:ring-emerald-500 focus:ring-opacity-40"
+              type="text"
+              placeholder="Search here"
+            />
+            <button className="w-1/3 px-4 py-3 ml-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-emerald-400 rounded-full sm:mx-2 hover:bg-emerald-500 focus:outline-none focus:bg-emerald-500 dark:bg-emerald-500">
+              Search
+            </button>
+          </form>
 
           <div
             id="mapping"
@@ -222,7 +224,7 @@ const AddLogForm = ({ setIsAlert }: PropsSetIsAlert) => {
       {isMapping && (
         <div id="mapping" style={{ width: "100%", height: "200px" }}></div>
       )}
-    </div>
+    </Fragment>
   );
 };
 
