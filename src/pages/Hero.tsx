@@ -31,7 +31,7 @@ const Hero = () => {
               {lightModeCtx.isLightMode && (
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="sun inline-block ml-4 h-6 w-6 text-gray-700 dark:text-slate-100"
+                  className="sun cursor-pointer inline-block ml-4 h-6 w-6 text-gray-700 dark:text-slate-100"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -48,7 +48,7 @@ const Hero = () => {
               {!lightModeCtx.isLightMode && (
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="moon inline-block ml-4 h-6 w-6 text-gray-700 dark:text-slate-100"
+                  className="moon cursor-pointer inline-block ml-4 h-6 w-6 text-gray-700 dark:text-slate-100"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -103,14 +103,14 @@ const Hero = () => {
                   </p>
 
                   <div className="flex flex-col mt-8 space-y-3 lg:space-y-0 lg:flex-row">
-                    <button className="w-full px-4 py-2 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-emerald-400 dark:bg-emerald-500 rounded-full lg:w-auto lg:mx-4 hover:bg-emerald-500 focus:outline-none focus:bg-emerald-500">
+                    <button className="w-full md:w-40 md:mr-auto px-4 py-2 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-emerald-400 dark:bg-emerald-500 rounded-full lg:w-auto lg:mx-4 hover:bg-emerald-500 focus:outline-none focus:bg-emerald-500">
                       <Link to="/home">Get started</Link>
                     </button>
                   </div>
                 </div>
               </div>
 
-              <div className="flex items-center justify-center w-full mt-6 lg:mt-0 lg:w-1/2 rounded-lg">
+              <div className="flex items-center justify-center md:justify-start w-full mt-6 lg:mt-0 lg:w-1/2 rounded-lg">
                 <img
                   className="w-full h-full max-w-md rounded-lg"
                   src="https://images.unsplash.com/photo-1471107340929-a87cd0f5b5f3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2873&q=80"

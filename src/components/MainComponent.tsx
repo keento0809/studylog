@@ -12,8 +12,13 @@ const MainComponent = () => {
   return (
     <div className="">
       <AddLogForm setIsAlert={setIsAlert} />
-      <HomeHourChart />
-      <HomeCostChart />
+      <div className="text-center py-4">
+        <h1 className="text-3xl pb-4 font-semibold text-gray-800 dark:text-gray-100">
+          Analysis
+        </h1>
+        <HomeHourChart />
+        <HomeCostChart />
+      </div>
       {isAlert && <SuccessAlert isAlert={isAlert} />}
     </div>
   );

@@ -43,11 +43,11 @@ const MapTry: React.VFC = () => {
         overflow: "auto",
       }}
     >
-      <label className="block pl-4" htmlFor="zoom">
+      <label className="block pl-4 dark:text-slate-100" htmlFor="zoom">
         Zoom
       </label>
       <input
-        className="w-3/5 mr-auto px-4 py-2 text-gray-700 bg-white border rounded-full sm:mx-2 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-emerald-500 dark:focus:border-emerald-500 focus:outline-none focus:ring focus:ring-emerald-500 focus:ring-opacity-40"
+        className="w-3/5 mr-auto px-4 py-2 mb-4 text-gray-700 bg-white border rounded-full sm:mx-2 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-emerald-500 dark:focus:border-emerald-500 focus:outline-none focus:ring focus:ring-emerald-500 focus:ring-opacity-40"
         type="number"
         id="zoom"
         name="zoom"
@@ -55,11 +55,11 @@ const MapTry: React.VFC = () => {
         onChange={(event) => setZoom(Number(event.target.value))}
       />
       <br />
-      <label className="block pl-4" htmlFor="lat">
+      <label className="block pl-4 dark:text-slate-100" htmlFor="lat">
         Latitude
       </label>
       <input
-        className="w-3/5 mr-auto px-4 py-2 text-gray-700 bg-white border rounded-full sm:mx-2 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-emerald-500 dark:focus:border-emerald-500 focus:outline-none focus:ring focus:ring-emerald-500 focus:ring-opacity-40"
+        className="w-3/5 mr-auto px-4 py-2 mb-4 text-gray-700 bg-white border rounded-full sm:mx-2 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-emerald-500 dark:focus:border-emerald-500 focus:outline-none focus:ring focus:ring-emerald-500 focus:ring-opacity-40"
         type="number"
         id="lat"
         name="lat"
@@ -69,11 +69,11 @@ const MapTry: React.VFC = () => {
         }
       />
       <br />
-      <label className="block pl-4" htmlFor="lng">
+      <label className="block pl-4 dark:text-slate-100" htmlFor="lng">
         Longitude
       </label>
       <input
-        className="w-3/5 mr-auto px-4 py-2 text-gray-700 bg-white border rounded-full sm:mx-2 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-emerald-500 dark:focus:border-emerald-500 focus:outline-none focus:ring focus:ring-emerald-500 focus:ring-opacity-40"
+        className="w-3/5 mr-auto px-4 py-2 mb-4 text-gray-700 bg-white border rounded-full sm:mx-2 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-emerald-500 dark:focus:border-emerald-500 focus:outline-none focus:ring focus:ring-emerald-500 focus:ring-opacity-40"
         type="number"
         id="lng"
         name="lng"
