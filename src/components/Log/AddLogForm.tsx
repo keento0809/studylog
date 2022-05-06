@@ -142,81 +142,90 @@ const AddLogForm = ({ setIsAlert }: PropsSetIsAlert) => {
           </h1>
           <form
             action=""
-            className="googleMap-search pt-6"
+            className="googleMap-search pt-6 md:w-10/12 mx-auto md:flex md:flex-row-reverse md:items-center md:justify-center"
             onSubmit={handleSearchAddress}
           >
-            <input
-              ref={locationInputRef}
-              className="w-3/5 mr-auto px-4 py-2 text-gray-700 bg-white border rounded-full sm:mx-2 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-emerald-500 dark:focus:border-emerald-500 focus:outline-none focus:ring focus:ring-emerald-500 focus:ring-opacity-40"
-              type="text"
-              placeholder="Search here"
-            />
-            <button className="w-1/3 px-4 py-3 ml-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-emerald-400 rounded-full sm:mx-2 hover:bg-emerald-500 focus:outline-none focus:bg-emerald-500 dark:bg-emerald-500">
-              Search
-            </button>
+            <div className="md:basis-2/4">
+              <input
+                ref={locationInputRef}
+                className="w-3/5 md:w-4/5 mr-auto px-4 py-2 text-gray-700 bg-white border rounded-full sm:mx-2 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-emerald-500 dark:focus:border-emerald-500 focus:outline-none focus:ring focus:ring-emerald-500 focus:ring-opacity-40"
+                type="text"
+                placeholder="Search Location"
+              />
+              <button className="w-1/3 md:w-4/5 px-4 py-3 md:mt-4 ml-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-emerald-400 rounded-full sm:mx-2 hover:bg-emerald-500 focus:outline-none focus:bg-emerald-500 dark:bg-emerald-500">
+                Search
+              </button>
+            </div>
+            <div
+              id="mapping"
+              className="w-full md:basis-2/4 bg-slate-100 h-48 my-4 md:mb-0 rounded-lg flex items-center justify-center"
+            >
+              <p className="text-xs">Search result will be displayed.</p>
+            </div>
           </form>
 
-          <div
-            id="mapping"
-            className="w-full bg-slate-100 h-48 my-4 rounded-lg flex items-center justify-center"
-          >
-            <p className="text-xs">Search result will be displayed.</p>
-          </div>
-
-          <div className="flex flex-col mt-6 space-y-3 sm:space-y-0 sm:flex-row sm:justify-center sm:-mx-2">
-            <div className="flex flex-col items-start">
-              <label htmlFor="" className="block pl-4 dark:text-gray-100">
-                Date *
-              </label>
-              <input
-                ref={DateInputRef}
-                // onChange={handleCheckDate}
-                type="date"
-                className="w-6/12 mr-auto px-4 py-2 text-gray-700 bg-white border rounded-full sm:mx-2 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-emerald-500 dark:focus:border-emerald-500 focus:outline-none focus:ring focus:ring-emerald-500 focus:ring-opacity-40"
-                placeholder="Hour"
-              />
-            </div>
-            <div className="flex flex-row items-start">
+          <div className="md:flex md:items-center md:justify-center">
+            <div className="flex flex-col mt-6 space-y-3 sm:space-y-0 sm:justify-center sm:-mx-2">
               <div className="flex flex-col items-start">
-                <label htmlFor="" className="block pl-4 dark:text-gray-100">
-                  Hour *
+                <label htmlFor="" className="block pl-4 dark:text-emerald-300">
+                  Date *
                 </label>
                 <input
-                  ref={hourInputRef}
-                  type="text"
-                  className="w-4/5 mr-auto px-4 py-2 text-gray-700 bg-white border rounded-full sm:mx-2 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-emerald-500 dark:focus:border-emerald-500 focus:outline-none focus:ring focus:ring-emerald-500 focus:ring-opacity-40"
+                  ref={DateInputRef}
+                  // onChange={handleCheckDate}
+                  type="date"
+                  className="w-6/12 mr-auto px-4 py-2 text-gray-700 bg-white border rounded-full sm:mx-2 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-emerald-500 dark:focus:border-emerald-500 focus:outline-none focus:ring focus:ring-emerald-500 focus:ring-opacity-40"
                   placeholder="Hour"
                 />
               </div>
+              <div className="flex flex-row items-start md:justify-center">
+                <div className="flex flex-col items-start">
+                  <label
+                    htmlFor=""
+                    className="block pl-4 dark:text-emerald-300"
+                  >
+                    Hour *
+                  </label>
+                  <input
+                    ref={hourInputRef}
+                    type="text"
+                    className="w-4/5 mr-auto px-4 py-2 text-gray-700 bg-white border rounded-full sm:mx-2 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-emerald-500 dark:focus:border-emerald-500 focus:outline-none focus:ring focus:ring-emerald-500 focus:ring-opacity-40"
+                    placeholder="Hour"
+                  />
+                </div>
+                <div className="flex flex-col items-start">
+                  <label
+                    htmlFor=""
+                    className="block pl-4 dark:text-emerald-300"
+                  >
+                    Cost *
+                  </label>
+                  <input
+                    ref={costInputRef}
+                    type="text"
+                    className="w-fll mx-auto px-4 py-2 text-gray-700 bg-white border rounded-full sm:mx-2 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-emerald-500 dark:focus:border-emerald-500 focus:outline-none focus:ring focus:ring-emerald-500 focus:ring-opacity-40"
+                    placeholder="$"
+                  />
+                </div>
+              </div>
+
               <div className="flex flex-col items-start">
-                <label htmlFor="" className="block pl-4 dark:text-gray-100">
-                  Cost *
+                <label htmlFor="" className="pl-4 dark:text-emerald-300">
+                  Summary *
                 </label>
                 <input
-                  ref={costInputRef}
+                  ref={summaryInputRef}
                   type="text"
-                  className="w-fll mx-auto px-4 py-2 text-gray-700 bg-white border rounded-full sm:mx-2 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-emerald-500 dark:focus:border-emerald-500 focus:outline-none focus:ring focus:ring-emerald-500 focus:ring-opacity-40"
-                  placeholder="$"
+                  className="w-full px-4 py-2 text-gray-700 bg-white border rounded-full sm:mx-2 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-emerald-500 dark:focus:border-emerald-500 focus:outline-none focus:ring focus:ring-emerald-500 focus:ring-opacity-40"
+                  placeholder="Text here"
                 />
               </div>
-            </div>
 
-            <div className="flex flex-col items-start">
-              <label htmlFor="" className="pl-4 dark:text-gray-100">
-                Summary *
-              </label>
-              <input
-                ref={summaryInputRef}
-                type="text"
-                className="w-full px-4 py-2 text-gray-700 bg-white border rounded-full sm:mx-2 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-emerald-500 dark:focus:border-emerald-500 focus:outline-none focus:ring focus:ring-emerald-500 focus:ring-opacity-40"
-                placeholder="Text here"
-              />
-            </div>
-
-            <div className="py-4">
-              <button className="w-full px-4 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-emerald-400 rounded-full sm:mx-2 hover:bg-emerald-500 focus:outline-none focus:bg-emerald-500 dark:bg-emerald-500">
-                ADD
-              </button>
+              <div className="py-4 md:py-7">
+                <button className="w-full md:w-2/3 px-4 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-emerald-400 rounded-full sm:mx-2 hover:bg-emerald-500 focus:outline-none focus:bg-emerald-500 dark:bg-emerald-500">
+                  ADD
+                </button>
+              </div>
             </div>
           </div>
         </div>
