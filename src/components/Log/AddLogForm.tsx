@@ -1,13 +1,17 @@
 import axios from "axios";
-import React, { useRef, useState, useEffect, Fragment } from "react";
-// import { setTimeout } from "timers/promises";
-import {
-  GoogleGeocodingRes,
-  StudyLogObj,
-  PropsSetIsAlert,
-} from "../../models/Model";
+import React, {
+  useRef,
+  useState,
+  useEffect,
+  Fragment,
+  useContext,
+} from "react";
+import StudyLogsContext from "../../contexts/studyLogs-context";
+import { StudyLogObj, PropsSetIsAlert } from "../../models/Model";
 
 const AddLogForm = ({ setIsAlert }: PropsSetIsAlert) => {
+  // declare useContext
+  const studyLogsCtx = useContext<any>(StudyLogsContext);
   // declare useRef
   const locationInputRef = useRef<HTMLInputElement>(null);
   const DateInputRef = useRef<HTMLInputElement>(null);
@@ -81,6 +85,9 @@ const AddLogForm = ({ setIsAlert }: PropsSetIsAlert) => {
       cost: enteredCost!,
       summary: enteredSummary!,
     };
+
+    // test
+    studyLogsCtx.updateStudyLogsData(studyLog);
 
     const sendRequest = async () => {
       const res = await fetch(
