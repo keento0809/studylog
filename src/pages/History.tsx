@@ -1,11 +1,15 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Layout from "../layouts/Layout";
 // temporary
 import LogList from "../components/Log/LogList";
 import LogCard from "../components/UI/Card/LogCard";
 import { StudyLogObj } from "../models/Model";
+import StudyLogsContext from "../contexts/studyLogs-context";
 
 const History = () => {
+  // declare useContext
+  const studyLogsCtx = useContext<any>(StudyLogsContext);
+
   // declare useState
   const [studyLogs, setStudyLogs] = useState<StudyLogObj[]>([]);
   const [sortedStudyLogs, setSortedStudyLogs] = useState<StudyLogObj[]>([]);
@@ -32,6 +36,7 @@ const History = () => {
       });
     }
     setStudyLogs(loadedData);
+    // studyLogsCtx.setInitialStudyLogs(loadedData);
   };
 
   useEffect(() => {
@@ -43,6 +48,7 @@ const History = () => {
       return a.date < b.date ? 1 : -1;
     });
     setSortedStudyLogs(sortedArr);
+    studyLogsCtx.setInitialStudyLogs(sortedArr);
   }, [studyLogs]);
 
   return (

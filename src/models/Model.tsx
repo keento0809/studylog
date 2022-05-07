@@ -58,3 +58,13 @@ export interface lightModeValue {
 export interface PropsLogList {
   sortedStudyLogs: StudyLogObj[];
 }
+
+export interface StudyLogsContextInterface {
+  studyLogsData: StudyLogObj[];
+  totalStudyHours: number;
+  totalAmountCosts: number;
+  setInitialStudyLogs: (logs: StudyLogObj[]) => void;
+  updateStudyLogsData: (log: StudyLogObj) => void;
+  countTotalStudyHours: (log: StudyLogObj) => void;
+  countTotalAmountCosts: (log: StudyLogObj) => void;
+}
