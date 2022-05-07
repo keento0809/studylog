@@ -13,8 +13,10 @@ const Analysis = () => {
         </div>
         <div className="mx-auto">
           {/* temporary */}
-          <AnalysisHourChart />
-          <AnalysisCostChart />
+          <div className="">
+            <AnalysisHourChart />
+            <AnalysisCostChart />
+          </div>
         </div>
       </div>
     </Layout>
