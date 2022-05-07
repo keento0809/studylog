@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Layout from "../layouts/Layout";
 // temporary
+import LogList from "../components/Log/LogList";
 import LogCard from "../components/UI/Card/LogCard";
 import { StudyLogObj } from "../models/Model";
 
@@ -52,9 +53,8 @@ const History = () => {
             History
           </h1>
         </div>
-        {/* temporary: need to set max-height and overflow: scroll */}
-        <ul className="">
-          {/* test */}
+        {/* test LogList.tsx */}
+        {/* <ul className="">
           {sortedStudyLogs.map((log, index) => {
             return (
               <li key={index}>
@@ -67,7 +67,8 @@ const History = () => {
               </li>
             );
           })}
-        </ul>
+        </ul> */}
+        <LogList sortedStudyLogs={sortedStudyLogs} />
       </div>
     </Layout>
   );

@@ -54,3 +54,7 @@ export interface lightModeValue {
   isLightMode: boolean;
   toggleMode: () => void;
 }
+
+export interface PropsLogList {
+  sortedStudyLogs: StudyLogObj[];
+}

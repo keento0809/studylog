@@ -10,7 +10,7 @@ const MainComponent = () => {
   const [isAlert, setIsAlert] = React.useState(false);
 
   return (
-    <div className="">
+    <div className="lg:flex lg:flex-row">
       <AddLogForm setIsAlert={setIsAlert} />
       <div className="text-center py-4">
         <h1 className="text-3xl pb-4 font-semibold text-gray-800 dark:text-gray-100">
@@ -19,6 +19,9 @@ const MainComponent = () => {
         <HomeHourChart />
         <HomeCostChart />
       </div>
+      {/* <div className="">
+
+      </div> */}
       {isAlert && <SuccessAlert isAlert={isAlert} />}
     </div>
   );
