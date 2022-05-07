@@ -53,21 +53,6 @@ const History = () => {
             History
           </h1>
         </div>
-        {/* test LogList.tsx */}
-        {/* <ul className="">
-          {sortedStudyLogs.map((log, index) => {
-            return (
-              <li key={index}>
-                <LogCard
-                  date={log.date}
-                  hour={log.hour}
-                  cost={log.cost}
-                  summary={log.summary}
-                />
-              </li>
-            );
-          })}
-        </ul> */}
         <LogList sortedStudyLogs={sortedStudyLogs} />
       </div>
     </Layout>

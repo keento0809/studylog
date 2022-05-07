@@ -5,7 +5,6 @@ const LogList = ({ sortedStudyLogs }: PropsLogList) => {
   return (
     <div>
       <ul className="">
-        {/* test */}
         {sortedStudyLogs.map((log, index) => {
           return (
             <li key={index}>

@@ -137,13 +137,13 @@ const AddLogForm = ({ setIsAlert }: PropsSetIsAlert) => {
         onSubmit={handleSubmitLog}
       >
         <div className="max-w-3xl mx-auto text-center">
-          <h1 className="text-3xl font-semibold text-gray-800 dark:text-gray-100">
+          <h1 className="text-3xl lg:text-2xl font-semibold text-gray-800 dark:text-gray-100">
             Add New Log
           </h1>
           {/* I need to fix the nested form */}
           <form
             action=""
-            className="googleMap-search pt-6 md:w-4/6 mx-auto md:flex md:flex-row-reverse md:items-center md:justify-center"
+            className="googleMap-search pt-6 md:w-4/6 lg:w-full mx-auto md:flex md:flex-row-reverse md:items-center md:justify-center"
             onSubmit={handleSearchAddress}
           >
             <div className="md:basis-2/4">
