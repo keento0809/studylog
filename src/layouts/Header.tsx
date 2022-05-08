@@ -42,7 +42,7 @@ const Header = () => {
                   {lightModeCtx.isLightMode && (
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="sun inline-block ml-4 h-6 w-6 text-gray-700 dark:text-slate-100"
+                      className="sun inline-block ml-4 h-6 w-6 text-gray-700 dark:text-slate-100 cursor-pointer"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -59,7 +59,7 @@ const Header = () => {
                   {!lightModeCtx.isLightMode && (
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="moon inline-block ml-4 h-6 w-6 text-gray-700 dark:text-slate-100"
+                      className="moon inline-block ml-4 h-6 w-6 text-gray-700 dark:text-slate-100 cursor-pointer"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -99,7 +99,7 @@ const Header = () => {
                     onClick={() => handleNavigatePage(0)}
                     // value="/myinfo"
                     // href="#"
-                    className="px-2 py-1 mx-2 mt-2 text-sm font-medium text-gray-700 transition-colors duration-200 transform rounded-md md:mt-0 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-700"
+                    className="px-2 py-1 mx-2 xl:mx-4 mt-2 text-sm font-medium text-gray-700 transition-colors duration-200 transform rounded-md md:mt-0 dark:text-gray-200 hover:bg-emerald-400 dark:hover:bg-emerald-500 cursor-pointer"
                   >
                     {navMenuLabels[0]}
                   </span>
@@ -108,7 +108,7 @@ const Header = () => {
                     onClick={() => handleNavigatePage(1)}
                     // to="/analysis"
                     // href="#"
-                    className="px-2 py-1 mx-2 mt-2 text-sm font-medium text-gray-700 transition-colors duration-200 transform rounded-md md:mt-0 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-700"
+                    className="px-2 py-1 mx-2 xl:mx-4 mt-2 text-sm font-medium text-gray-700 transition-colors duration-200 transform rounded-md md:mt-0 dark:text-gray-200 hover:bg-emerald-400 dark:hover:bg-emerald-500 cursor-pointer"
                   >
                     {navMenuLabels[1]}
                   </span>
@@ -117,14 +117,14 @@ const Header = () => {
                     onClick={() => handleNavigatePage(2)}
                     // to="/logs"
                     // href="#"
-                    className="px-2 py-1 mx-2 mt-2 text-sm font-medium text-gray-700 transition-colors duration-200 transform rounded-md md:mt-0 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-700"
+                    className="px-2 py-1 mx-2 xl:mx-4 mt-2 text-sm font-medium text-gray-700 transition-colors duration-200 transform rounded-md md:mt-0 dark:text-gray-200 hover:bg-emerald-400 dark:hover:bg-emerald-500 cursor-pointer"
                   >
                     {navMenuLabels[2]}
                   </span>
                   <span
                     data-bs-dismiss="modal"
                     onClick={() => handleNavigatePage(3)}
-                    className="px-2 py-1 mx-2 mt-2 text-sm font-medium text-gray-700 transition-colors duration-200 transform rounded-md md:mt-0 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-700"
+                    className="px-2 py-1 mx-2 xl:mx-4 mt-2 text-sm font-medium text-gray-700 transition-colors duration-200 transform rounded-md md:mt-0 dark:text-gray-200 hover:bg-emerald-400 dark:hover:bg-emerald-500 cursor-pointer"
                   >
                     {navMenuLabels[3]}
                   </span>
