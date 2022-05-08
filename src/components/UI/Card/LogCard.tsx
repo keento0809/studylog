@@ -42,7 +42,7 @@ const LogCard = ({ date, hour, cost, summary }: StudyLogObj) => {
       {isShown && (
         <div className="px-6 py-4">
           {/* props.summary */}
-          <p className="text-lg py-2 text-gray-700 dark:text-slate-100 font-bold">
+          <p className="text-lg py-2 text-gray-700 dark:text-white font-bold">
             {/* Full Stack maker & UI / UX Designer , love hip hop music Author of
             Building UI. */}
             {summary}

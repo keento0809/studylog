@@ -8,6 +8,7 @@ import React, {
 } from "react";
 import StudyLogsContext from "../../contexts/studyLogs-context";
 import { StudyLogObj, PropsSetIsAlert } from "../../models/Model";
+import HomeSectionCard from "../UI/Card/HomeSectionCard";
 
 const AddLogForm = ({ setIsAlert }: PropsSetIsAlert) => {
   // declare useContext
@@ -125,7 +126,6 @@ const AddLogForm = ({ setIsAlert }: PropsSetIsAlert) => {
     newDate = `${year}-${month < 10 ? "0" : ""}${month}-${
       day < 10 ? "0" : ""
     }${day}`;
-    console.log(newDate);
   }, []);
 
   // function handleCheckDate() {
@@ -135,12 +135,10 @@ const AddLogForm = ({ setIsAlert }: PropsSetIsAlert) => {
   //   }
   // }
 
-  console.log("test: is rendering?");
-
   return (
     <Fragment>
       <form
-        className="bg-white py-8 dark:bg-gray-800"
+        className="bg-white py-8 dark:bg-gray-800 lg:basis-1/2 xl:basis-2/5"
         onSubmit={handleSubmitLog}
       >
         <div className="max-w-3xl mx-auto text-center">
@@ -148,10 +146,10 @@ const AddLogForm = ({ setIsAlert }: PropsSetIsAlert) => {
             Add New Log
           </h1>
           {/* I need to fix the nested form */}
-          <form
-            action=""
+          <div
+            // action=""
             className="googleMap-search pt-6 md:w-4/6 lg:w-full mx-auto md:flex md:flex-row-reverse md:items-center md:justify-center"
-            onSubmit={handleSearchAddress}
+            // onSubmit={handleSearchAddress}
           >
             <div className="md:basis-2/4">
               <input
@@ -160,7 +158,10 @@ const AddLogForm = ({ setIsAlert }: PropsSetIsAlert) => {
                 type="text"
                 placeholder="Search Location"
               />
-              <button className="w-1/3 md:w-4/5 px-4 py-3 md:mt-4 ml-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-emerald-400 rounded-full sm:mx-2 hover:bg-emerald-500 focus:outline-none focus:bg-emerald-500 dark:bg-emerald-500">
+              <button
+                onClick={handleSearchAddress}
+                className="w-1/3 md:w-4/5 px-4 py-3 md:mt-4 ml-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-emerald-400 rounded-full sm:mx-2 hover:bg-emerald-500 focus:outline-none focus:bg-emerald-500 dark:bg-emerald-500"
+              >
                 Search
               </button>
             </div>
@@ -170,7 +171,7 @@ const AddLogForm = ({ setIsAlert }: PropsSetIsAlert) => {
             >
               <p className="text-xs">Search result will be displayed.</p>
             </div>
-          </form>
+          </div>
 
           <div className="md:flex md:items-center md:justify-center">
             <div className="flex flex-col mt-6 space-y-3 sm:space-y-0 sm:justify-center sm:-mx-2">
@@ -230,7 +231,7 @@ const AddLogForm = ({ setIsAlert }: PropsSetIsAlert) => {
               </div>
 
               <div className="py-4 md:py-7">
-                <button className="w-full md:w-7/12 px-4 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-emerald-400 rounded-full sm:mx-2 hover:bg-emerald-500 focus:outline-none focus:bg-emerald-500 dark:bg-emerald-500">
+                <button className="w-full md:w-7/12 lg:w-1/2 px-4 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-emerald-400 rounded-full sm:mx-2 hover:bg-emerald-500 focus:outline-none focus:bg-emerald-500 dark:bg-emerald-500">
                   ADD
                 </button>
               </div>

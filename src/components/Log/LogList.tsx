@@ -1,30 +1,90 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import StudyLogsContext from "../../contexts/studyLogs-context";
 import { PropsLogList, StudyLogObj } from "../../models/Model";
 import LogCard from "../UI/Card/LogCard";
 
-const LogList = ({ sortedStudyLogs }: PropsLogList) => {
+const LogList = () => {
   // declare useContext
   const studyLogsCtx = useContext<any>(StudyLogsContext);
 
+  // declare useState
+  const [studyLogs, setStudyLogs] = useState<StudyLogObj[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const getStudyLogs = async () => {
+    setIsLoading(true);
+
+    try {
+      const response = await fetch(
+        "https://studylog-8e387-default-rtdb.firebaseio.com/studylogs.json"
+      );
+      if (!response.ok) throw new Error("Request failed.");
+      const data = await response.json();
+
+      const loadedData: StudyLogObj[] = [];
+      const loadedDates = [];
+
+      for (const key in data) {
+        loadedData.push({
+          date: data[key].date,
+          cost: data[key].cost,
+          hour: data[key].hour,
+          summary: data[key].summary,
+        });
+        loadedDates.push({
+          date: data[key].date,
+        });
+      }
+      setStudyLogs(loadedData);
+      setIsLoading(false);
+    } catch (error: any) {
+      console.log(error.message);
+    }
+  };
+
+  useEffect(() => {
+    getStudyLogs();
+  }, []);
+
+  useEffect(() => {
+    const sortedArr = studyLogs.sort(function (a: StudyLogObj, b: StudyLogObj) {
+      return a.date < b.date ? 1 : -1;
+    });
+    studyLogsCtx.setInitialStudyLogs(sortedArr);
+  }, [studyLogs]);
+
   return (
     <div>
-      <ul className="">
-        {/* test */}
-        {studyLogsCtx.studyLogsData.map((log: StudyLogObj, index: string) => {
-          // {sortedStudyLogs.map((log, index) => {
-          return (
-            <li key={index}>
-              <LogCard
-                date={log.date}
-                hour={log.hour}
-                cost={log.cost}
-                summary={log.summary}
-              />
-            </li>
-          );
-        })}
-      </ul>
+      {isLoading && (
+        <div>
+          <h3 className="text-xl font-bold">Loading...</h3>
+          <div
+            className="
+      spinner-grow inline-block w-8 h-8 bg-current rounded-full opacity-0
+        text-emerald-400 dark:text-emerald-500
+      "
+            role="status"
+          >
+            <span className="visually-hidden">Loading...</span>
+          </div>
+        </div>
+      )}
+      {!isLoading && (
+        <ul className="overflow-scroll">
+          {studyLogsCtx.studyLogsData.map((log: StudyLogObj, index: string) => {
+            return (
+              <li key={index}>
+                <LogCard
+                  date={log.date}
+                  hour={log.hour}
+                  cost={log.cost}
+                  summary={log.summary}
+                />
+              </li>
+            );
+          })}
+        </ul>
+      )}
     </div>
   );
 };
