@@ -99,7 +99,7 @@ const Header = () => {
                     onClick={() => handleNavigatePage(0)}
                     // value="/myinfo"
                     // href="#"
-                    className="px-2 py-1 mx-2 xl:mx-4 mt-2 text-sm font-medium text-gray-700 transition-colors duration-200 transform rounded-md md:mt-0 dark:text-gray-200 hover:bg-emerald-400 dark:hover:bg-emerald-500 cursor-pointer"
+                    className="px-4 py-2 mx-2 xl:mx-4 mt-2 text-sm font-medium text-gray-700 transition-colors duration-200 transform rounded-md md:mt-0 dark:text-gray-200 hover:bg-emerald-400 dark:hover:bg-emerald-500 cursor-pointer"
                   >
                     {navMenuLabels[0]}
                   </span>
@@ -108,7 +108,7 @@ const Header = () => {
                     onClick={() => handleNavigatePage(1)}
                     // to="/analysis"
                     // href="#"
-                    className="px-2 py-1 mx-2 xl:mx-4 mt-2 text-sm font-medium text-gray-700 transition-colors duration-200 transform rounded-md md:mt-0 dark:text-gray-200 hover:bg-emerald-400 dark:hover:bg-emerald-500 cursor-pointer"
+                    className="px-4 py-2 mx-2 xl:mx-4 mt-2 text-sm font-medium text-gray-700 transition-colors duration-200 transform rounded-md md:mt-0 dark:text-gray-200 hover:bg-emerald-400 dark:hover:bg-emerald-500 cursor-pointer"
                   >
                     {navMenuLabels[1]}
                   </span>
@@ -117,14 +117,14 @@ const Header = () => {
                     onClick={() => handleNavigatePage(2)}
                     // to="/logs"
                     // href="#"
-                    className="px-2 py-1 mx-2 xl:mx-4 mt-2 text-sm font-medium text-gray-700 transition-colors duration-200 transform rounded-md md:mt-0 dark:text-gray-200 hover:bg-emerald-400 dark:hover:bg-emerald-500 cursor-pointer"
+                    className="px-4 py-2 mx-2 xl:mx-4 mt-2 text-sm font-medium text-gray-700 transition-colors duration-200 transform rounded-md md:mt-0 dark:text-gray-200 hover:bg-emerald-400 dark:hover:bg-emerald-500 cursor-pointer"
                   >
                     {navMenuLabels[2]}
                   </span>
                   <span
                     data-bs-dismiss="modal"
                     onClick={() => handleNavigatePage(3)}
-                    className="px-2 py-1 mx-2 xl:mx-4 mt-2 text-sm font-medium text-gray-700 transition-colors duration-200 transform rounded-md md:mt-0 dark:text-gray-200 hover:bg-emerald-400 dark:hover:bg-emerald-500 cursor-pointer"
+                    className="px-4 py-2 mx-2 xl:mx-4 mt-2 text-sm font-medium text-gray-700 transition-colors duration-200 transform rounded-md md:mt-0 dark:text-gray-200 hover:bg-emerald-400 dark:hover:bg-emerald-500 cursor-pointer"
                   >
                     {navMenuLabels[3]}
                   </span>
