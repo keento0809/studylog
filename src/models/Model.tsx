@@ -27,6 +27,14 @@ export interface StudyLogObj {
   summary: string;
 }
 
+export interface StudyLogObjWithIsHome {
+  date: string;
+  hour: string;
+  cost: string;
+  summary: string;
+  isHome: boolean;
+}
+
 export interface CostDataObj {
   date: string;
   value: string;
@@ -67,4 +75,8 @@ export interface StudyLogsContextInterface {
   updateStudyLogsData: (log: StudyLogObj) => void;
   countTotalStudyHours: (log: StudyLogObj) => void;
   countTotalAmountCosts: (log: StudyLogObj) => void;
+}
+
+export interface IsHome {
+  isHome: boolean;
 }
