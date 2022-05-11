@@ -1,5 +1,9 @@
-import { useState } from "react";
-import { StudyLogObj } from "../../../models/Model";
+import { useState, useEffect } from "react";
+import {
+  IsHome,
+  StudyLogObj,
+  StudyLogObjWithIsHome,
+} from "../../../models/Model";
 import {
   CalendarIcon,
   ChevronDownIcon,
@@ -13,27 +17,35 @@ const LogCard = ({ date, hour, cost, summary }: StudyLogObj) => {
     setIsShown(!isShown);
   };
 
+  useEffect(() => {
+    window.innerWidth > 1023 && setIsShown(true);
+  }, []);
+
   return (
-    <div className="max-w-sm mx-auto my-4 overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-700">
+    <div className="max-w-sm mx-auto my-4 overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-700 lg:mr-4 lg:min-h-270">
       <div className="flex items-center justify-between px-6 py-3 bg-emerald-400 dark:bg-emerald-500">
         <div className="flex flex-row items-center">
-          <CalendarIcon className="block h-5 w-5 text-white" />
+          <CalendarIcon className="block h-5 w-5 text-white dark:text-slate-100" />
           {/* props.date */}
-          <h1 className="mx-3 text-lg font-semibold text-white">{date}</h1>
+          <h1 className="mx-3 text-lg font-semibold text-white dark:text-slate-100">
+            {date}
+          </h1>
         </div>
         <div className="flex flex-row justify-end items-center">
           {/* props.hour */}
-          <h1 className="mx-3 text-lg font-semibold text-white">{hour} hrs</h1>
+          <h1 className="mx-3 text-lg font-semibold text-white dark:text-slate-100">
+            {hour} hrs
+          </h1>
           {!isShown && (
             <ChevronDownIcon
               onClick={handleToggleAccordion}
-              className="block h-5 w-5 text-white"
+              className="block h-5 w-5 text-white lg:hidden"
             />
           )}
           {isShown && (
             <ChevronUpIcon
               onClick={handleToggleAccordion}
-              className="block h-5 w-5 text-white"
+              className="block h-5 w-5 text-white lg:hidden"
             />
           )}
         </div>
@@ -42,11 +54,13 @@ const LogCard = ({ date, hour, cost, summary }: StudyLogObj) => {
       {isShown && (
         <div className="px-6 py-4">
           {/* props.summary */}
-          <p className="text-lg py-2 text-gray-700 dark:text-white font-bold">
-            {/* Full Stack maker & UI / UX Designer , love hip hop music Author of
+          <div className="lg:min-h-100 lg:flex lg:justify-center lg:items-center">
+            <p className="text-lg py-2 text-gray-700 dark:text-white font-bold">
+              {/* Full Stack maker & UI / UX Designer , love hip hop music Author of
             Building UI. */}
-            {summary}
-          </p>
+              {summary}
+            </p>
+          </div>
 
           <div className="">
             <div className="flex flex-row justify-center items-center">

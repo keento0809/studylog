@@ -5,15 +5,15 @@ import AnalysisCostChart from "../components/UI/Chart/AnalysisCostChart";
 const Analysis = () => {
   return (
     <Layout>
-      <div className="">
-        <div className="py-3 text-center">
+      <div className="py-8">
+        <div className="pb-3 text-center">
           <h1 className="text-3xl font-semibold text-gray-800 dark:text-gray-100">
             Analysis
           </h1>
         </div>
         <div className="mx-auto">
           {/* temporary */}
-          <div className="">
+          <div className="mx-auto md:w-2/3 lg:max-w-screen-md">
             <AnalysisHourChart />
             <AnalysisCostChart />
           </div>

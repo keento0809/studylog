@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import StudyLogsContext from "../../contexts/studyLogs-context";
-import { PropsLogList, StudyLogObj } from "../../models/Model";
+import { PropsLogList, StudyLogObj, IsHome } from "../../models/Model";
 import LogCard from "../UI/Card/LogCard";
 
 const LogList = () => {
@@ -70,20 +70,24 @@ const LogList = () => {
         </div>
       )}
       {!isLoading && (
-        <ul className="overflow-scroll">
-          {studyLogsCtx.studyLogsData.map((log: StudyLogObj, index: string) => {
-            return (
-              <li key={index}>
-                <LogCard
-                  date={log.date}
-                  hour={log.hour}
-                  cost={log.cost}
-                  summary={log.summary}
-                />
-              </li>
-            );
-          })}
-        </ul>
+        <div className="lg:flex lg:justify-center lg:items-center lg:w-11/12 lg:mx-auto">
+          <ul className="overflow-scroll lg:flex lg:justify-start lg:flex-row lg:flex-wrap">
+            {studyLogsCtx.studyLogsData.map(
+              (log: StudyLogObj, index: string) => {
+                return (
+                  <li key={index} className="lg:basis-4/12">
+                    <LogCard
+                      date={log.date}
+                      hour={log.hour}
+                      cost={log.cost}
+                      summary={log.summary}
+                    />
+                  </li>
+                );
+              }
+            )}
+          </ul>
+        </div>
       )}
     </div>
   );
