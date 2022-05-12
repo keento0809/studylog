@@ -12,7 +12,7 @@ import HomeSectionCard from "../UI/Card/HomeSectionCard";
 
 const AddLogForm = ({ setIsAlert }: PropsSetIsAlert) => {
   // declare useContext
-  const studyLogsCtx = useContext<any>(StudyLogsContext);
+  const studyLogsCtx = useContext(StudyLogsContext);
   // declare useRef
   const locationInputRef = useRef<HTMLInputElement>(null);
   const DateInputRef = useRef<HTMLInputElement>(null);

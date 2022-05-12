@@ -80,3 +80,5 @@ export interface StudyLogsContextInterface {
 export interface IsHome {
   isHome: boolean;
 }
+
+export interface InnerWidthValue {}
