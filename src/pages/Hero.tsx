@@ -6,7 +6,7 @@ import LightModeContext from "../contexts/lightmode-context";
 
 const Hero = () => {
   // declare useContext
-  const lightModeCtx = useContext<any>(LightModeContext);
+  const lightModeCtx = useContext(LightModeContext);
 
   const handleToggleMode = () => {
     lightModeCtx.toggleMode();

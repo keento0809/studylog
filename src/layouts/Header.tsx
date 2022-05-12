@@ -12,7 +12,7 @@ const Header = () => {
   // declare useState
   const [isShow, setIsShow] = useState(false);
   // declare useContext
-  const lightModeCtx = useContext<any>(LightModeContext);
+  const lightModeCtx = useContext(LightModeContext);
 
   const handleToggleMode = () => {
     lightModeCtx.toggleMode();

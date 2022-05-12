@@ -5,7 +5,7 @@ import LogCard from "../UI/Card/LogCard";
 
 const LogList = () => {
   // declare useContext
-  const studyLogsCtx = useContext<any>(StudyLogsContext);
+  const studyLogsCtx = useContext(StudyLogsContext);
 
   // declare useState
   const [studyLogs, setStudyLogs] = useState<StudyLogObj[]>([]);
@@ -73,7 +73,7 @@ const LogList = () => {
         <div className="lg:flex lg:justify-center lg:items-center lg:w-11/12 lg:mx-auto">
           <ul className="overflow-scroll lg:flex lg:justify-start lg:flex-row lg:flex-wrap">
             {studyLogsCtx.studyLogsData.map(
-              (log: StudyLogObj, index: string) => {
+              (log: StudyLogObj, index: number) => {
                 return (
                   <li key={index} className="lg:basis-4/12">
                     <LogCard
