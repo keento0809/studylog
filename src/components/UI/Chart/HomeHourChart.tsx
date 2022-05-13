@@ -31,8 +31,8 @@ const HomeHistoryChart: React.FC = () => {
     autoFit: false,
     data: hourData,
     smooth: true,
-    areaStyle: {
-      // fill: "#fff",
+    line: {
+      color: "#34D499",
     },
   };
 
