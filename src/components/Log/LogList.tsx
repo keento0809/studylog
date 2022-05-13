@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, useRef } from "react";
 import StudyLogsContext from "../../contexts/studyLogs-context";
 import { PropsLogList, StudyLogObj, IsHome } from "../../models/Model";
 import LogCard from "../UI/Card/LogCard";
@@ -10,6 +10,10 @@ const LogList = () => {
   // declare useState
   const [studyLogs, setStudyLogs] = useState<StudyLogObj[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [justifyC, setJustifyC] = useState(false);
+
+  // declare useRef
+  const testRef = useRef<HTMLDivElement>(null);
 
   const getStudyLogs = async () => {
     setIsLoading(true);
@@ -53,6 +57,16 @@ const LogList = () => {
     studyLogsCtx.setInitialStudyLogs(sortedArr);
   }, [studyLogs]);
 
+  useEffect(() => {
+    console.log(testRef.current!.offsetWidth);
+    if (
+      window.innerWidth > 1023 &&
+      testRef.current!.offsetWidth > 468 &&
+      testRef.current!.offsetWidth < 500
+    )
+      setJustifyC(true);
+  }, []);
+
   return (
     <div>
       {isLoading && (
@@ -70,12 +84,22 @@ const LogList = () => {
         </div>
       )}
       {!isLoading && (
-        <div className="lg:flex lg:justify-center lg:items-center lg:w-11/12 lg:mx-auto">
-          <ul className="overflow-scroll lg:flex lg:justify-start lg:flex-row lg:flex-wrap">
+        // original code: lg:justify-start
+        // ${justifyC ? "justify-center" : ""}
+        <div
+          ref={testRef}
+          className={`lg:flex lg:justify-center lg:items-center lg:w-11/12 lg:mx-auto`}
+        >
+          <ul
+            className={`overflow-scroll lg:flex ${
+              justifyC ? "justify-center" : "justify-start"
+            } lg:flex-row lg:flex-wrap`}
+          >
             {studyLogsCtx.studyLogsData.map(
               (log: StudyLogObj, index: number) => {
                 return (
-                  <li key={index} className="lg:basis-4/12">
+                  // test minWidth
+                  <li key={index} className="lg:basis-4/12 min-w-298">
                     <LogCard
                       date={log.date}
                       hour={log.hour}
