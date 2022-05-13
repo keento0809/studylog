@@ -5,6 +5,9 @@ module.exports = {
   ],
   darkMode: "class",
   theme: {
+    maxWidth: {
+      366: "366px",
+    },
     minHeight: {
       100: "100px",
       270: "270px",

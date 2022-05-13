@@ -13,7 +13,7 @@ const HomeCard = ({ children, label, isHome }: PropsForHomeCard) => {
     <div
       onMouseEnter={handleHovering}
       onMouseLeave={handleHovering}
-      className={`transition transition-property: all ease-in-out delay-100 ${
+      className={`transition transition-property: all ease-in-out delay-100 max-w-366 ${
         isHome ? "hover:bg-slate-50 relative" : ""
       } block w-full p-6 mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-700 text-center mb-4`}
     >

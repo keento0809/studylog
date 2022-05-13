@@ -29,9 +29,11 @@ const HomeHistoryChart: React.FC = () => {
   const config = {
     height: 60,
     autoFit: false,
-    // data,
     data: hourData,
     smooth: true,
+    areaStyle: {
+      // fill: "#fff",
+    },
   };
 
   useEffect(() => {
