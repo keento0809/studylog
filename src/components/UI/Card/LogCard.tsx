@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import {
   IsHome,
   StudyLogObj,
@@ -13,16 +13,31 @@ import {
 const LogCard = ({ date, hour, cost, summary }: StudyLogObj) => {
   const [isShown, setIsShown] = useState(false);
 
+  const testRef = useRef<HTMLDivElement>(null);
+
   const handleToggleAccordion = () => {
     setIsShown(!isShown);
   };
 
   useEffect(() => {
-    window.innerWidth > 1023 && setIsShown(true);
+    console.log(testRef.current!.offsetWidth);
+    testRef.current!.offsetWidth <= 400 && setIsShown(false);
+    window.innerWidth > 1023 &&
+      testRef.current!.offsetWidth > 280 &&
+      setIsShown(true);
+    window.innerWidth > 1023 &&
+      testRef.current!.offsetWidth <= 280 &&
+      setIsShown(false);
+    console.log(isShown);
   }, []);
 
   return (
-    <div className="max-w-sm mx-auto my-4 overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-700 lg:mr-4 lg:min-h-270">
+    <div
+      ref={testRef}
+      className={`max-w-sm mx-auto my-4 overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-700 lg:mr-4 ${
+        isShown ? "min-h-270" : ""
+      }`}
+    >
       <div className="flex items-center justify-between px-6 py-3 bg-emerald-400 dark:bg-emerald-500">
         <div className="flex flex-row items-center">
           <CalendarIcon className="block h-5 w-5 text-white dark:text-slate-100" />
@@ -53,8 +68,8 @@ const LogCard = ({ date, hour, cost, summary }: StudyLogObj) => {
 
       {isShown && (
         <div className="px-6 py-4">
-          {/* props.summary */}
-          <div className="lg:min-h-100 lg:flex lg:justify-center lg:items-center">
+          {/* test: min-h-100 */}
+          <div className="min-h-50 lg:min-h-100 flex justify-center items-center">
             <p className="text-lg py-2 text-gray-700 dark:text-white font-bold">
               {/* Full Stack maker & UI / UX Designer , love hip hop music Author of
             Building UI. */}

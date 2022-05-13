@@ -5,7 +5,12 @@ module.exports = {
   ],
   darkMode: "class",
   theme: {
+    // test
+    minWidth: {
+      298: "298px",
+    },
     minHeight: {
+      50: "90px",
       100: "100px",
       270: "270px",
     },
