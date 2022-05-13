@@ -48,6 +48,7 @@ const AnalysisHourChart = () => {
         fill: "#aaa",
       },
     },
+    color: "#34D499",
   };
 
   let chart: any;

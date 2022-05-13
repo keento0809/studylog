@@ -20,7 +20,6 @@ const LogCard = ({ date, hour, cost, summary }: StudyLogObj) => {
   };
 
   useEffect(() => {
-    console.log(testRef.current!.offsetWidth);
     testRef.current!.offsetWidth <= 400 && setIsShown(false);
     window.innerWidth > 1023 &&
       testRef.current!.offsetWidth > 280 &&
@@ -28,7 +27,6 @@ const LogCard = ({ date, hour, cost, summary }: StudyLogObj) => {
     window.innerWidth > 1023 &&
       testRef.current!.offsetWidth <= 280 &&
       setIsShown(false);
-    console.log(isShown);
   }, []);
 
   return (
