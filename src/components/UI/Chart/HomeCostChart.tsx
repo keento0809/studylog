@@ -31,6 +31,9 @@ const HomeCostChart: React.FC = () => {
     autoFit: false,
     data: costData,
     smooth: true,
+    line: {
+      color: "#34D499",
+    },
   };
 
   useEffect(() => {
