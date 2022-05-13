@@ -49,6 +49,7 @@ const AnalysisCostChart = () => {
         fill: "#aaa",
       },
     },
+    color: "#34D499",
   };
 
   let chart: any;
