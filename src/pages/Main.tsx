@@ -4,6 +4,7 @@ import Home from "./Home";
 import MyInfo from "./MyInfo";
 import Analysis from "./Analysis";
 import History from "./History";
+import Location from "./Location";
 import MapTry from "../components/Try/MapTry";
 import NotFound from "./NotFound";
 import FirstMap from "../components/Try/FirstMap";
@@ -17,6 +18,8 @@ const Main = () => {
       <Route path="/myinfo" element={<MyInfo />} />
       <Route path="/analysis" element={<Analysis />} />
       <Route path="/history" element={<History />} />
+      {/* temporary jump to MapTry */}
+      <Route path="/location" element={<MapTry />} />
       {/* temporary */}
       <Route path="/maptry" element={<MapTry />} />
       {/* temporary */}
