@@ -2,7 +2,7 @@ import { Fragment } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import "tw-elements";
 
-const navMenuLabels = ["Home", "Analysis", "History", "Logout", "MyInfo"];
+const navMenuLabels = ["Home", "Analysis", "History", "Location"];
 
 const HomeModal = () => {
   // declare navigate

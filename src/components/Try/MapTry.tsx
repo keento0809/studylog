@@ -24,6 +24,8 @@ const MapTry: React.VFC = () => {
 
   const onClick = (e: google.maps.MapMouseEvent) => {
     // avoid directly mutating state
+
+    // I need to store lat and lng below
     console.log(e.latLng!.toJSON().lat, e.latLng!.toJSON().lng);
     setClicks([...clicks, e.latLng!]);
   };

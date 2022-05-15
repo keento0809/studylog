@@ -68,6 +68,7 @@ const AddLogForm = ({ setIsAlert }: PropsSetIsAlert) => {
     const enteredCost = costInputRef.current?.value;
     const enteredSummary = summaryInputRef.current?.value;
     const enteredDate = DateInputRef.current!.value;
+    // const enteredLocationInfo = locationInfo
 
     // validate date
     if (enteredDate > newDate || enteredDate === "") {
