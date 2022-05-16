@@ -86,6 +86,7 @@ const AddLogForm = ({ setIsAlert }: PropsSetIsAlert) => {
       hour: enteredHour!,
       cost: enteredCost!,
       summary: enteredSummary!,
+      // location: enteredLocationInfo!,
     };
 
     // test
