@@ -4,6 +4,9 @@ import { Wrapper, Status } from "@googlemaps/react-wrapper";
 import useDeepCompareEffect from "use-deep-compare-effect";
 import { createCustomEqual } from "fast-equals";
 import { isLatLngLiteral } from "@googlemaps/typescript-guards";
+// import { useContext } from "react";
+import { StudyLogObjFinal, locationObj } from "../../models/Model";
+// import StudyLogsContext from "../../contexts/studyLogs-context";
 import Layout from "../../layouts/Layout";
 import axios from "axios";
 
@@ -12,15 +15,50 @@ const render = (status: Status) => {
 };
 
 const MapTry: React.VFC = () => {
+  // declare useState
   const [clicks, setClicks] = React.useState<google.maps.LatLng[]>([]);
   const [zoom, setZoom] = React.useState(12); // initial zoom
   const [center, setCenter] = React.useState<google.maps.LatLngLiteral>({
     lat: 49.2846717,
     lng: -123.1200546,
   });
+  const [locationData, setLocationData] = React.useState<locationObj[]>([]);
+  const [isLoading, setIsLoading] = React.useState(false);
+  const [error, setError] = React.useState(null);
+
+  // declare useContext
+  // const studyLogsCtx = useContext(StudyLogsContext);
 
   // declare useRef
   const locationInputRef = React.useRef<HTMLInputElement>(null);
+
+  const getStudyLocations = async () => {
+    setIsLoading(true);
+    setError(null);
+    try {
+      const response = await fetch(
+        "https://studylog-8e387-default-rtdb.firebaseio.com/studylogs.json"
+      );
+      if (!response.ok) throw new Error("Request Failed.");
+      const data = await response.json();
+      console.log(data);
+
+      const loadedLocations: locationObj[] = [];
+
+      for (const key in data) {
+        loadedLocations.push({
+          lat: data[key].location.lat,
+          lng: data[key].location.lng,
+        });
+      }
+      console.log(loadedLocations);
+      setLocationData(loadedLocations);
+    } catch (err: any) {
+      setError(err.message);
+      console.log(err.message);
+    }
+    setIsLoading(false);
+  };
 
   const onClick = (e: google.maps.MapMouseEvent) => {
     // avoid directly mutating state
@@ -121,36 +159,54 @@ const MapTry: React.VFC = () => {
     <div>
       <Layout>
         <Wrapper apiKey={process.env.REACT_APP_GOOGLE_API_KEY!} render={render}>
-          {/* need to add Map component here */}
-          <form
-            action=""
-            className="googleMap-search py-4"
-            onSubmit={handleSearchAddress}
-          >
-            <input
-              ref={locationInputRef}
-              className="w-3/5 mr-auto px-4 py-2 text-gray-700 bg-white border rounded-full sm:mx-2 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-emerald-500 dark:focus:border-emerald-500 focus:outline-none focus:ring focus:ring-emerald-500 focus:ring-opacity-40"
-              type="text"
-              placeholder="Search here"
-            />
-            <button className="w-1/3 px-4 py-3 ml-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-emerald-400 rounded-full sm:mx-2 hover:bg-emerald-500 focus:outline-none focus:bg-emerald-500 dark:bg-emerald-500">
-              Search
-            </button>
-          </form>
-          <Map
-            center={center}
-            onClick={onClick}
-            onIdle={onIdle}
-            zoom={zoom}
-            // style={{ flexGrow: "1", height: "100%" }}
-            style={{ width: "100%", height: "200px" }}
-          >
-            {clicks.map((latLng, i) => (
-              <Marker key={i} position={latLng} />
-            ))}
-          </Map>
+          <div className="py-8">
+            {/* need to add Map component here */}
+            <div className="pb-3 text-center">
+              <h1 className="text-3xl font-semibold text-gray-800 dark:text-gray-100">
+                Location
+              </h1>
+            </div>
+            <div className="mx-auto pt-3">
+              <div className="mx-auto md:w-2/3 lg:max-w-screen-md text-center">
+                <p className="pb-3">
+                  All locations you've ever studied are shown.
+                </p>
+                <Map
+                  center={center}
+                  onClick={onClick}
+                  onIdle={onIdle}
+                  zoom={zoom}
+                  // style={{ flexGrow: "1", height: "100%" }}
+                  style={{ width: "100%", height: "400px" }}
+                >
+                  {clicks.map((latLng, i) => (
+                    <Marker key={i} position={latLng} />
+                  ))}
+                  {/* test */}
+                  {locationData.map((location: locationObj, i) => (
+                    <Marker
+                      key={i}
+                      position={
+                        new google.maps.LatLng(location.lat, location.lng)
+                      }
+                    />
+                  ))}
+                  <Marker
+                    key={21}
+                    position={
+                      new google.maps.LatLng(
+                        49.28060565074572,
+                        -123.12252670526505
+                      )
+                    }
+                  />
+                </Map>
+                {form}
+              </div>
+            </div>
+          </div>
         </Wrapper>
-        {form}
+        {/* I'll delete this */}
       </Layout>
     </div>
   );

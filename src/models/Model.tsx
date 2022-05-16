@@ -27,6 +27,19 @@ export interface StudyLogObj {
   summary: string;
 }
 
+export interface locationObj {
+  lat: number;
+  lng: number;
+}
+
+export interface StudyLogObjFinal {
+  date: string;
+  hour: string;
+  cost: string;
+  summary: string;
+  location: locationObj;
+}
+
 export interface StudyLogObjWithIsHome {
   date: string;
   hour: string;
