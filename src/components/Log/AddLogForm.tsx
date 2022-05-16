@@ -22,10 +22,12 @@ const AddLogForm = ({ setIsAlert }: PropsSetIsAlert) => {
 
   const [isMapping, setIsMapping] = useState(false);
 
-  const GOOGLE_API_KEY = process.env.REACT_APP_GOOGLE_API_KEY;
+  // original
+  // const GOOGLE_API_KEY = process.env.REACT_APP_GOOGLE_API_KEY_GEOCODING;
+  const GOOGLE_API_KEY = "AIzaSyCPOuL_z3tzHX8SlhsYQZFUvy1v71hF08A";
   var google = window.google;
 
-  // testing
+  // testing AIzaSyCPOuL_z3tzHX8SlhsYQZFUvy1v71hF08A
   // const defaultMap = new google.maps.Map(
   //   document.getElementById("defaultMap")!,
   //   {
