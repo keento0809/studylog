@@ -20,19 +20,22 @@ const LogCard = ({ date, hour, cost, summary, location }: StudyLogObjFinal) => {
   };
 
   // test geocoding
-  // const locationLatLug = `${location.lat},${location.lng}`;
-  axios
-    .get(
-      // original
-      `https://maps.googleapis.com/maps/api/geocode/json?latlng=49.27866863675678,-123.10972452163696&key=AIzaSyCPOuL_z3tzHX8SlhsYQZFUvy1v71hF08A`
-      // `https://maps.googleapis.com/maps/api/geocode/json?latlng=${locationLatLug}&key=AIzaSyCPOuL_z3tzHX8SlhsYQZFUvy1v71hF08A`
-    )
-    .then((res) => {
-      if (res.data.status !== "OK") throw new Error("Request failed.");
-      console.log(res.data.results[0].formatted_address);
-      setAddress(res.data.results[0].formatted_address);
-    })
-    .catch((err) => console.log(err.message));
+  const locationLatLug = `${location.lat},${location.lng}`;
+  console.log(encodeURI(locationLatLug));
+  // axios
+  //   .get(
+  //     // original
+  //     // `https://maps.googleapis.com/maps/api/geocode/json?latlng=49.27866863675678,-123.10972452163696&key=AIzaSyCPOuL_z3tzHX8SlhsYQZFUvy1v71hF08A`
+  //     `https://maps.googleapis.com/maps/api/geocode/json?latlng=${encodeURI(
+  //       locationLatLug
+  //     )}&key=AIzaSyCPOuL_z3tzHX8SlhsYQZFUvy1v71hF08A`
+  //   )
+  //   .then((res) => {
+  //     if (res.data.status !== "OK") throw new Error("Request failed.");
+  //     console.log(res.data.results[0].formatted_address);
+  //     setAddress(res.data.results[0].formatted_address);
+  //   })
+  //   .catch((err) => console.log(err.message));
 
   useEffect(() => {
     testRef.current!.offsetWidth <= 400 && setIsShown(false);
