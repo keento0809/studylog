@@ -4,18 +4,28 @@ import {
   StudyLogObj,
   PropsChildren,
   StudyLogsContextInterface,
+  StudyLogObjFinal,
 } from "../models/Model";
 
 const StudyLogsProvider = ({ children }: PropsChildren) => {
-  const [studyLogsData, setStudyLogsData] = React.useState<StudyLogObj[]>([]);
+  // original
+  // const [studyLogsData, setStudyLogsData] = React.useState<StudyLogObj[]>([]);
+  // test
+  const [studyLogsData, setStudyLogsData] = React.useState<StudyLogObjFinal[]>(
+    []
+  );
   const [totalStudyHours, setTotalStudyHours] = React.useState(0);
   const [totalAmountCosts, setTotalAmountCosts] = React.useState(0);
 
-  const handleSetInitialLogs = (logs: StudyLogObj[]) => {
+  // original
+  // const handleSetInitialLogs = (logs: StudyLogObj[]) => {
+  const handleSetInitialLogs = (logs: StudyLogObjFinal[]) => {
     setStudyLogsData(logs);
   };
 
-  const handleUpdateStudyLogsData = (log: StudyLogObj) => {
+  // original
+  // const handleUpdateStudyLogsData = (log: StudyLogObj) => {
+  const handleUpdateStudyLogsData = (log: StudyLogObjFinal) => {
     setStudyLogsData((prevState) => {
       return [...prevState, log];
     });

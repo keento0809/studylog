@@ -81,13 +81,23 @@ export interface PropsLogList {
 }
 
 export interface StudyLogsContextInterface {
-  studyLogsData: StudyLogObj[];
+  // original
+  // studyLogsData: StudyLogObj[];
+  // totalStudyHours: number;
+  // totalAmountCosts: number;
+  // setInitialStudyLogs: (logs: StudyLogObj[]) => void;
+  // updateStudyLogsData: (log: StudyLogObj) => void;
+  // countTotalStudyHours: (log: StudyLogObj) => void;
+  // countTotalAmountCosts: (log: StudyLogObj) => void;
+
+  // test
+  studyLogsData: StudyLogObjFinal[];
   totalStudyHours: number;
   totalAmountCosts: number;
-  setInitialStudyLogs: (logs: StudyLogObj[]) => void;
-  updateStudyLogsData: (log: StudyLogObj) => void;
-  countTotalStudyHours: (log: StudyLogObj) => void;
-  countTotalAmountCosts: (log: StudyLogObj) => void;
+  setInitialStudyLogs: (logs: StudyLogObjFinal[]) => void;
+  updateStudyLogsData: (log: StudyLogObjFinal) => void;
+  countTotalStudyHours: (log: StudyLogObjFinal) => void;
+  countTotalAmountCosts: (log: StudyLogObjFinal) => void;
 }
 
 export interface IsHome {

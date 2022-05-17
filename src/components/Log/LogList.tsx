@@ -1,6 +1,10 @@
 import { useContext, useEffect, useState, useRef } from "react";
 import StudyLogsContext from "../../contexts/studyLogs-context";
-import { PropsLogList, StudyLogObj, IsHome } from "../../models/Model";
+import {
+  PropsLogList,
+  StudyLogObj,
+  StudyLogObjFinal,
+} from "../../models/Model";
 import LogCard from "../UI/Card/LogCard";
 
 const LogList = () => {
@@ -8,7 +12,9 @@ const LogList = () => {
   const studyLogsCtx = useContext(StudyLogsContext);
 
   // declare useState
-  const [studyLogs, setStudyLogs] = useState<StudyLogObj[]>([]);
+  // original code
+  // const [studyLogs, setStudyLogs] = useState<StudyLogObj[]>([]);
+  const [studyLogs, setStudyLogs] = useState<StudyLogObjFinal[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [justifyC, setJustifyC] = useState(false);
 
@@ -25,7 +31,9 @@ const LogList = () => {
       if (!response.ok) throw new Error("Request failed.");
       const data = await response.json();
 
-      const loadedData: StudyLogObj[] = [];
+      // original code
+      // const loadedData: StudyLogObj[] = [];
+      const loadedData: StudyLogObjFinal[] = [];
       const loadedDates = [];
 
       for (const key in data) {
@@ -34,6 +42,7 @@ const LogList = () => {
           cost: data[key].cost,
           hour: data[key].hour,
           summary: data[key].summary,
+          location: data[key].location,
         });
         loadedDates.push({
           date: data[key].date,
@@ -96,7 +105,9 @@ const LogList = () => {
             } lg:flex-row lg:flex-wrap`}
           >
             {studyLogsCtx.studyLogsData.map(
-              (log: StudyLogObj, index: number) => {
+              // original code
+              // (log: StudyLogObj, index: number) => {
+              (log: StudyLogObjFinal, index: number) => {
                 return (
                   // test minWidth
                   <li key={index} className="lg:basis-4/12 min-w-298">
@@ -105,6 +116,7 @@ const LogList = () => {
                       hour={log.hour}
                       cost={log.cost}
                       summary={log.summary}
+                      location={log.location}
                     />
                   </li>
                 );

@@ -7,7 +7,12 @@ import React, {
   useContext,
 } from "react";
 import StudyLogsContext from "../../contexts/studyLogs-context";
-import { StudyLogObj, PropsSetIsAlert } from "../../models/Model";
+import {
+  StudyLogObj,
+  PropsSetIsAlert,
+  StudyLogObjFinal,
+  locationObj,
+} from "../../models/Model";
 import HomeSectionCard from "../UI/Card/HomeSectionCard";
 
 const AddLogForm = ({ setIsAlert }: PropsSetIsAlert) => {
@@ -21,13 +26,13 @@ const AddLogForm = ({ setIsAlert }: PropsSetIsAlert) => {
   const summaryInputRef = useRef<HTMLInputElement>(null);
 
   const [isMapping, setIsMapping] = useState(false);
+  const [locationInfoState, setLocationInfoState] = useState<locationObj>();
 
   // original
-  // const GOOGLE_API_KEY = process.env.REACT_APP_GOOGLE_API_KEY_GEOCODING;
   const GOOGLE_API_KEY = "AIzaSyCPOuL_z3tzHX8SlhsYQZFUvy1v71hF08A";
   var google = window.google;
 
-  // testing AIzaSyCPOuL_z3tzHX8SlhsYQZFUvy1v71hF08A
+  // testing
   // const defaultMap = new google.maps.Map(
   //   document.getElementById("defaultMap")!,
   //   {
@@ -52,6 +57,7 @@ const AddLogForm = ({ setIsAlert }: PropsSetIsAlert) => {
         }
         const locationInfo = res.data.results[0].geometry.location;
         console.log(locationInfo);
+        setLocationInfoState(locationInfo);
         const map = new google.maps.Map(document.getElementById("mapping")!, {
           center: locationInfo,
           zoom: 15,
@@ -70,7 +76,7 @@ const AddLogForm = ({ setIsAlert }: PropsSetIsAlert) => {
     const enteredCost = costInputRef.current?.value;
     const enteredSummary = summaryInputRef.current?.value;
     const enteredDate = DateInputRef.current!.value;
-    // const enteredLocationInfo = locationInfo
+    const enteredLocationInfo = locationInfoState;
 
     // validate date
     if (enteredDate > newDate || enteredDate === "") {
@@ -83,12 +89,14 @@ const AddLogForm = ({ setIsAlert }: PropsSetIsAlert) => {
       alert("Invalid input");
       return;
     }
-    const studyLog: StudyLogObj = {
+    // original
+    // const studyLog: StudyLogObj = {
+    const studyLog: StudyLogObjFinal = {
       date: enteredDate,
       hour: enteredHour!,
       cost: enteredCost!,
       summary: enteredSummary!,
-      // location: enteredLocationInfo!,
+      location: enteredLocationInfo!,
     };
 
     // test

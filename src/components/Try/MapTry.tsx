@@ -14,6 +14,17 @@ const render = (status: Status) => {
   return <h1>{status}</h1>;
 };
 
+// test geocoding
+axios
+  .get(
+    `https://maps.googleapis.com/maps/api/geocode/json?latlng=49.27866863675678,-123.10972452163696&key=AIzaSyCPOuL_z3tzHX8SlhsYQZFUvy1v71hF08A`
+  )
+  .then((res) => {
+    if (res.data.status !== "OK") throw new Error("Request failed.");
+    console.log(res.data.results[0].formatted_address);
+  })
+  .catch((err) => console.log(err.message));
+
 const MapTry: React.VFC = () => {
   // declare useState
   const [clicks, setClicks] = React.useState<google.maps.LatLng[]>([]);
@@ -176,8 +187,11 @@ const MapTry: React.VFC = () => {
                   onClick={onClick}
                   onIdle={onIdle}
                   zoom={zoom}
-                  // style={{ flexGrow: "1", height: "100%" }}
-                  style={{ width: "100%", height: "400px" }}
+                  style={{
+                    width: "100%",
+                    height: "400px",
+                    borderRadius: "8px",
+                  }}
                 >
                   {clicks.map((latLng, i) => (
                     <Marker key={i} position={latLng} />
@@ -201,7 +215,7 @@ const MapTry: React.VFC = () => {
                     }
                   />
                 </Map>
-                {form}
+                {/* {form} */}
               </div>
             </div>
           </div>
