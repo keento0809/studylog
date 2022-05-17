@@ -1,23 +1,38 @@
 import { useState, useEffect, useRef } from "react";
-import {
-  IsHome,
-  StudyLogObj,
-  StudyLogObjWithIsHome,
-} from "../../../models/Model";
+import { IsHome, StudyLogObj, StudyLogObjFinal } from "../../../models/Model";
 import {
   CalendarIcon,
   ChevronDownIcon,
   ChevronUpIcon,
 } from "@heroicons/react/solid";
+import axios from "axios";
 
-const LogCard = ({ date, hour, cost, summary }: StudyLogObj) => {
+// original code
+// const LogCard = ({ date, hour, cost, summary }: StudyLogObj) => {
+const LogCard = ({ date, hour, cost, summary, location }: StudyLogObjFinal) => {
   const [isShown, setIsShown] = useState(false);
+  const [address, setAddress] = useState("");
 
   const testRef = useRef<HTMLDivElement>(null);
 
   const handleToggleAccordion = () => {
     setIsShown(!isShown);
   };
+
+  // test geocoding
+  // const locationLatLug = `${location.lat},${location.lng}`;
+  axios
+    .get(
+      // original
+      `https://maps.googleapis.com/maps/api/geocode/json?latlng=49.27866863675678,-123.10972452163696&key=AIzaSyCPOuL_z3tzHX8SlhsYQZFUvy1v71hF08A`
+      // `https://maps.googleapis.com/maps/api/geocode/json?latlng=${locationLatLug}&key=AIzaSyCPOuL_z3tzHX8SlhsYQZFUvy1v71hF08A`
+    )
+    .then((res) => {
+      if (res.data.status !== "OK") throw new Error("Request failed.");
+      console.log(res.data.results[0].formatted_address);
+      setAddress(res.data.results[0].formatted_address);
+    })
+    .catch((err) => console.log(err.message));
 
   useEffect(() => {
     testRef.current!.offsetWidth <= 400 && setIsShown(false);
@@ -137,7 +152,9 @@ const LogCard = ({ date, hour, cost, summary }: StudyLogObj) => {
               </svg>
               {/* props.address */}
               <h1 className="px-2 text-xs leading-6">
-                833 Granville St, Vancouver, BC
+                {/* 833 Granville St, Vancouver, BC */}
+                {/* I need to do geocoding: test */}
+                {address}
               </h1>
             </div>
           </div>
