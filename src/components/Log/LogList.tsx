@@ -65,7 +65,10 @@ const LogList = () => {
   }, []);
 
   useEffect(() => {
-    const sortedArr = studyLogs.sort(function (a: StudyLogObj, b: StudyLogObj) {
+    const sortedArr = studyLogs.sort(function (
+      a: StudyLogObjFinal,
+      b: StudyLogObjFinal
+    ) {
       return a.date < b.date ? 1 : -1;
     });
     studyLogsCtx.setInitialStudyLogs(sortedArr);
