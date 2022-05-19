@@ -166,6 +166,10 @@ const MapTry: React.VFC = () => {
       .catch((error) => console.log(error.message));
   };
 
+  React.useEffect(() => {
+    getStudyLocations();
+  }, []);
+
   return (
     <div>
       <Layout>
@@ -205,15 +209,6 @@ const MapTry: React.VFC = () => {
                       }
                     />
                   ))}
-                  <Marker
-                    key={21}
-                    position={
-                      new google.maps.LatLng(
-                        49.28060565074572,
-                        -123.12252670526505
-                      )
-                    }
-                  />
                 </Map>
                 {/* {form} */}
               </div>
