@@ -13,7 +13,6 @@ import {
   StudyLogObjFinal,
   locationObj,
 } from "../../models/Model";
-import HomeSectionCard from "../UI/Card/HomeSectionCard";
 
 const AddLogForm = ({ setIsAlert }: PropsSetIsAlert) => {
   // declare useContext
