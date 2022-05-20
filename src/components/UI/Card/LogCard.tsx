@@ -132,7 +132,7 @@ const LogCard = ({ date, hour, cost, summary, location }: StudyLogObjFinal) => {
               </div>
             </div>
 
-            <div className="flex flex-row justify-center items-start mt-4 text-gray-700 dark:text-gray-200">
+            <div className="flex flex-row justify-center items-center mt-4 text-gray-700 dark:text-gray-200">
               <div className="min-h-20">
                 <svg
                   className="w-5 h-5 fill-current"
@@ -153,7 +153,9 @@ const LogCard = ({ date, hour, cost, summary, location }: StudyLogObjFinal) => {
                 </svg>
               </div>
               {/* props.address */}
-              <h1 className="px-2 text-xs min-h-48">{address}</h1>
+              <div className="flex justify-center items-center min-h-48">
+                <h1 className="px-2 text-xs">{address}</h1>
+              </div>
             </div>
           </div>
         </div>
