@@ -28,7 +28,7 @@ const Main = () => {
       {/* temporary */}
       <Route path="/antchart" element={<AntChart />} />
       {/* temporary */}
-      {/* <Route path="/second" element={<SecondTry />} /> */}
+      <Route path="/second" element={<SecondTry />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

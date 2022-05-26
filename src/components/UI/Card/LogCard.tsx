@@ -25,7 +25,7 @@ const LogCard = ({ date, hour, cost, summary, location }: StudyLogObjFinal) => {
   axios
     .get(
       // original
-      `https://maps.googleapis.com/maps/api/geocode/json?latlng=${location.lat},${location.lng}&key=AIzaSyCPOuL_z3tzHX8SlhsYQZFUvy1v71hF08A`
+      `https://maps.googleapis.com/maps/api/geocode/json?latlng=${location.lat},${location.lng}&key=${process.env.REACT_APP_GOOGLE_API_KEY_GEOCODING}`
     )
     .then((res) => {
       if (res.data.status !== "OK") throw new Error("Request failed.");

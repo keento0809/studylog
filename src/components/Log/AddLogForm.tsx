@@ -28,7 +28,7 @@ const AddLogForm = ({ setIsAlert }: PropsSetIsAlert) => {
   const [locationInfoState, setLocationInfoState] = useState<locationObj>();
 
   // original
-  const GOOGLE_API_KEY = "AIzaSyCPOuL_z3tzHX8SlhsYQZFUvy1v71hF08A";
+  const GOOGLE_API_KEY = process.env.REACT_APP_GOOGLE_API_KEY_GEOCODING;
   var google = window.google;
 
   // testing
