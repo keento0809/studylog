@@ -3,14 +3,17 @@ let service: google.maps.places.PlacesService;
 let infowindow: google.maps.InfoWindow;
 
 function initMap(): void {
-  const sydney = new google.maps.LatLng(-33.867, 151.195);
+  const sydney = new google.maps.LatLng(49.2846717, -123.1200546);
 
   infowindow = new google.maps.InfoWindow();
 
-  map = new google.maps.Map(document.getElementById("map") as HTMLElement, {
-    center: sydney,
-    zoom: 15,
-  });
+  map = new google.maps.Map(
+    document.getElementById("mapSecond") as HTMLElement,
+    {
+      center: sydney,
+      zoom: 15,
+    }
+  );
 
   const request = {
     query: "Museum of Contemporary Art Australia",
@@ -55,5 +58,13 @@ declare global {
     initMap: () => void;
   }
 }
-window.initMap = initMap;
-export default initMap;
+
+const SecondTry = () => {
+  window.initMap = initMap;
+  return (
+    <>
+      <div id="mapSecond"></div>
+    </>
+  );
+};
+export default SecondTry;
