@@ -20,19 +20,19 @@ const LogCard = ({ date, hour, cost, summary, location }: StudyLogObjFinal) => {
   };
 
   // test geocoding
-  const locationLatLug = `${location.lat},${location.lng}`;
-  console.log(encodeURI(locationLatLug));
-  axios
-    .get(
-      // original
-      `https://maps.googleapis.com/maps/api/geocode/json?latlng=${location.lat},${location.lng}&key=${process.env.REACT_APP_GOOGLE_API_KEY_GEOCODING}`
-    )
-    .then((res) => {
-      if (res.data.status !== "OK") throw new Error("Request failed.");
-      console.log(res.data.results[0].formatted_address);
-      setAddress(res.data.results[0].formatted_address);
-    })
-    .catch((err) => console.log(err.message));
+  // const locationLatLug = `${location.lat},${location.lng}`;
+  // console.log(encodeURI(locationLatLug));
+  // axios
+  //   .get(
+  //     // original
+  //     `https://maps.googleapis.com/maps/api/geocode/json?latlng=${location.lat},${location.lng}&key=${process.env.REACT_APP_GOOGLE_API_KEY_GEOCODING}`
+  //   )
+  //   .then((res) => {
+  //     if (res.data.status !== "OK") throw new Error("Request failed.");
+  //     console.log(res.data.results[0].formatted_address);
+  //     setAddress(res.data.results[0].formatted_address);
+  //   })
+  //   .catch((err) => console.log(err.message));
 
   useEffect(() => {
     testRef.current!.offsetWidth <= 400 && setIsShown(false);

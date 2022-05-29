@@ -21,7 +21,7 @@ axios
   )
   .then((res) => {
     if (res.data.status !== "OK") throw new Error("Request failed.");
-    console.log(res.data.results[0].formatted_address);
+    // console.log(res.data.results[0].formatted_address);
   })
   .catch((err) => console.log(err.message));
 
