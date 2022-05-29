@@ -7,9 +7,6 @@ import {
 } from "../../models/Model";
 import LogCard from "../UI/Card/LogCard";
 
-const aa = { lat: "nini", lng: "jijij" };
-console.log(aa, aa.lat);
-
 const LogList = () => {
   // declare useContext
   const studyLogsCtx = useContext(StudyLogsContext);
@@ -34,7 +31,7 @@ const LogList = () => {
       if (!response.ok) throw new Error("Request failed.");
       const data = await response.json();
 
-      console.log(data);
+      // console.log(data);
       // original code
       // const loadedData: StudyLogObj[] = [];
       const loadedData: StudyLogObjFinal[] = [];
@@ -52,7 +49,6 @@ const LogList = () => {
           date: data[key].date,
         });
       }
-      console.log(loadedData[0].location.lat);
       setStudyLogs(loadedData);
       setIsLoading(false);
     } catch (error: any) {
@@ -75,7 +71,7 @@ const LogList = () => {
   }, [studyLogs]);
 
   useEffect(() => {
-    console.log(testRef.current!.offsetWidth);
+    // console.log(testRef.current!.offsetWidth);
     if (
       window.innerWidth > 1023 &&
       testRef.current!.offsetWidth > 468 &&

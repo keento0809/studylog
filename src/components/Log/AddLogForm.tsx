@@ -212,7 +212,9 @@ const AddLogForm = ({ setIsAlert }: PropsSetIsAlert) => {
       hour: enteredHour!,
       cost: enteredCost!,
       summary: enteredSummary!,
-      location: enteredLocationInfo!,
+      // original
+      // location: enteredLocationInfo!,
+      location: addressLatLng!,
     };
 
     // test
@@ -257,19 +259,25 @@ const AddLogForm = ({ setIsAlert }: PropsSetIsAlert) => {
   }, []);
 
   // regarding Maps Javascript API
-  const [clicks, setClicks] = React.useState<google.maps.LatLng[]>([]);
+  // const [clicks, setClicks] = React.useState<google.maps.LatLng[]>([]);
+  const [addressLatLng, setAddressLatLng] = React.useState<locationObj>();
   const [zoom, setZoom] = React.useState(12);
   const [center, setCenter] = React.useState<google.maps.LatLngLiteral>({
     lat: 49.2846717,
     lng: -123.1200546,
   });
 
+  function handleClick(e: google.maps.MapMouseEvent) {
+    console.log("Clickさあれたデー", e.latLng!.toJSON().lat);
+    setAddressLatLng({
+      lat: e.latLng!.toJSON().lat,
+      lng: e.latLng!.toJSON().lng,
+    });
+  }
+
   return (
     <Fragment>
-      <Wrapper
-        apiKey={process.env.REACT_APP_GOOGLE_API_KEY_FOR_HOME!}
-        render={render}
-      >
+      <Wrapper apiKey={process.env.REACT_APP_GOOGLE_API_KEY!} render={render}>
         <form
           className="bg-white py-8 dark:bg-gray-800 lg:basis-1/2 xl:basis-2/5"
           onSubmit={handleSubmitLog}
@@ -280,11 +288,12 @@ const AddLogForm = ({ setIsAlert }: PropsSetIsAlert) => {
             </h1>
             <div
               // action=""
-              className="googleMap-search pt-6 md:w-4/6 lg:w-full mx-auto md:flex md:flex-row-reverse md:items-center md:justify-center"
+              className="googleMap-search pt-6 md:w-4/6 lg:w-full mx-auto md:flex md:flex-row md:items-center md:justify-center"
               // onSubmit={handleSearchAddress}
             >
               <div className="w-full my-4 md:mb-0 rounded-lg flex items-center justify-center">
                 <Map
+                  onClick={handleClick}
                   center={center}
                   zoom={zoom}
                   style={{

@@ -25,7 +25,6 @@ const HomeHistoryChart: React.FC = () => {
         for (const key in result) {
           loadedHours.push(parseFloat(result[key].hour));
         }
-        console.log(loadedHours);
         setHourData(loadedHours);
       })
       .catch((error) => console.log(error.message));
