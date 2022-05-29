@@ -2,19 +2,20 @@ import Layout from "../layouts/Layout";
 import { Wrapper, Status } from "@googlemaps/react-wrapper";
 import { createCustomEqual } from "fast-equals";
 import { isLatLngLiteral } from "@googlemaps/typescript-guards";
-import React, { useEffect } from "react";
+import { MapProps } from "../models/Model";
+import React from "react";
 
 const render = (status: Status) => {
   return <h1>{status}</h1>;
 };
 
-interface MapProps extends google.maps.MapOptions {
-  style: { [key: string]: string };
-  onClick?: (e: google.maps.MapMouseEvent) => void;
-  onIdle?: (map: google.maps.Map) => void;
-  // test
-  children?: React.ReactNode;
-}
+// interface MapProps extends google.maps.MapOptions {
+//   style: { [key: string]: string };
+//   onClick?: (e: google.maps.MapMouseEvent) => void;
+//   onIdle?: (map: google.maps.Map) => void;
+//   // test
+//   children?: React.ReactNode;
+// }
 
 const deepCompareEqualsForMaps = createCustomEqual(
   (deepEqual) => (a: any, b: any) => {

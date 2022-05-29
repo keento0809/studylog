@@ -117,7 +117,7 @@ const LogList = () => {
               // (log: StudyLogObj, index: number) => {
               (log: StudyLogObjFinal, index: number) => {
                 return (
-                  // test minWidth
+                  // test minWidth min-w-298
                   <li key={index} className="lg:basis-4/12 min-w-298">
                     <LogCard
                       date={log.date}

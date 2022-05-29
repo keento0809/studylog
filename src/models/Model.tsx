@@ -104,4 +104,10 @@ export interface IsHome {
   isHome: boolean;
 }
 
-export interface InnerWidthValue {}
+export interface MapProps extends google.maps.MapOptions {
+  style: { [key: string]: string };
+  onClick?: (e: google.maps.MapMouseEvent) => void;
+  onIdle?: (map: google.maps.Map) => void;
+  // test
+  children?: React.ReactNode;
+}

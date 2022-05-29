@@ -44,11 +44,13 @@ const LogCard = ({ date, hour, cost, summary, location }: StudyLogObjFinal) => {
       setIsShown(false);
   }, []);
 
+  // min-h-270
+
   return (
     <div
       ref={testRef}
       className={`max-w-sm mx-auto my-4 overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-700 lg:mr-4 ${
-        isShown ? "min-h-270" : ""
+        isShown ? "" : ""
       }`}
     >
       <div className="flex items-center justify-between px-6 py-3 bg-emerald-400 dark:bg-emerald-500">
@@ -108,7 +110,6 @@ const LogCard = ({ date, hour, cost, summary, location }: StudyLogObjFinal) => {
                   />
                 </svg>
                 {/* <ClockIcon className="block h-5 w-5" /> */}
-                {/* props.hour */}
                 <h1 className="px-2 text-xs leading-6">{hour} hrs</h1>
               </div>
 
@@ -127,12 +128,11 @@ const LogCard = ({ date, hour, cost, summary, location }: StudyLogObjFinal) => {
                     d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                   />
                 </svg>
-                {/* props.cost */}
                 <h1 className="px-2 text-xs leading-6">$ {cost}</h1>
               </div>
             </div>
 
-            <div className="flex flex-row justify-center items-center mt-4 text-gray-700 dark:text-gray-200">
+            {/* <div className="flex flex-row justify-center items-center mt-4 text-gray-700 dark:text-gray-200">
               <div className="min-h-20">
                 <svg
                   className="w-5 h-5 fill-current"
@@ -152,11 +152,10 @@ const LogCard = ({ date, hour, cost, summary, location }: StudyLogObjFinal) => {
                   />
                 </svg>
               </div>
-              {/* props.address */}
               <div className="flex justify-center items-center min-h-48">
                 <h1 className="px-2 text-xs">{address}</h1>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       )}
