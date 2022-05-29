@@ -86,8 +86,9 @@ const Hero = () => {
           </div>
         </nav>
 
-        <div className="こいつにflexboxつけるよ">
-          <div className="container md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl flex justify-center md:justify-start items-start px-6 pt-14 md:pt-8 lg:pt-28 mx-auto">
+        {/* test min-height */}
+        <div className="flexboxつけるよ">
+          <div className="container min-h-screen md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl flex justify-center md:justify-start items-start px-6 pt-14 md:pt-8 lg:pt-28 mx-auto">
             <div className="items-center lg:flex grow">
               <div className="w-full lg:w-1/2">
                 <div className="lg:max-w-lg">
