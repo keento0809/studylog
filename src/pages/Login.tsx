@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import HeroModal from "../components/UI/Modal/HeroModal";
 import Footer from "../layouts/Footer";
 import LightModeContext from "../contexts/lightmode-context";
+import AuthContext from "../contexts/auth-context";
 
 // firebase
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
@@ -10,10 +11,13 @@ import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 const Login = () => {
   // declare useContext
   const lightModeCtx = useContext(LightModeContext);
+  const authCtx = useContext(AuthContext);
 
   const auth = getAuth();
   const navigate = useNavigate();
   const [authing, setAuthing] = useState(false);
+
+  console.log(authCtx.isLoggedIn);
 
   const handleToggleMode = () => {
     lightModeCtx.toggleMode();
@@ -26,7 +30,9 @@ const Login = () => {
 
     signInWithPopup(auth, new GoogleAuthProvider())
       .then((response) => {
-        console.log(response.user.uid);
+        console.log(response.user.uid, "loginしまっせ");
+        // add authContext
+        authCtx.authLogin();
         navigate("/home");
       })
       .catch((error) => {

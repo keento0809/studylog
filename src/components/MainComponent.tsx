@@ -4,9 +4,16 @@ import AddLogForm from "./Log/AddLogForm";
 import SuccessAlert from "./UI/Alert/SuccessAlert";
 import HomeHistory from "./Log/HomeHistory";
 import HomeAnalysis from "./Analysis/HomeAnalysis";
+import AuthContext from "../contexts/auth-context";
 
 const MainComponent = () => {
   const [isAlert, setIsAlert] = React.useState(false);
+
+  const authCtx = React.useContext(AuthContext);
+
+  React.useEffect(() => {
+    console.log(authCtx.isLoggedIn);
+  }, []);
 
   return (
     <div className="mx-auto lg:flex lg:flex-row md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl">
