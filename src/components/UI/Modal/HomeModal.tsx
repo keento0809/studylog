@@ -1,13 +1,17 @@
-import { Fragment } from "react";
+import { Fragment, useContext } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import "tw-elements";
 import { navMenuLabels } from "../../../data/data";
 import { getAuth, signOut } from "firebase/auth";
+import AuthContext from "../../../contexts/auth-context";
 // const navMenuLabels = ["Analysis", "History", "Location", "Logout"];
 
 const HomeModal = () => {
   // declare navigate
   const navigate = useNavigate();
+
+  // declare useContext
+  const authCtx = useContext(AuthContext);
 
   const auth = getAuth();
 
@@ -16,6 +20,8 @@ const HomeModal = () => {
   };
 
   const handleSignOut = () => {
+    console.log("Logoutするデイ");
+    authCtx.authLogout();
     signOut(auth);
     navigate("/");
   };

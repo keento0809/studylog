@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import LightModeProvider from "./contexts/LightModeProvider";
 import StudyLogsProvider from "./contexts/StudyLogsProvider";
+import AuthProvider from "./contexts/AuthProvider";
 import Main from "./pages/Main";
 
 function App() {
@@ -9,7 +10,9 @@ function App() {
     <BrowserRouter>
       <StudyLogsProvider>
         <LightModeProvider>
-          <Main />
+          <AuthProvider>
+            <Main />
+          </AuthProvider>
         </LightModeProvider>
       </StudyLogsProvider>
     </BrowserRouter>

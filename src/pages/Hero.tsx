@@ -106,7 +106,9 @@ const Hero = () => {
 
                   <div className="flex flex-col mt-8 space-y-3 lg:space-y-0 lg:flex-row">
                     <button className="w-full md:w-40 md:mr-auto lg:mx-0 px-4 py-2 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-emerald-400 dark:bg-emerald-500 rounded-full lg:w-auto hover:bg-emerald-500 focus:outline-none focus:bg-emerald-500">
-                      <Link to="/home">Get started</Link>
+                      {/* original */}
+                      {/* <Link to="/home">Get started</Link> */}
+                      <Link to="/login">Get started</Link>
                     </button>
                   </div>
                 </div>

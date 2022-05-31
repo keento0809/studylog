@@ -76,21 +76,17 @@ export interface lightModeValue {
   toggleMode: () => void;
 }
 
+export interface AuthValue {
+  isLoggedIn: boolean;
+  authLogin: () => void;
+  authLogout: () => void;
+}
+
 export interface PropsLogList {
   sortedStudyLogs: StudyLogObj[];
 }
 
 export interface StudyLogsContextInterface {
-  // original
-  // studyLogsData: StudyLogObj[];
-  // totalStudyHours: number;
-  // totalAmountCosts: number;
-  // setInitialStudyLogs: (logs: StudyLogObj[]) => void;
-  // updateStudyLogsData: (log: StudyLogObj) => void;
-  // countTotalStudyHours: (log: StudyLogObj) => void;
-  // countTotalAmountCosts: (log: StudyLogObj) => void;
-
-  // test
   studyLogsData: StudyLogObjFinal[];
   totalStudyHours: number;
   totalAmountCosts: number;
