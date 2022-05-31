@@ -268,7 +268,7 @@ const AddLogForm = ({ setIsAlert }: PropsSetIsAlert) => {
   });
 
   function handleClick(e: google.maps.MapMouseEvent) {
-    console.log("Clickさあれたデー", e.latLng!.toJSON().lat);
+    // console.log("Clickさあれたデー", e.latLng!.toJSON().lat);
     setAddressLatLng({
       lat: e.latLng!.toJSON().lat,
       lng: e.latLng!.toJSON().lng,

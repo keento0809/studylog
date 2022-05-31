@@ -1,10 +1,10 @@
 import { Routes, Route } from "react-router-dom";
 import Hero from "./Hero";
+import Login from "./Login";
 import Home from "./Home";
 import MyInfo from "./MyInfo";
 import Analysis from "./Analysis";
 import History from "./History";
-import Location from "./Location";
 import MapTry from "../components/Try/MapTry";
 import NotFound from "./NotFound";
 import FirstMap from "../components/Try/FirstMap";
@@ -15,6 +15,7 @@ const Main = () => {
   return (
     <Routes>
       <Route path="/" element={<Hero />} />
+      <Route path="/login" element={<Login />} />
       <Route path="/home" element={<Home />} />
       <Route path="/myinfo" element={<MyInfo />} />
       <Route path="/analysis" element={<Analysis />} />
