@@ -11,6 +11,14 @@ import FirstMap from "../components/Try/FirstMap";
 import AntChart from "../components/Try/AntChart";
 import SecondTry from "../components/Try/SecondTry";
 
+// firebase
+import { initializeApp } from "firebase/app";
+import { config } from "../config/config";
+import { fireEvent } from "@testing-library/react";
+
+// initialize firebaseApp
+initializeApp(config.firebaseConfig);
+
 const Main = () => {
   return (
     <Routes>

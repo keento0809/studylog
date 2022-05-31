@@ -23,8 +23,9 @@ const Hero = () => {
             <div className="flex flex-row items-center">
               <Link
                 className="text-2xl font-bold text-gray-800 dark:text-white lg:text-3xl hover:text-gray-700 dark:hover:text-gray-300"
-                // href="#"
-                to="/home"
+                // original
+                // to="/home"
+                to="/"
               >
                 StudyLog
               </Link>
