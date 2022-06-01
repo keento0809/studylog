@@ -54,8 +54,8 @@ const Login = () => {
       >
         <div className="container min-h-screen md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl flex justify-center md:justify-start items-start px-6 pt-14 md:pt-8 lg:pt-28 mx-auto">
           <div className="items-center lg:flex grow">
-            <div className="w-full lg:w-1/2">
-              <div className="lg:max-w-lg py-4">
+            <div className="w-full">
+              <div className="py-4">
                 {/* <button
                   className="py-4 px-10 rounded-lg border border-emerald-400"
                   onClick={() => signInWithGoogle()}
@@ -93,7 +93,7 @@ const Login = () => {
                         role="button"
                         onClick={() => signInWithGoogle()}
                         disabled={authing}
-                        className="focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-gray-700 py-3.5 px-4 border rounded-lg border-gray-600 dark:border-emerald-500 flex items-center w-full mt-10 mb-5"
+                        className="focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-gray-700 py-3.5 px-4 border rounded-lg border-gray-600 dark:border-gray-600 hover:dark:border-emerald-500 flex items-center w-full mt-10 mb-5"
                       >
                         <img
                           src="https://tuk-cdn.s3.amazonaws.com/can-uploader/sign_in-svg2.svg"
@@ -113,26 +113,26 @@ const Login = () => {
                       <div>
                         <label
                           id="email"
-                          className="text-sm font-medium leading-none text-gray-800 dark:text-slate-100"
+                          className="text-sm font-medium leading-none text-gray-800 dark:text-emerald-500 "
                         >
-                          Email
+                          Email *
                         </label>
                         <input
                           aria-labelledby="email"
                           type="email"
-                          className="bg-gray-200 border rounded  text-xs font-medium leading-none text-gray-800 dark:text-slate-100 py-3 w-full pl-3 mt-2"
+                          className="bg-white dark:bg-gray-800 border border-gray-600 rounded  text-xs font-medium leading-none text-gray-800 dark:text-slate-100 py-3 w-full pl-3 mt-2 focus:outline-none focus:ring-emerald-400 focus:border-emerald-400 focus:dark:border-emerald-500"
                         />
                       </div>
                       <div className="mt-6  w-full">
                         {/* for="pass" */}
-                        <label className="text-sm font-medium leading-none text-gray-800 dark:text-slate-100">
-                          Password
+                        <label className="text-sm font-medium leading-none text-gray-800 dark:text-emerald-500 ">
+                          Password *
                         </label>
                         <div className="relative flex items-center justify-center">
                           <input
                             id="pass"
                             type="password"
-                            className="bg-gray-200 border rounded  text-xs font-medium leading-none text-gray-800 dark:text-slate-100 py-3 w-full pl-3 mt-2"
+                            className="bg-white dark:bg-gray-800 border border-gray-600 rounded  text-xs font-medium leading-none text-gray-800  focus:outline-none focus:ring-emerald-400 focus:border-emerald-400 dark:text-slate-100 py-3 w-full pl-3 mt-2"
                           />
                           <div className="absolute right-0 mt-2 mr-3 cursor-pointer">
                             <img
@@ -145,7 +145,7 @@ const Login = () => {
                       <div className="mt-8">
                         <button
                           role="button"
-                          className="focus:ring-2 focus:ring-offset-2 focus:ring-emerald-400 text-sm font-semibold leading-none text-white focus:outline-none bg-emerald-400 dark:bg-emerald-500 border rounded hover:bg-emerald-500 py-4 w-full"
+                          className="focus:ring-2 focus:ring-offset-2 focus:ring-emerald-400 text-sm font-semibold leading-none text-white focus:outline-none bg-emerald-400 dark:bg-emerald-500 border dark:border-emerald-500 rounded hover:bg-emerald-500 py-4 w-full"
                         >
                           Login
                         </button>
