@@ -15,15 +15,14 @@ const render = (status: Status) => {
 };
 
 // test geocoding
-axios
-  .get(
-    `https://maps.googleapis.com/maps/api/geocode/json?latlng=49.27866863675678,-123.10972452163696&key=${process.env.REACT_APP_GOOGLE_API_KEY_GEOCODING}`
-  )
-  .then((res) => {
-    if (res.data.status !== "OK") throw new Error("Request failed.");
-    // console.log(res.data.results[0].formatted_address);
-  })
-  .catch((err) => console.log(err.message));
+// axios
+//   .get(
+//     `https://maps.googleapis.com/maps/api/geocode/json?latlng=49.27866863675678,-123.10972452163696&key=${process.env.REACT_APP_GOOGLE_API_KEY_GEOCODING}`
+//   )
+//   .then((res) => {
+//     if (res.data.status !== "OK") throw new Error("Request failed.");
+//   })
+//   .catch((err) => console.log(err.message));
 
 const MapTry: React.VFC = () => {
   // declare useState
