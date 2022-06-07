@@ -1,12 +1,9 @@
 import React, { useContext, useState, Fragment } from "react";
-import { Link, useNavigate, NavLink } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { lightModeValue } from "../models/Model";
 import LightModeContext from "../contexts/lightmode-context";
 import { getAuth, signOut } from "firebase/auth";
 import { navMenuLabels } from "../data/data";
-
-// const navMenuLabels = ["Analysis", "History", "Location", "Logout"];
-console.log(navMenuLabels[4]);
 
 const Header = () => {
   // declare navigate
@@ -24,7 +21,6 @@ const Header = () => {
   };
 
   const handleNavigatePage = (index: number) => {
-    // if (index === 4) navigate("/");
     navigate(`/${navMenuLabels[index].toLowerCase()}`);
   };
 

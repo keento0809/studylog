@@ -11,16 +11,18 @@ const HeroModal = () => {
         aria-hidden="true"
       >
         <div className="modal-dialog relative w-auto pointer-events-none">
-          <div className="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
+          <div className="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white dark:bg-slate-800 bg-clip-padding rounded-md outline-none text-current">
             <div className="flex-1 md:flex md:flex-col md:items-center z-10 px-6 py-6 mx-auto">
               <div className="modal-description">
-                <h2 className="font-bold">What is StudyLog?</h2>
+                <h2 className="font-bold dark:text-slate-100">
+                  What is StudyLog?
+                </h2>
                 <p></p>
               </div>
               <div className="text-center pt-6">
                 <button
                   data-bs-dismiss="modal"
-                  className="w-full md:w-full px-4 py-1 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-emerald-400 rounded-full sm:mx-2 hover:bg-emerald-500 focus:outline-none focus:bg-emerald-500"
+                  className="w-full md:w-full px-4 py-1 text-sm font-medium tracking-wide text-white dark:text-slate-100 capitalize transition-colors duration-200 transform bg-emerald-400 dark:bg-emerald-500 rounded-full sm:mx-2 hover:bg-emerald-500 focus:outline-none focus:bg-emerald-500"
                 >
                   Close
                 </button>

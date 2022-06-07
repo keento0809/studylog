@@ -1,18 +1,29 @@
 import React from "react";
 import AddLogForm from "./Log/AddLogForm";
-// temporary
 import SuccessAlert from "./UI/Alert/SuccessAlert";
 import HomeHistory from "./Log/HomeHistory";
 import HomeAnalysis from "./Analysis/HomeAnalysis";
-import AuthContext from "../contexts/auth-context";
+
+// test
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 const MainComponent = () => {
+  // declare useState
   const [isAlert, setIsAlert] = React.useState(false);
 
-  const authCtx = React.useContext(AuthContext);
+  // declare auth
+  const auth = getAuth();
 
   React.useEffect(() => {
-    console.log(authCtx.isLoggedIn);
+    // test
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const uid = user.uid;
+        console.log(uid, "user is logged in.");
+      } else {
+        console.log("user is signed out.");
+      }
+    });
   }, []);
 
   return (
