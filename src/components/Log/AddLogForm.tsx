@@ -16,7 +16,7 @@ import {
 import { Status, Wrapper } from "@googlemaps/react-wrapper";
 import { createCustomEqual } from "fast-equals";
 import { isLatLngLiteral } from "@googlemaps/typescript-guards";
-// import Layout from "../../layouts/Layout";
+import Autocomplete from "react-google-autocomplete";
 
 const render = (status: Status) => {
   return <h1>{status}</h1>;
@@ -148,14 +148,7 @@ const AddLogForm = ({ setIsAlert }: PropsSetIsAlert) => {
   const GOOGLE_API_KEY = process.env.REACT_APP_GOOGLE_API_KEY_GEOCODING;
   var google = window.google;
 
-  // testing
-  // const defaultMap = new google.maps.Map(
-  //   document.getElementById("defaultMap")!,
-  //   {
-  //     center: { lat: 10, lng: 10 },
-  //     zoom: 8,
-  //   }
-  // );
+  const GOOGLE_API_KEY_FOR_AUTOCOMPLETE = process.env.REACT_APP_GOOGLE_API_KEY;
 
   function handleSearchAddress(event: React.FormEvent) {
     event.preventDefault();
@@ -267,6 +260,26 @@ const AddLogForm = ({ setIsAlert }: PropsSetIsAlert) => {
     lng: -123.1200546,
   });
 
+  let currentLocation;
+
+  useEffect(() => {
+    // test geolocation
+    // Try HTML5 geolocation.
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        const pos = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        };
+        currentLocation = pos;
+        setCenter({
+          lat: pos.lat,
+          lng: pos.lng,
+        });
+      });
+    }
+  }, []);
+
   function handleClick(e: google.maps.MapMouseEvent) {
     // console.log("Clickさあれたデー", e.latLng!.toJSON().lat);
     setAddressLatLng({
@@ -301,18 +314,25 @@ const AddLogForm = ({ setIsAlert }: PropsSetIsAlert) => {
                     height: "200px",
                     borderRadius: "8px",
                   }}
-                >
-                  {/* {clicks.map((latLug, i) => (
-                  <Marker key={i} position={latLug} />
-                ))} */}
-                </Map>
+                ></Map>
               </div>
               <div className="md:basis-2/4">
-                <input
+                {/* original searchInput */}
+                {/* <input
                   ref={locationInputRef}
                   className="w-3/5 md:w-4/5 mr-auto px-4 py-2 text-gray-700 bg-white border rounded-full sm:mx-2 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-emerald-500 dark:focus:border-emerald-500 focus:outline-none focus:ring focus:ring-emerald-500 focus:ring-opacity-40"
                   type="text"
                   placeholder="Search Location"
+                /> */}
+                <Autocomplete
+                  apiKey={GOOGLE_API_KEY_FOR_AUTOCOMPLETE}
+                  className="w-3/5 md:w-4/5 mr-auto px-4 py-2 text-gray-700 bg-white border rounded-full sm:mx-2 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-emerald-500 dark:focus:border-emerald-500 focus:outline-none focus:ring focus:ring-emerald-500 focus:ring-opacity-40"
+                  // style={{ width: "40%" }}
+                  onPlaceSelected={(place: any) => {
+                    console.log(place);
+                  }}
+                  // test
+                  // options={{ types: ["(cities)"] }}
                 />
                 <button
                   onClick={handleSearchAddress}
@@ -394,9 +414,6 @@ const AddLogForm = ({ setIsAlert }: PropsSetIsAlert) => {
           </div>
         </form>
       </Wrapper>
-      {/* {isMapping && (
-        <div id="mapping" style={{ width: "100%", height: "200px" }}></div>
-      )} */}
     </Fragment>
   );
 };
