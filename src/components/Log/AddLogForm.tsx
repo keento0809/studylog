@@ -198,6 +198,7 @@ const AddLogForm = ({ setIsAlert }: PropsSetIsAlert) => {
       alert("Invalid input");
       return;
     }
+
     // original
     // const studyLog: StudyLogObj = {
     const studyLog: StudyLogObjFinal = {
@@ -281,7 +282,7 @@ const AddLogForm = ({ setIsAlert }: PropsSetIsAlert) => {
   }, []);
 
   function handleClick(e: google.maps.MapMouseEvent) {
-    // console.log("Clickさあれたデー", e.latLng!.toJSON().lat);
+    console.log("latlngを記録してくれたまえ");
     setAddressLatLng({
       lat: e.latLng!.toJSON().lat,
       lng: e.latLng!.toJSON().lng,
@@ -291,57 +292,66 @@ const AddLogForm = ({ setIsAlert }: PropsSetIsAlert) => {
   return (
     <Fragment>
       <Wrapper apiKey={process.env.REACT_APP_GOOGLE_API_KEY!} render={render}>
-        <form
+        <div
           className="bg-white py-8 dark:bg-gray-800 lg:basis-1/2 xl:basis-2/5"
-          onSubmit={handleSubmitLog}
+          // onSubmit={handleSubmitLog}
         >
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-3xl lg:text-2xl font-semibold text-gray-800 dark:text-gray-100">
-              Add New Log
-            </h1>
-            <div
-              // action=""
-              className="googleMap-search pt-6 md:w-4/6 lg:w-full mx-auto md:flex md:flex-row md:items-center md:justify-center"
-              // onSubmit={handleSearchAddress}
-            >
-              <div className="w-full my-4 md:mb-0 rounded-lg flex items-center justify-center">
-                <Map
-                  onClick={handleClick}
-                  center={center}
-                  zoom={zoom}
-                  style={{
-                    width: "100%",
-                    height: "200px",
-                    borderRadius: "8px",
-                  }}
-                ></Map>
-              </div>
-              <div className="md:basis-2/4">
-                {/* original searchInput */}
-                {/* <input
+            <div className="map-containerです">
+              <h1 className="text-3xl lg:text-2xl font-semibold text-gray-800 dark:text-gray-100">
+                Add New Log
+              </h1>
+              <div
+                // action=""
+                className="googleMap-search pt-6 md:w-4/6 lg:w-full mx-auto md:flex md:flex-row md:items-center md:justify-center"
+                // onSubmit={handleSearchAddress}
+              >
+                <div className="w-full my-4 md:mb-0 rounded-lg flex items-center justify-center">
+                  <Map
+                    onClick={handleClick}
+                    center={center}
+                    zoom={zoom}
+                    style={{
+                      width: "100%",
+                      height: "200px",
+                      borderRadius: "8px",
+                    }}
+                  ></Map>
+                </div>
+                <div className="md:basis-2/4">
+                  {/* original searchInput */}
+                  {/* <input
                   ref={locationInputRef}
                   className="w-3/5 md:w-4/5 mr-auto px-4 py-2 text-gray-700 bg-white border rounded-full sm:mx-2 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-emerald-500 dark:focus:border-emerald-500 focus:outline-none focus:ring focus:ring-emerald-500 focus:ring-opacity-40"
                   type="text"
                   placeholder="Search Location"
                 /> */}
-                <Autocomplete
-                  apiKey={GOOGLE_API_KEY_FOR_AUTOCOMPLETE}
-                  className="w-3/5 md:w-4/5 mr-auto px-4 py-2 text-gray-700 bg-white border rounded-full sm:mx-2 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-emerald-500 dark:focus:border-emerald-500 focus:outline-none focus:ring focus:ring-emerald-500 focus:ring-opacity-40"
-                  // style={{ width: "40%" }}
-                  onPlaceSelected={(place: any) => {
-                    console.log(place);
-                  }}
-                  // test
-                  // options={{ types: ["(cities)"] }}
-                />
-                <button
-                  onClick={handleSearchAddress}
-                  className="w-1/3 md:w-4/5 px-4 py-3 md:mt-4 ml-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-emerald-400 rounded-full sm:mx-2 hover:bg-emerald-500 focus:outline-none focus:bg-emerald-500 dark:bg-emerald-500"
-                >
-                  Search
-                </button>
+                  <Autocomplete
+                    apiKey={GOOGLE_API_KEY_FOR_AUTOCOMPLETE}
+                    className="w-3/5 md:w-4/5 mr-auto px-4 py-2 text-gray-700 bg-white border rounded-full sm:mx-2 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-emerald-500 dark:focus:border-emerald-500 focus:outline-none focus:ring focus:ring-emerald-500 focus:ring-opacity-40"
+                    // style={{ width: "40%" }}
+                    onPlaceSelected={(place: any) => {
+                      // const latlng = {
+                      //   lat: place.geometry.location.lat(),
+                      //   lng: place.geometry.location.lng(),
+                      // };
+                      setCenter({
+                        lat: place.geometry.location.lat(),
+                        lng: place.geometry.location.lng(),
+                      });
+                    }}
+                    // test
+                    // options={{ types: ["(cities)"] }}
+                  />
+                  <button
+                    // onClick={handleSearchAddress}
+                    className="w-1/3 md:w-4/5 px-4 py-3 md:mt-4 ml-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-emerald-400 rounded-full sm:mx-2 hover:bg-emerald-500 focus:outline-none focus:bg-emerald-500 dark:bg-emerald-500"
+                  >
+                    Search
+                  </button>
+                </div>
+                {/* Reversed the order */}
               </div>
-              {/* Reversed the order */}
             </div>
 
             <div className="md:flex md:items-center md:justify-center">
@@ -404,7 +414,7 @@ const AddLogForm = ({ setIsAlert }: PropsSetIsAlert) => {
                   />
                 </div>
 
-                <div className="py-4 md:py-7">
+                <div className="py-4 md:py-7" onClick={handleSubmitLog}>
                   <button className="w-full md:w-7/12 lg:w-1/2 px-4 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-emerald-400 rounded-full sm:mx-2 hover:bg-emerald-500 focus:outline-none focus:bg-emerald-500 dark:bg-emerald-500">
                     ADD
                   </button>
@@ -412,7 +422,7 @@ const AddLogForm = ({ setIsAlert }: PropsSetIsAlert) => {
               </div>
             </div>
           </div>
-        </form>
+        </div>
       </Wrapper>
     </Fragment>
   );
