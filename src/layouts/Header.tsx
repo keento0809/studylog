@@ -96,37 +96,41 @@ const Header = () => {
                 <div className="flex flex-col text-center -mx-4 md:flex-row md:items-center md:mx-8">
                   <span
                     data-bs-dismiss="modal"
-                    onClick={() => handleNavigatePage(1)}
+                    onClick={() => handleNavigatePage(0)}
                     // to="/analysis"
                     // href="#"
-                    className="px-4 py-2 mx-2 xl:mx-4 mt-2 text-sm font-medium text-gray-700 transition-colors duration-200 transform rounded-md md:mt-0 dark:text-gray-200 hover:bg-emerald-400 dark:hover:bg-emerald-500 cursor-pointer"
+                    className="px-4 py-2 mx-2 xl:mx-4 mt-2 text-sm font-medium text-gray-700 transition-colors duration-200 transform rounded-full md:mt-0 dark:text-gray-200 hover:bg-emerald-400 dark:hover:bg-emerald-500 cursor-pointer"
                   >
                     {navMenuLabels[0]}
                   </span>
                   <span
                     data-bs-dismiss="modal"
-                    onClick={() => handleNavigatePage(2)}
+                    onClick={() => handleNavigatePage(1)}
                     // to="/logs"
                     // href="#"
-                    className="px-4 py-2 mx-2 xl:mx-4 mt-2 text-sm font-medium text-gray-700 transition-colors duration-200 transform rounded-md md:mt-0 dark:text-gray-200 hover:bg-emerald-400 dark:hover:bg-emerald-500 cursor-pointer"
+                    className="px-4 py-2 mx-2 xl:mx-4 mt-2 text-sm font-medium text-gray-700 transition-colors duration-200 transform rounded-full md:mt-0 dark:text-gray-200 hover:bg-emerald-400 dark:hover:bg-emerald-500 cursor-pointer"
                   >
                     {navMenuLabels[1]}
                   </span>
                   <span
                     data-bs-dismiss="modal"
-                    onClick={() => handleNavigatePage(3)}
-                    className="px-4 py-2 mx-2 xl:mx-4 mt-2 text-sm font-medium text-gray-700 transition-colors duration-200 transform rounded-md md:mt-0 dark:text-gray-200 hover:bg-emerald-400 dark:hover:bg-emerald-500 cursor-pointer"
+                    onClick={() => handleNavigatePage(2)}
+                    className="px-4 py-2 mx-2 xl:mx-4 mt-2 text-sm font-medium text-gray-700 transition-colors duration-200 transform rounded-full md:mt-0 dark:text-gray-200 hover:bg-emerald-400 dark:hover:bg-emerald-500 cursor-pointer"
                   >
                     {navMenuLabels[2]}
                   </span>
                   <span
                     data-bs-dismiss="modal"
-                    onClick={() => signOut(auth)}
-                    className="px-4 py-2 mx-2 xl:mx-4 mt-2 text-sm font-medium text-gray-700 transition-colors duration-200 transform rounded-md md:mt-0 dark:text-gray-200 hover:bg-emerald-400 dark:hover:bg-emerald-500 cursor-pointer"
+                    onClick={
+                      localStorage.getItem("authState")
+                        ? () => signOut(auth)
+                        : () => handleNavigatePage(3)
+                    }
+                    className="px-4 py-2 mx-2 xl:mx-4 mt-2 text-sm font-medium text-gray-700 transition-colors duration-200 transform rounded-full md:mt-0 dark:text-gray-200 hover:bg-emerald-400 dark:hover:bg-emerald-500 cursor-pointer"
                   >
                     {localStorage.getItem("authState")
-                      ? navMenuLabels[3]
-                      : "Login"}
+                      ? "Logout"
+                      : navMenuLabels[3]}
                     {/* {navMenuLabels[3]} */}
                   </span>
                 </div>
