@@ -1,1 +1,1 @@
-export const navMenuLabels = ["Analysis", "History", "Location", "Logout"];
+export const navMenuLabels = ["Analysis", "History", "Location", "Login"];
