@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import Hero from "./Hero";
 import Login from "./Login";
+import Signup from "./Signup";
 import Home from "./Home";
 import MyInfo from "./MyInfo";
 import Analysis from "./Analysis";
@@ -24,6 +25,7 @@ const Main = () => {
     <Routes>
       <Route path="/" element={<Hero />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/signup" element={<Signup />} />
       <Route path="/home" element={<Home />} />
       <Route path="/myinfo" element={<MyInfo />} />
       <Route path="/analysis" element={<Analysis />} />

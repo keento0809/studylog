@@ -11,11 +11,11 @@ import {
   getAuth,
   GoogleAuthProvider,
   signInWithPopup,
-  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
 } from "firebase/auth";
 import Auth from "../components/Auth/Auth";
 
-const Login = () => {
+const Signup = () => {
   // declare useContext
   const lightModeCtx = useContext(LightModeContext);
   const authCtx = useContext(AuthContext);
@@ -35,6 +35,7 @@ const Login = () => {
 
   const handleToggleMode = () => {
     lightModeCtx.toggleMode();
+    console.log(lightModeCtx.isLightMode);
     window.document.documentElement.classList.toggle("dark");
   };
 
@@ -43,8 +44,7 @@ const Login = () => {
 
     signInWithPopup(auth, new GoogleAuthProvider())
       .then((response) => {
-        console.log(response.user.uid, "loginしまっせ");
-        // add authContext
+        console.log(response);
         authCtx.authLogin();
         navigate("/home");
       })
@@ -54,34 +54,28 @@ const Login = () => {
       });
   };
 
-  const handleLogIn = async () => {
-    setAuthing(true);
-
+  const handleSignIn = () => {
     const enteredUserInfo = {
       auth: auth,
       email: emailInputRef.current!.value,
       password: passwordInputRef.current!.value,
     };
-    signInWithEmailAndPassword(
-      enteredUserInfo.auth,
-      enteredUserInfo.email,
-      enteredUserInfo.password
+    console.log(enteredUserInfo);
+    createUserWithEmailAndPassword(
+      auth,
+      emailInputRef.current!.value,
+      passwordInputRef.current!.value
     )
       .then((userCredential) => {
-        // Signed in
         const user = userCredential.user;
-        console.log(user);
-        authCtx.authLogin();
+        localStorage.setItem("authByEmail", "signInWithEmailAndPass");
         navigate("/home");
-        // ...
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorCode, errorMessage);
-        // ..
       });
-    setAuthing(false);
   };
 
   return (
@@ -115,45 +109,30 @@ const Login = () => {
                         tab-index="0"
                         className="focus:outline-none text-2xl font-extrabold leading-6 text-center text-gray-800 dark:text-slate-100"
                       >
-                        Login to your account
+                        Sign up here
                       </p>
                       <div className="text-center py-2">
                         <p
                           tab-index="0"
                           className="focus:outline-none text-sm mt-4 font-medium leading-none text-gray-500"
                         >
-                          Dont have account?{" "}
+                          Already have an account?{" "}
                           <Link
-                            to="/signup"
+                            to="/login"
                             className="hover:text-emerald-500 
-                            hover:dark:text-emerald-600 focus:text-emerald-500 focus:outline-none text-sm font-medium leading-none  text-gray-800 cursor-pointer"
+                          hover:dark:text-emerald-600 focus:text-emerald-500 focus:outline-none text-sm font-medium leading-none  text-gray-800 cursor-pointer"
                           >
                             {" "}
-                            Sign up here
+                            Log in here
                           </Link>
                         </p>
                       </div>
-                      <button
-                        aria-label="Continue with google"
-                        role="button"
-                        onClick={() => signInWithGoogle()}
-                        disabled={authing}
-                        className="focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-gray-700 py-3.5 px-4 border rounded-lg border-gray-600 dark:border-gray-600 hover:dark:border-emerald-500 flex items-center w-full my-5"
-                      >
-                        <img
-                          src="https://tuk-cdn.s3.amazonaws.com/can-uploader/sign_in-svg2.svg"
-                          alt="google"
-                        />
-                        <p className="text-base font-medium ml-4 text-gray-700 dark:text-slate-100">
-                          Continue with Google
-                        </p>
-                      </button>
                       <div className="w-full flex items-center justify-between py-5">
-                        <hr className="w-full bg-gray-600" />
+                        {/* <hr className="w-full bg-gray-600" />
                         <p className="text-base font-medium leading-4 px-2.5 text-gray-600 dark:text-slate-100">
                           OR
                         </p>
-                        <hr className="w-full bg-gray-600 dark:bg-slate-100 " />
+                        <hr className="w-full bg-gray-600 dark:bg-slate-100 " /> */}
                       </div>
                       <div>
                         <label
@@ -192,10 +171,10 @@ const Login = () => {
                       <div className="mt-8">
                         <button
                           role="button"
-                          onClick={handleLogIn}
+                          onClick={handleSignIn}
                           className="text-sm font-semibold leading-none text-white focus:outline-none bg-emerald-400 dark:bg-emerald-500 border dark:border-emerald-500 rounded hover:bg-emerald-500 py-4 w-full"
                         >
-                          Login
+                          Signup
                         </button>
                       </div>
                     </div>
@@ -211,4 +190,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Signup;
