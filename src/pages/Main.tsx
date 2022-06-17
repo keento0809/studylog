@@ -11,6 +11,8 @@ import NotFound from "./NotFound";
 import FirstMap from "../components/Try/FirstMap";
 import AntChart from "../components/Try/AntChart";
 import AutoComplete from "../components/Try/AutoComplete";
+import PrivateRoute from "../components/Outlet/PrivateRoute";
+import PrivateRouteAuth from "../components/Outlet/PrivateRouteAuth";
 
 // firebase
 import { initializeApp } from "firebase/app";
@@ -27,11 +29,10 @@ const Main = () => {
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/home" element={<Home />} />
-      <Route path="/myinfo" element={<MyInfo />} />
-      <Route path="/analysis" element={<Analysis />} />
-      <Route path="/history" element={<History />} />
-      {/* temporary jump to MapTry */}
-      <Route path="/location" element={<MapTry />} />
+      <Route path="/myinfo" element={<PrivateRoute />} />
+      <Route path="/analysis" element={<PrivateRoute />} />
+      <Route path="/history" element={<PrivateRoute />} />
+      <Route path="/location" element={<PrivateRoute />} />
       {/* temporary */}
       <Route path="/auto" element={<AutoComplete />} />
       {/* temporary */}
