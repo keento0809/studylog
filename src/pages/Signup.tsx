@@ -39,21 +39,6 @@ const Signup = () => {
     window.document.documentElement.classList.toggle("dark");
   };
 
-  const signInWithGoogle = async () => {
-    setAuthing(true);
-
-    signInWithPopup(auth, new GoogleAuthProvider())
-      .then((response) => {
-        console.log(response);
-        authCtx.authLogin();
-        navigate("/home");
-      })
-      .catch((error) => {
-        console.log(error);
-        setAuthing(false);
-      });
-  };
-
   const handleSignIn = () => {
     const enteredUserInfo = {
       auth: auth,
@@ -68,6 +53,7 @@ const Signup = () => {
     )
       .then((userCredential) => {
         const user = userCredential.user;
+        authCtx.authLogin();
         localStorage.setItem("authByEmail", "signInWithEmailAndPass");
         navigate("/home");
       })
