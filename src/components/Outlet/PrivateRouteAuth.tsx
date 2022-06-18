@@ -5,7 +5,8 @@ import { getAuth } from "firebase/auth";
 const PrivateRouteAuth = () => {
   const auth = getAuth();
   const currentUser = auth.currentUser;
-  return !currentUser ? <Outlet /> : <Navigate to="/home" />;
+  console.log(currentUser);
+  return currentUser ? <Navigate to="/home" /> : <Outlet />;
 };
 
 export default PrivateRouteAuth;

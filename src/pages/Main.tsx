@@ -28,11 +28,13 @@ const Main = () => {
       <Route path="/" element={<Hero />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
-      <Route path="/home" element={<Home />} />
-      <Route path="/myinfo" element={<PrivateRoute />} />
-      <Route path="/analysis" element={<PrivateRoute />} />
-      <Route path="/history" element={<PrivateRoute />} />
-      <Route path="/location" element={<PrivateRoute />} />
+      <Route element={<PrivateRoute />}>
+        <Route path="/home" element={<Home />} />
+        <Route path="/analysis" element={<Analysis />} />
+        <Route path="/history" element={<History />} />
+        <Route path="/location" element={<MapTry />} />
+        <Route path="/myinfo" element={<MyInfo />} />
+      </Route>
       {/* temporary */}
       <Route path="/auto" element={<AutoComplete />} />
       {/* temporary */}

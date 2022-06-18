@@ -4,6 +4,7 @@ import { lightModeValue } from "../models/Model";
 import LightModeContext from "../contexts/lightmode-context";
 import { getAuth, signOut } from "firebase/auth";
 import { navMenuLabels } from "../data/data";
+import AuthContext from "../contexts/auth-context";
 
 const Header = () => {
   // declare navigate
@@ -11,6 +12,7 @@ const Header = () => {
 
   // declare useContext
   const lightModeCtx = useContext(LightModeContext);
+  const authCtx = useContext(AuthContext);
 
   const auth = getAuth();
 
@@ -22,6 +24,12 @@ const Header = () => {
 
   const handleNavigatePage = (index: number) => {
     navigate(`/${navMenuLabels[index].toLowerCase()}`);
+  };
+
+  const handleLogout = () => {
+    signOut(auth);
+    authCtx.authLogout();
+    navigate("/login");
   };
 
   return (
@@ -123,7 +131,7 @@ const Header = () => {
                     data-bs-dismiss="modal"
                     onClick={
                       localStorage.getItem("authState")
-                        ? () => signOut(auth)
+                        ? () => handleLogout() // handleLogout
                         : () => handleNavigatePage(3)
                     }
                     className="px-4 py-2 mx-2 xl:mx-4 mt-2 text-sm font-medium text-gray-700 transition-colors duration-200 transform rounded-full md:mt-0 dark:text-gray-200 hover:bg-emerald-400 dark:hover:bg-emerald-500 cursor-pointer"
