@@ -17,7 +17,11 @@ module.exports = {
       240: "240px",
       270: "270px",
     },
-    extend: {},
+    extend: {
+      maxWidth: {
+        240: "240px",
+      },
+    },
   },
   plugins: [require("tw-elements/dist/plugin")],
 };

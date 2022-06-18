@@ -17,6 +17,7 @@ import { Status, Wrapper } from "@googlemaps/react-wrapper";
 import { createCustomEqual } from "fast-equals";
 import { isLatLngLiteral } from "@googlemaps/typescript-guards";
 import Autocomplete from "react-google-autocomplete";
+import FilledButton from "../UI/Button/FilledButton";
 
 const render = (status: Status) => {
   return <h1>{status}</h1>;
@@ -293,7 +294,7 @@ const AddLogForm = ({ setIsAlert }: PropsSetIsAlert) => {
     <Fragment>
       <Wrapper apiKey={process.env.REACT_APP_GOOGLE_API_KEY!} render={render}>
         <div
-          className="bg-white py-8 dark:bg-gray-800 lg:basis-1/2 xl:basis-2/5"
+          className="bg-white py-8 dark:bg-gray-800 lg:basis-1/2 xl:basis-10/12"
           // onSubmit={handleSubmitLog}
         >
           <div className="max-w-3xl mx-auto text-center">
@@ -303,10 +304,10 @@ const AddLogForm = ({ setIsAlert }: PropsSetIsAlert) => {
               </h1>
               <div
                 // action=""
-                className="googleMap-search pt-6 md:w-4/6 lg:w-full mx-auto md:flex md:flex-row md:items-center md:justify-center"
+                className="googleMap-search pt-6 md:w-10/12 lg:w-full mx-auto md:flex md:flex-row md:items-center md:justify-center"
                 // onSubmit={handleSearchAddress}
               >
-                <div className="w-full my-4 md:mb-0 rounded-lg flex items-center justify-center">
+                <div className="w-full md:w-1/2 my-4 md:mb-0 rounded-lg flex items-center justify-center">
                   <Map
                     onClick={handleClick}
                     center={center}
@@ -415,9 +416,10 @@ const AddLogForm = ({ setIsAlert }: PropsSetIsAlert) => {
                 </div>
 
                 <div className="py-4 md:py-7" onClick={handleSubmitLog}>
-                  <button className="w-full md:w-7/12 lg:w-1/2 px-4 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-emerald-400 rounded-full sm:mx-2 hover:bg-emerald-500 focus:outline-none focus:bg-emerald-500 dark:bg-emerald-500">
+                  {/* <button className="w-full md:w-7/12 lg:w-1/2 px-4 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-emerald-400 rounded-full sm:mx-2 hover:bg-emerald-500 focus:outline-none focus:bg-emerald-500 dark:bg-emerald-500">
                     ADD
-                  </button>
+                  </button> */}
+                  <FilledButton />
                 </div>
               </div>
             </div>
