@@ -1,12 +1,12 @@
 export const config = {
   firebaseConfig: {
-    apiKey: "AIzaSyD9Up6cqIokdjrT3Y7IOABfITCnrbuKd3E",
-    authDomain: "studylog-8e387.firebaseapp.com",
-    databaseURL: "https://studylog-8e387-default-rtdb.firebaseio.com",
-    projectId: "studylog-8e387",
-    storageBucket: "studylog-8e387.appspot.com",
-    messagingSenderId: "869760750299",
-    appId: "1:869760750299:web:9db3c823323a48527772fe",
-    measurementId: "G-EBDMBLP7JR",
+    apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+    authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+    databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
+    projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+    storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+    appId: process.env.REACT_APP_FIREBASE_APP_ID,
+    measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
   },
 };
