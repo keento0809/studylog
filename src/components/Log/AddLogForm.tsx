@@ -302,15 +302,17 @@ const AddLogForm = ({ setIsAlert }: PropsSetIsAlert) => {
               <h1 className="text-3xl lg:text-2xl font-semibold text-gray-800 dark:text-gray-100">
                 Add New Log
               </h1>
+              <div className="pt-6">
+                <span className="dark:text-gray-100">
+                  Click the spot where you studied on the map
+                </span>
+              </div>
               <div
                 // action=""
-                className="googleMap-search pt-6 md:w-10/12 lg:w-full mx-auto md:flex md:flex-row md:items-center md:justify-center"
+                className="googleMap-search md:w-10/12 lg:w-full mx-auto md:flex md:flex-row md:items-center md:justify-center"
                 // onSubmit={handleSearchAddress}
               >
                 <div className="w-full md:w-1/2 my-4 md:mb-0 rounded-lg flex items-center justify-center">
-                  {/* <span className="dark:text-gray-100">
-                      Click the spot where you studied
-                    </span> */}
                   <Map
                     onClick={handleClick}
                     center={center}
@@ -347,7 +349,6 @@ const AddLogForm = ({ setIsAlert }: PropsSetIsAlert) => {
                     Search
                   </button>
                 </div>
-                {/* Reversed the order */}
               </div>
             </div>
 
