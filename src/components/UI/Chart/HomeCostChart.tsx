@@ -20,17 +20,6 @@ const HomeCostChart: React.FC = () => {
 
   // fetch data from firebase
   const fetchingData = async () => {
-    // try {
-    //   const querySnapshot = await getDocs(collection(db, "logs"));
-    //   const newLoadedData: number[] = [];
-
-    //   querySnapshot.forEach((doc) => {
-    //     newLoadedData.push(Number(doc.data()["cost"]));
-    //   });
-    //   setCostData(newLoadedData);
-    // } catch (error: any) {
-    //   console.log(error.message);
-    // }
     try {
       const querySnapshot = await getDocs(collection(db, "logs"));
       const newLoadedData: number[] = [];
@@ -49,7 +38,6 @@ const HomeCostChart: React.FC = () => {
       sortedQuerySnapshot.forEach((studyLog: StudyLogObjFinal) => {
         newLoadedData.push(Number(studyLog.cost));
       });
-      // console.log(newLoadedData);
       setCostData(newLoadedData);
     } catch (error: any) {
       console.log(error.message);
