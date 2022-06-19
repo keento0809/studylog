@@ -24,7 +24,7 @@ const AnalysisCostChart = () => {
         if (currentUserId === doc.data()["userId"]) {
           newLoadedData.push({
             date: doc.data()["date"],
-            value: Number(doc.data()["cost"]),
+            cost: Number(doc.data()["cost"]),
           });
         }
       });
@@ -47,7 +47,7 @@ const AnalysisCostChart = () => {
     height: 317,
     autoFit: false,
     xField: "date",
-    yField: "value",
+    yField: "cost",
     point: {
       size: 5,
       shape: "diamond",
