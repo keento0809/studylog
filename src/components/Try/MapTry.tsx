@@ -10,6 +10,9 @@ import { StudyLogObjFinal, locationObj } from "../../models/Model";
 import Layout from "../../layouts/Layout";
 import axios from "axios";
 
+import { getDocs, collection } from "firebase/firestore";
+import { db } from "../../pages/Main";
+
 const render = (status: Status) => {
   return <h1>{status}</h1>;
 };
@@ -46,21 +49,28 @@ const MapTry: React.VFC = () => {
     setIsLoading(true);
     setError(null);
     try {
-      const response = await fetch(
-        "https://studylog-8e387-default-rtdb.firebaseio.com/studylogs.json"
-      );
-      if (!response.ok) throw new Error("Request Failed.");
-      const data = await response.json();
-      console.log(data);
+      // const response = await fetch(
+      //   "https://studylog-8e387-default-rtdb.firebaseio.com/studylogs.json"
+      // );
+      // if (!response.ok) throw new Error("Request Failed.");
+      // const data = await response.json();
+      // console.log(data);
+      const querySnapshot = await getDocs(collection(db, "logs"));
 
       const loadedLocations: locationObj[] = [];
-
-      for (const key in data) {
+      querySnapshot.forEach((doc) => {
         loadedLocations.push({
-          lat: data[key].location.lat,
-          lng: data[key].location.lng,
+          lat: doc.data()["location"]["lat"],
+          lng: doc.data()["location"]["lng"],
         });
-      }
+      });
+
+      // for (const key in data) {
+      //   loadedLocations.push({
+      //     lat: data[key].location.lat,
+      //     lng: data[key].location.lng,
+      //   });
+      // }
       console.log(loadedLocations);
       setLocationData(loadedLocations);
     } catch (err: any) {
