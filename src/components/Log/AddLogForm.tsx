@@ -18,6 +18,9 @@ import { createCustomEqual } from "fast-equals";
 import { isLatLngLiteral } from "@googlemaps/typescript-guards";
 import Autocomplete from "react-google-autocomplete";
 import FilledButton from "../UI/Button/FilledButton";
+import { getAuth } from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore";
+import { db } from "../../pages/Main";
 
 const render = (status: Status) => {
   return <h1>{status}</h1>;
@@ -145,40 +148,13 @@ const AddLogForm = ({ setIsAlert }: PropsSetIsAlert) => {
   const [isMapping, setIsMapping] = useState(false);
   const [locationInfoState, setLocationInfoState] = useState<locationObj>();
 
+  const auth = getAuth();
+  const currentUserId = auth.currentUser?.uid;
   // original
-  const GOOGLE_API_KEY = process.env.REACT_APP_GOOGLE_API_KEY_GEOCODING;
-  var google = window.google;
+  // const GOOGLE_API_KEY = process.env.REACT_APP_GOOGLE_API_KEY_GEOCODING;
+  // var google = window.google;
 
   const GOOGLE_API_KEY_FOR_AUTOCOMPLETE = process.env.REACT_APP_GOOGLE_API_KEY;
-
-  function handleSearchAddress(event: React.FormEvent) {
-    event.preventDefault();
-
-    const enteredInput = locationInputRef.current!.value;
-    axios
-      .get(
-        `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURI(
-          enteredInput
-        )}&key=${GOOGLE_API_KEY}`
-      )
-      .then((res) => {
-        if (res.data.status !== "OK") {
-          throw new Error("Request failed.");
-        }
-        const locationInfo = res.data.results[0].geometry.location;
-        console.log(locationInfo);
-        setLocationInfoState(locationInfo);
-        const map = new google.maps.Map(document.getElementById("mapping")!, {
-          center: locationInfo,
-          zoom: 15,
-        });
-        new google.maps.Marker({ position: locationInfo, map: map });
-      })
-      .catch((error) => {
-        alert(error.message);
-        console.log(error);
-      });
-  }
 
   function handleSubmitLog(event: React.FormEvent) {
     event.preventDefault();
@@ -210,6 +186,7 @@ const AddLogForm = ({ setIsAlert }: PropsSetIsAlert) => {
       // original
       // location: enteredLocationInfo!,
       location: addressLatLng!,
+      userId: currentUserId!,
     };
 
     // test
@@ -217,16 +194,23 @@ const AddLogForm = ({ setIsAlert }: PropsSetIsAlert) => {
 
     const sendRequest = async () => {
       // I need to refactor this
-      const res = await fetch(
-        "https://studylog-8e387-default-rtdb.firebaseio.com/studylogs.json",
-        {
-          method: "POST",
-          body: JSON.stringify(studyLog),
-        }
-      );
-      if (!res.ok) throw new Error();
-      const data = await res.json();
-      console.log(data);
+      // const res = await fetch(
+      //   "https://studylog-8e387-default-rtdb.firebaseio.com/studylogs.json",
+      //   {
+      //     method: "POST",
+      //     body: JSON.stringify(studyLog),
+      //   }
+      // );
+      // if (!res.ok) throw new Error();
+      // const data = await res.json();
+      // console.log(data);
+
+      // add data to firebase
+      try {
+        await setDoc(doc(db, "logs", `${studyLog.date}`), studyLog);
+      } catch (error: any) {
+        console.log(error.message);
+      }
 
       hourInputRef.current!.value = "";
       costInputRef.current!.value = "";
