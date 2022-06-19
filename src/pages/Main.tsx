@@ -16,11 +16,15 @@ import PrivateRouteAuth from "../components/Outlet/PrivateRouteAuth";
 
 // firebase
 import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
 import { config } from "../config/config";
 import { fireEvent } from "@testing-library/react";
+import { useEffect } from "react";
 
 // initialize firebaseApp
-initializeApp(config.firebaseConfig);
+const app = initializeApp(config.firebaseConfig);
+// Initialize Cloud Firestore and get a reference to the service
+export const db = getFirestore(app);
 
 const Main = () => {
   return (

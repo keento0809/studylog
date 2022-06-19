@@ -20,7 +20,6 @@ const HomeModal = () => {
   };
 
   const handleSignOut = () => {
-    console.log("Logoutするデイ");
     authCtx.authLogout();
     signOut(auth);
     navigate("/");

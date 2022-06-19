@@ -4,6 +4,10 @@ import { TinyArea } from "@ant-design/charts";
 import HomeCard from "../Card/HomeCard";
 import axios from "axios";
 import LightModeContext from "../../../contexts/lightmode-context";
+import { HourDataObj, StudyLogObjFinal } from "../../../models/Model";
+
+import { getDocs, collection } from "firebase/firestore";
+import { db } from "../../../pages/Main";
 
 const HomeHistoryChart: React.FC = () => {
   // declare useContext
@@ -15,22 +19,31 @@ const HomeHistoryChart: React.FC = () => {
   let fillStyle = lightModeCtx.isLightMode ? "#374151" : "#fff";
 
   // fetch data from firebase
-  const fetchingData = () => {
-    axios
-      .get("https://studylog-8e387-default-rtdb.firebaseio.com/studylogs.json")
-      .then((data) => {
-        const result = data.data;
+  const fetchingData = async () => {
+    try {
+      const querySnapshot = await getDocs(collection(db, "logs"));
+      const newLoadedData: number[] = [];
 
-        const loadedHours = [];
-        for (const key in result) {
-          loadedHours.push(parseFloat(result[key].hour));
-        }
-        setHourData(loadedHours);
-      })
-      .catch((error) => console.log(error.message));
+      const testQuerySnapshot: any = [];
+
+      querySnapshot.forEach((doc) => {
+        testQuerySnapshot.push(doc.data());
+      });
+      const sortedQuerySnapshot = testQuerySnapshot.sort(function (
+        a: StudyLogObjFinal,
+        b: StudyLogObjFinal
+      ) {
+        return a.date > b.date ? 1 : -1;
+      });
+      sortedQuerySnapshot.forEach((studyLog: StudyLogObjFinal) => {
+        newLoadedData.push(Number(studyLog.hour));
+      });
+      // console.log(newLoadedData);
+      setHourData(newLoadedData);
+    } catch (error: any) {
+      console.log(error.message);
+    }
   };
-  // original
-  // const data = [264, 417, 0.5, 887];
   const config = {
     height: 60,
     autoFit: false,
