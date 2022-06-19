@@ -23,7 +23,7 @@ const AnalysisHourChart = () => {
         if (currentUserId === doc.data()["userId"]) {
           newLoadedData.push({
             date: doc.data()["date"],
-            value: Number(doc.data()["hour"]),
+            hour: Number(doc.data()["hour"]),
           });
         }
       });
@@ -46,7 +46,7 @@ const AnalysisHourChart = () => {
     height: 317,
     autoFit: false,
     xField: "date",
-    yField: "value",
+    yField: "hour",
     point: {
       size: 5,
       shape: "diamond",

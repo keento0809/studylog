@@ -38,6 +38,7 @@ export interface StudyLogObjFinal {
   cost: string;
   summary: string;
   location: locationObj;
+  userId: string;
 }
 
 export interface StudyLogObjWithIsHome {

@@ -52,6 +52,7 @@ const LogList = () => {
               lat: doc.data()["location"]["lat"],
               lng: doc.data()["location"]["lng"],
             },
+            userId: doc.data()["userId"],
           });
         }
       });
@@ -146,6 +147,7 @@ const LogList = () => {
                       cost={log.cost}
                       summary={log.summary}
                       location={log.location}
+                      userId={log.userId}
                     />
                   </li>
                 );
