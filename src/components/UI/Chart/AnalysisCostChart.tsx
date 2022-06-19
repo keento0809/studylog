@@ -4,33 +4,35 @@ import HomeCard from "../Card/HomeCard";
 import { DataObj, CostDataObj } from "../../../models/Model";
 import axios from "axios";
 
+import { getDocs, collection } from "firebase/firestore";
+import { db } from "../../../pages/Main";
+
 const AnalysisCostChart = () => {
   // declare useState
   const [dataForChart, setDataForChart] = useState<DataObj[]>([]);
 
-  const fetchingData = () => {
-    axios
-      .get("https://studylog-8e387-default-rtdb.firebaseio.com/studylogs.json")
-      .then((data) => {
-        const result = data.data;
+  const fetchingData = async () => {
+    try {
+      const querySnapshot = await getDocs(collection(db, "logs"));
+      const newLoadedData: any = [];
 
-        const loadedDataForChart = [];
-        for (const key in result) {
-          loadedDataForChart.push({
-            date: result[key].date,
-            value: result[key].cost,
-          });
-        }
-        // test
-        const sortedArr = loadedDataForChart.sort(function (
-          a: CostDataObj,
-          b: CostDataObj
-        ) {
-          return a.date > b.date ? 1 : -1;
+      querySnapshot.forEach((doc) => {
+        newLoadedData.push({
+          date: doc.data()["date"],
+          value: Number(doc.data()["cost"]),
         });
-        setDataForChart(sortedArr);
-      })
-      .catch((error) => console.log(error.message));
+      });
+      // test
+      const sortedArr = newLoadedData.sort(function (
+        a: CostDataObj,
+        b: CostDataObj
+      ) {
+        return a.date > b.date ? 1 : -1;
+      });
+      setDataForChart(sortedArr);
+    } catch (error: any) {
+      console.log(error.message);
+    }
   };
 
   const config = {

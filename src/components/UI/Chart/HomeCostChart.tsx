@@ -5,6 +5,9 @@ import HomeCard from "../Card/HomeCard";
 import axios from "axios";
 import { CostDataObj } from "../../../models/Model";
 import LightModeContext from "../../../contexts/lightmode-context";
+import { StudyLogObjFinal } from "../../../models/Model";
+import { getDocs, collection } from "firebase/firestore";
+import { db } from "../../../pages/Main";
 
 const HomeCostChart: React.FC = () => {
   // declare useContext
@@ -16,21 +19,41 @@ const HomeCostChart: React.FC = () => {
   let fillStyle = lightModeCtx.isLightMode ? "#374151" : "#fff";
 
   // fetch data from firebase
-  const fetchingData = () => {
-    axios
-      .get("https://studylog-8e387-default-rtdb.firebaseio.com/studylogs.json")
-      .then((data) => {
-        // console.log(data.data);
-        const result = data.data;
+  const fetchingData = async () => {
+    // try {
+    //   const querySnapshot = await getDocs(collection(db, "logs"));
+    //   const newLoadedData: number[] = [];
 
-        const loadedCosts = [];
-        for (const key in result) {
-          loadedCosts.push(result[key].cost);
-        }
-        // console.log(loadedCosts);
-        setCostData(loadedCosts);
-      })
-      .catch((error) => console.log(error.message));
+    //   querySnapshot.forEach((doc) => {
+    //     newLoadedData.push(Number(doc.data()["cost"]));
+    //   });
+    //   setCostData(newLoadedData);
+    // } catch (error: any) {
+    //   console.log(error.message);
+    // }
+    try {
+      const querySnapshot = await getDocs(collection(db, "logs"));
+      const newLoadedData: number[] = [];
+
+      const testQuerySnapshot: any = [];
+
+      querySnapshot.forEach((doc) => {
+        testQuerySnapshot.push(doc.data());
+      });
+      const sortedQuerySnapshot = testQuerySnapshot.sort(function (
+        a: StudyLogObjFinal,
+        b: StudyLogObjFinal
+      ) {
+        return a.date > b.date ? 1 : -1;
+      });
+      sortedQuerySnapshot.forEach((studyLog: StudyLogObjFinal) => {
+        newLoadedData.push(Number(studyLog.cost));
+      });
+      // console.log(newLoadedData);
+      setCostData(newLoadedData);
+    } catch (error: any) {
+      console.log(error.message);
+    }
   };
   const config = {
     height: 60,

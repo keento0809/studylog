@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState, useRef } from "react";
+import { useContext, useEffect, useState, useRef, SetStateAction } from "react";
 import StudyLogsContext from "../../contexts/studyLogs-context";
 import {
   PropsLogList,
@@ -6,6 +6,10 @@ import {
   StudyLogObjFinal,
 } from "../../models/Model";
 import LogCard from "../UI/Card/LogCard";
+// import getData from "../API/getData";
+
+import { getDocs, collection } from "firebase/firestore";
+import { db } from "../../pages/Main";
 
 const LogList = () => {
   // declare useContext
@@ -25,31 +29,48 @@ const LogList = () => {
     setIsLoading(true);
 
     try {
-      const response = await fetch(
-        "https://studylog-8e387-default-rtdb.firebaseio.com/studylogs.json"
-      );
-      if (!response.ok) throw new Error("Request failed.");
-      const data = await response.json();
+      // const response = await fetch(
+      //   "https://studylog-8e387-default-rtdb.firebaseio.com/studylogs.json"
+      // );
+      // if (!response.ok) throw new Error("Request failed.");
+      // const data = await response.json();
 
-      // console.log(data);
-      // original code
-      // const loadedData: StudyLogObj[] = [];
-      const loadedData: StudyLogObjFinal[] = [];
-      const loadedDates = [];
+      // test: get data
+      const querySnapshot = await getDocs(collection(db, "logs"));
+      const newLoadedData: StudyLogObjFinal[] = [];
 
-      for (const key in data) {
-        loadedData.push({
-          date: data[key].date,
-          cost: data[key].cost,
-          hour: data[key].hour,
-          summary: data[key].summary,
-          location: data[key].location,
+      querySnapshot.forEach((doc: any) => {
+        newLoadedData.push({
+          date: doc.data()["date"],
+          cost: doc.data()["cost"],
+          hour: doc.data()["hour"],
+          summary: doc.data()["summary"],
+          location: {
+            lat: doc.data()["location"]["lat"],
+            lng: doc.data()["location"]["lng"],
+          },
         });
-        loadedDates.push({
-          date: data[key].date,
-        });
-      }
-      setStudyLogs(loadedData);
+      });
+
+      console.log(newLoadedData);
+
+      // const loadedData: StudyLogObjFinal[] = [];
+      // const loadedDates = [];
+
+      // for (const key in data) {
+      //   loadedData.push({
+      //     date: data[key].date,
+      //     cost: data[key].cost,
+      //     hour: data[key].hour,
+      //     summary: data[key].summary,
+      //     location: data[key].location,
+      //   });
+      //   loadedDates.push({
+      //     date: data[key].date,
+      //   });
+      // }
+      // test
+      setStudyLogs(newLoadedData);
       setIsLoading(false);
     } catch (error: any) {
       console.log(error.message);
