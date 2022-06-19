@@ -4,28 +4,16 @@ import { Wrapper, Status } from "@googlemaps/react-wrapper";
 import useDeepCompareEffect from "use-deep-compare-effect";
 import { createCustomEqual } from "fast-equals";
 import { isLatLngLiteral } from "@googlemaps/typescript-guards";
-// import { useContext } from "react";
 import { StudyLogObjFinal, locationObj } from "../../models/Model";
-// import StudyLogsContext from "../../contexts/studyLogs-context";
 import Layout from "../../layouts/Layout";
 import axios from "axios";
-
+import { getAuth } from "firebase/auth";
 import { getDocs, collection } from "firebase/firestore";
 import { db } from "../../pages/Main";
 
 const render = (status: Status) => {
   return <h1>{status}</h1>;
 };
-
-// test geocoding
-// axios
-//   .get(
-//     `https://maps.googleapis.com/maps/api/geocode/json?latlng=49.27866863675678,-123.10972452163696&key=${process.env.REACT_APP_GOOGLE_API_KEY_GEOCODING}`
-//   )
-//   .then((res) => {
-//     if (res.data.status !== "OK") throw new Error("Request failed.");
-//   })
-//   .catch((err) => console.log(err.message));
 
 const MapTry: React.VFC = () => {
   // declare useState
@@ -39,39 +27,27 @@ const MapTry: React.VFC = () => {
   const [isLoading, setIsLoading] = React.useState(false);
   const [error, setError] = React.useState(null);
 
-  // declare useContext
-  // const studyLogsCtx = useContext(StudyLogsContext);
-
   // declare useRef
   const locationInputRef = React.useRef<HTMLInputElement>(null);
+
+  const auth = getAuth();
+  const currentUserId = auth.currentUser?.uid;
 
   const getStudyLocations = async () => {
     setIsLoading(true);
     setError(null);
     try {
-      // const response = await fetch(
-      //   "https://studylog-8e387-default-rtdb.firebaseio.com/studylogs.json"
-      // );
-      // if (!response.ok) throw new Error("Request Failed.");
-      // const data = await response.json();
-      // console.log(data);
       const querySnapshot = await getDocs(collection(db, "logs"));
 
       const loadedLocations: locationObj[] = [];
       querySnapshot.forEach((doc) => {
-        loadedLocations.push({
-          lat: doc.data()["location"]["lat"],
-          lng: doc.data()["location"]["lng"],
-        });
+        if (currentUserId === doc.data()["userId"]) {
+          loadedLocations.push({
+            lat: doc.data()["location"]["lat"],
+            lng: doc.data()["location"]["lng"],
+          });
+        }
       });
-
-      // for (const key in data) {
-      //   loadedLocations.push({
-      //     lat: data[key].location.lat,
-      //     lng: data[key].location.lng,
-      //   });
-      // }
-      console.log(loadedLocations);
       setLocationData(loadedLocations);
     } catch (err: any) {
       setError(err.message);
@@ -192,7 +168,7 @@ const MapTry: React.VFC = () => {
             </div>
             <div className="mx-auto pt-3">
               <div className="mx-auto md:w-2/3 lg:max-w-screen-md text-center">
-                <p className="pb-3">
+                <p className="pb-3 dark:text-gray-100">
                   All locations you've ever studied are shown.
                 </p>
                 <Map
