@@ -8,10 +8,14 @@ import { HourDataObj, StudyLogObjFinal } from "../../../models/Model";
 
 import { getDocs, collection } from "firebase/firestore";
 import { db } from "../../../pages/Main";
+import { getAuth } from "firebase/auth";
 
 const HomeHistoryChart: React.FC = () => {
   // declare useContext
   const lightModeCtx = useContext(LightModeContext);
+
+  const auth = getAuth();
+  const currentUserId = auth.currentUser?.uid;
   // declare useState
   // I need to fix this part
   const [hourData, setHourData] = useState<number[]>([]);
@@ -27,7 +31,9 @@ const HomeHistoryChart: React.FC = () => {
       const testQuerySnapshot: any = [];
 
       querySnapshot.forEach((doc) => {
-        testQuerySnapshot.push(doc.data());
+        if (currentUserId === doc.data()["userId"]) {
+          testQuerySnapshot.push(doc.data());
+        }
       });
       const sortedQuerySnapshot = testQuerySnapshot.sort(function (
         a: StudyLogObjFinal,

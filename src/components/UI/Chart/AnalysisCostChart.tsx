@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Line } from "@ant-design/charts";
 import HomeCard from "../Card/HomeCard";
 import { DataObj, CostDataObj } from "../../../models/Model";
-import axios from "axios";
+
+import { getAuth } from "firebase/auth";
 
 import { getDocs, collection } from "firebase/firestore";
 import { db } from "../../../pages/Main";
@@ -11,16 +12,21 @@ const AnalysisCostChart = () => {
   // declare useState
   const [dataForChart, setDataForChart] = useState<DataObj[]>([]);
 
+  const auth = getAuth();
+  const currentUserId = auth.currentUser?.uid;
+
   const fetchingData = async () => {
     try {
       const querySnapshot = await getDocs(collection(db, "logs"));
       const newLoadedData: any = [];
 
       querySnapshot.forEach((doc) => {
-        newLoadedData.push({
-          date: doc.data()["date"],
-          value: Number(doc.data()["cost"]),
-        });
+        if (currentUserId === doc.data()["userId"]) {
+          newLoadedData.push({
+            date: doc.data()["date"],
+            value: Number(doc.data()["cost"]),
+          });
+        }
       });
       // test
       const sortedArr = newLoadedData.sort(function (

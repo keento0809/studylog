@@ -7,7 +7,7 @@ import {
 } from "../../models/Model";
 import LogCard from "../UI/Card/LogCard";
 // import getData from "../API/getData";
-
+import { getAuth } from "firebase/auth";
 import { getDocs, collection } from "firebase/firestore";
 import { db } from "../../pages/Main";
 
@@ -15,6 +15,8 @@ const LogList = () => {
   // declare useContext
   const studyLogsCtx = useContext(StudyLogsContext);
 
+  const auth = getAuth();
+  const currentUserId = auth.currentUser?.uid;
   // declare useState
   // original code
   // const [studyLogs, setStudyLogs] = useState<StudyLogObj[]>([]);
@@ -40,16 +42,18 @@ const LogList = () => {
       const newLoadedData: StudyLogObjFinal[] = [];
 
       querySnapshot.forEach((doc: any) => {
-        newLoadedData.push({
-          date: doc.data()["date"],
-          cost: doc.data()["cost"],
-          hour: doc.data()["hour"],
-          summary: doc.data()["summary"],
-          location: {
-            lat: doc.data()["location"]["lat"],
-            lng: doc.data()["location"]["lng"],
-          },
-        });
+        if (currentUserId === doc.data()["userId"]) {
+          newLoadedData.push({
+            date: doc.data()["date"],
+            cost: doc.data()["cost"],
+            hour: doc.data()["hour"],
+            summary: doc.data()["summary"],
+            location: {
+              lat: doc.data()["location"]["lat"],
+              lng: doc.data()["location"]["lng"],
+            },
+          });
+        }
       });
 
       console.log(newLoadedData);
