@@ -4,7 +4,7 @@ import "tw-elements";
 import { navMenuLabels } from "../../../data/data";
 import { getAuth, signOut } from "firebase/auth";
 import AuthContext from "../../../contexts/auth-context";
-// const navMenuLabels = ["Analysis", "History", "Location", "Logout"];
+import { auth } from "../../../pages/Main";
 
 const HomeModal = () => {
   // declare navigate
@@ -12,8 +12,6 @@ const HomeModal = () => {
 
   // declare useContext
   const authCtx = useContext(AuthContext);
-
-  const auth = getAuth();
 
   const handleNavigatePage = (index: number) => {
     navigate(`/${navMenuLabels[index].toLowerCase()}`);

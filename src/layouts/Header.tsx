@@ -1,10 +1,11 @@
-import React, { useContext, useState, Fragment } from "react";
+import React, { useContext, Fragment } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { lightModeValue } from "../models/Model";
 import LightModeContext from "../contexts/lightmode-context";
-import { getAuth, signOut } from "firebase/auth";
+import { signOut } from "firebase/auth";
 import { navMenuLabels } from "../data/data";
 import AuthContext from "../contexts/auth-context";
+import { auth } from "../pages/Main";
 
 const Header = () => {
   // declare navigate
@@ -13,8 +14,6 @@ const Header = () => {
   // declare useContext
   const lightModeCtx = useContext(LightModeContext);
   const authCtx = useContext(AuthContext);
-
-  const auth = getAuth();
 
   const handleToggleMode = () => {
     lightModeCtx.toggleMode();

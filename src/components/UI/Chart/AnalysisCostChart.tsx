@@ -2,9 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Line } from "@ant-design/charts";
 import HomeCard from "../Card/HomeCard";
 import { DataObj, CostDataObj } from "../../../models/Model";
-
-import { getAuth } from "firebase/auth";
-
+import { auth } from "../../../pages/Main";
 import { getDocs, collection } from "firebase/firestore";
 import { db } from "../../../pages/Main";
 
@@ -12,7 +10,6 @@ const AnalysisCostChart = () => {
   // declare useState
   const [dataForChart, setDataForChart] = useState<DataObj[]>([]);
 
-  const auth = getAuth();
   const currentUserId = auth.currentUser?.uid;
 
   const fetchingData = async () => {

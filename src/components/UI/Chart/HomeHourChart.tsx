@@ -2,19 +2,17 @@ import React, { useEffect, useState, useContext } from "react";
 import { Line } from "@ant-design/charts";
 import { TinyArea } from "@ant-design/charts";
 import HomeCard from "../Card/HomeCard";
-import axios from "axios";
 import LightModeContext from "../../../contexts/lightmode-context";
 import { HourDataObj, StudyLogObjFinal } from "../../../models/Model";
 
 import { getDocs, collection } from "firebase/firestore";
 import { db } from "../../../pages/Main";
-import { getAuth } from "firebase/auth";
+import { auth } from "../../../pages/Main";
 
 const HomeHistoryChart: React.FC = () => {
   // declare useContext
   const lightModeCtx = useContext(LightModeContext);
 
-  const auth = getAuth();
   const currentUserId = auth.currentUser?.uid;
   // declare useState
   // I need to fix this part

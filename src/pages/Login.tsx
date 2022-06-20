@@ -5,6 +5,7 @@ import HeroNav from "../components/UI/Nav/HeroNav";
 import Footer from "../layouts/Footer";
 import LightModeContext from "../contexts/lightmode-context";
 import AuthContext from "../contexts/auth-context";
+import { auth } from "./Main";
 
 // firebase
 import {
@@ -26,9 +27,6 @@ const Login = () => {
   // declare useRef
   const emailInputRef = useRef<HTMLInputElement>(null);
   const passwordInputRef = useRef<HTMLInputElement>(null);
-
-  // declare auth
-  const auth = getAuth();
 
   // declare navigate
   const navigate = useNavigate();

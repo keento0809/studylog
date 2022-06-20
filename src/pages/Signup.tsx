@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, useState, useRef } from "react";
+import { Fragment, useContext, useState, useRef } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import HeroModal from "../components/UI/Modal/HeroModal";
 import HeroNav from "../components/UI/Nav/HeroNav";
@@ -13,7 +13,7 @@ import {
   signInWithPopup,
   createUserWithEmailAndPassword,
 } from "firebase/auth";
-import Auth from "../components/Auth/Auth";
+import { auth } from "./Main";
 
 const Signup = () => {
   // declare useContext
@@ -26,9 +26,6 @@ const Signup = () => {
   // declare useRef
   const emailInputRef = useRef<HTMLInputElement>(null);
   const passwordInputRef = useRef<HTMLInputElement>(null);
-
-  // declare auth
-  const auth = getAuth();
 
   // declare navigate
   const navigate = useNavigate();

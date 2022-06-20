@@ -20,11 +20,14 @@ import { getFirestore } from "firebase/firestore";
 import { config } from "../config/config";
 import { fireEvent } from "@testing-library/react";
 import { useEffect } from "react";
+import { getAuth } from "firebase/auth";
 
 // initialize firebaseApp
 const app = initializeApp(config.firebaseConfig);
 // Initialize Cloud Firestore and get a reference to the service
 export const db = getFirestore(app);
+
+export const auth = getAuth();
 
 const Main = () => {
   return (
