@@ -7,9 +7,9 @@ import { isLatLngLiteral } from "@googlemaps/typescript-guards";
 import { StudyLogObjFinal, locationObj } from "../../models/Model";
 import Layout from "../../layouts/Layout";
 import axios from "axios";
-import { getAuth } from "firebase/auth";
 import { getDocs, collection } from "firebase/firestore";
 import { db } from "../../pages/Main";
+import { auth } from "../../pages/Main";
 
 const render = (status: Status) => {
   return <h1>{status}</h1>;
@@ -30,7 +30,6 @@ const MapTry: React.VFC = () => {
   // declare useRef
   const locationInputRef = React.useRef<HTMLInputElement>(null);
 
-  const auth = getAuth();
   const currentUserId = auth.currentUser?.uid;
 
   const getStudyLocations = async () => {
@@ -169,7 +168,7 @@ const MapTry: React.VFC = () => {
             <div className="mx-auto pt-3">
               <div className="mx-auto md:w-2/3 lg:max-w-screen-md text-center">
                 <p className="pb-3 dark:text-gray-100">
-                  All locations you've ever studied are shown.
+                  Locations you've ever studied are shown.
                 </p>
                 <Map
                   center={center}

@@ -8,13 +8,12 @@ import LightModeContext from "../../../contexts/lightmode-context";
 import { StudyLogObjFinal } from "../../../models/Model";
 import { getDocs, collection } from "firebase/firestore";
 import { db } from "../../../pages/Main";
-import { getAuth } from "firebase/auth";
+import { auth } from "../../../pages/Main";
 
 const HomeCostChart: React.FC = () => {
   // declare useContext
   const lightModeCtx = useContext(LightModeContext);
 
-  const auth = getAuth();
   const currentUserId = auth.currentUser?.uid;
   // declare useState
   // I need to fix this part

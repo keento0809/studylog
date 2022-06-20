@@ -6,16 +6,13 @@ import {
   StudyLogObjFinal,
 } from "../../models/Model";
 import LogCard from "../UI/Card/LogCard";
-// import getData from "../API/getData";
-import { getAuth } from "firebase/auth";
 import { getDocs, collection } from "firebase/firestore";
 import { db } from "../../pages/Main";
+import { auth } from "../../pages/Main";
 
 const LogList = () => {
   // declare useContext
   const studyLogsCtx = useContext(StudyLogsContext);
-
-  const auth = getAuth();
   const currentUserId = auth.currentUser?.uid;
   // declare useState
   // original code

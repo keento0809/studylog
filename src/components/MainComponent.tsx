@@ -3,6 +3,7 @@ import AddLogForm from "./Log/AddLogForm";
 import SuccessAlert from "./UI/Alert/SuccessAlert";
 import HomeHistory from "./Log/HomeHistory";
 import HomeAnalysis from "./Analysis/HomeAnalysis";
+import { auth } from "../pages/Main";
 
 // test
 import { getAuth, onAuthStateChanged } from "firebase/auth";
@@ -10,9 +11,6 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 const MainComponent = () => {
   // declare useState
   const [isAlert, setIsAlert] = React.useState(false);
-
-  // declare auth
-  const auth = getAuth();
 
   React.useEffect(() => {
     // test

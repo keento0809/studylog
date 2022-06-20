@@ -2,16 +2,14 @@ import React, { useEffect, useState } from "react";
 import { Line } from "@ant-design/charts";
 import HomeCard from "../Card/HomeCard";
 import { DataObj, HourDataObj } from "../../../models/Model";
-import axios from "axios";
-import { getAuth } from "firebase/auth";
 import { getDocs, collection } from "firebase/firestore";
 import { db } from "../../../pages/Main";
+import { auth } from "../../../pages/Main";
 
 const AnalysisHourChart = () => {
   // declare useState
   const [dataForChart, setDataForChart] = useState<DataObj[]>([]);
 
-  const auth = getAuth();
   const currentUserId = auth.currentUser?.uid;
 
   const fetchingData = async () => {
