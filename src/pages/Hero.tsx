@@ -36,9 +36,10 @@ const Hero = () => {
                   </h1>
 
                   <p className="mt-4 text-gray-600 dark:text-gray-400">
-                    be the first to knows when our{" "}
+                    {/* be the first to knows when our{" "}
                     <span className="font-medium text-emerald-400">Brand</span>{" "}
-                    is live
+                    is live */}
+                    Memorize your progress and efforts for studying
                   </p>
 
                   <div className="flex flex-col mt-8 space-y-3 lg:space-y-0 lg:flex-row">

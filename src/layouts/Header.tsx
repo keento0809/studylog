@@ -28,7 +28,7 @@ const Header = () => {
   const handleLogout = () => {
     signOut(auth);
     authCtx.authLogout();
-    navigate("/login");
+    navigate("/");
   };
 
   return (
