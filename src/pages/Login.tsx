@@ -195,6 +195,11 @@ const Login = () => {
                         >
                           Login
                         </button>
+                        <div className="text-center">
+                          <span className="cursor-pointer">
+                            Login as a guest user.
+                          </span>
+                        </div>
                       </div>
                     </div>
                   </div>
