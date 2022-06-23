@@ -71,14 +71,36 @@ const Login = () => {
         console.log(user);
         authCtx.authLogin();
         navigate("/home");
-        // ...
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorCode, errorMessage);
-        // ..
       });
+    setAuthing(false);
+  };
+
+  const handleGuestLogin = async () => {
+    setAuthing(true);
+
+    signInWithEmailAndPassword(
+      auth,
+      process.env.REACT_APP_GUEST_USER_EMAIL!,
+      process.env.REACT_APP_GUEST_USER_PASSWORD!
+    )
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        console.log(user);
+        authCtx.authLogin();
+        navigate("/home");
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode, errorMessage);
+      });
+
     setAuthing(false);
   };
 
@@ -195,8 +217,11 @@ const Login = () => {
                         >
                           Login
                         </button>
-                        <div className="text-center">
-                          <span className="cursor-pointer">
+                        <div className="text-center pt-4">
+                          <span
+                            onClick={handleGuestLogin}
+                            className="cursor-pointer hover:text-emerald-400 dark:hover:text-emerald-500"
+                          >
                             Login as a guest user.
                           </span>
                         </div>
