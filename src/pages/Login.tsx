@@ -82,12 +82,10 @@ const Login = () => {
 
   const handleGuestLogin = async () => {
     setAuthing(true);
+    const email = process.env.REACT_APP_GUEST_USER_EMAIL!;
+    const password = process.env.REACT_APP_GUEST_USER_PASSWORD!;
 
-    signInWithEmailAndPassword(
-      auth,
-      process.env.REACT_APP_GUEST_USER_EMAIL!,
-      process.env.REACT_APP_GUEST_USER_PASSWORD!
-    )
+    signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
@@ -217,14 +215,14 @@ const Login = () => {
                         >
                           Login
                         </button>
-                        <div className="text-center pt-4">
+                        {/* <div className="text-center pt-4">
                           <span
                             onClick={handleGuestLogin}
                             className="cursor-pointer hover:text-emerald-400 dark:hover:text-emerald-500"
                           >
-                            Login as a guest user.
+                            Login as a sample user.
                           </span>
-                        </div>
+                        </div> */}
                       </div>
                     </div>
                   </div>
