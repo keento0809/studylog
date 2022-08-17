@@ -41,8 +41,6 @@ const Login = () => {
 
     signInWithPopup(auth, new GoogleAuthProvider())
       .then((response) => {
-        console.log(response.user.uid, "loginしまっせ");
-        // add authContext
         authCtx.authLogin();
         navigate("/home");
       })
@@ -68,7 +66,6 @@ const Login = () => {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        console.log(user);
         authCtx.authLogin();
         navigate("/home");
       })
@@ -89,7 +86,6 @@ const Login = () => {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        console.log(user);
         authCtx.authLogin();
         navigate("/home");
       })

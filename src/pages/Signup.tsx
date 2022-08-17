@@ -20,9 +20,6 @@ const Signup = () => {
   const lightModeCtx = useContext(LightModeContext);
   const authCtx = useContext(AuthContext);
 
-  // declare useState
-  const [authing, setAuthing] = useState(false);
-
   // declare useRef
   const emailInputRef = useRef<HTMLInputElement>(null);
   const passwordInputRef = useRef<HTMLInputElement>(null);
@@ -32,7 +29,6 @@ const Signup = () => {
 
   const handleToggleMode = () => {
     lightModeCtx.toggleMode();
-    console.log(lightModeCtx.isLightMode);
     window.document.documentElement.classList.toggle("dark");
   };
 
@@ -42,7 +38,6 @@ const Signup = () => {
       email: emailInputRef.current!.value,
       password: passwordInputRef.current!.value,
     };
-    console.log(enteredUserInfo);
     createUserWithEmailAndPassword(
       auth,
       emailInputRef.current!.value,

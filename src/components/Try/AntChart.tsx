@@ -34,17 +34,7 @@ const AntChart: React.FC = () => {
     },
   };
 
-  let chart: any;
-
-  // Export Image
-  // const downloadImage = () => {
-  //   chart?.downloadImage();
-  // };
-
-  // Get chart base64 string
-  // const toDataURL = () => {
-  //   console.log(chart?.toDataURL());
-  // };
+  let chart;
 
   return (
     <HomeCard label="Hours" isHome={false}>
@@ -52,25 +42,5 @@ const AntChart: React.FC = () => {
     </HomeCard>
   );
 };
-
-// const AntChart: React.FC = () => {
-//   // original
-//   const data = [
-//     264, 417, 438, 887, 309, 397, 550, 575, 563, 430, 525, 592, 492, 467, 513,
-//     546, 983, 340, 539, 243, 226, 192,
-//   ];
-
-//   const config = {
-//     height: 60,
-//     autoFit: false,
-//     data,
-//     smooth: true,
-//   };
-//   return (
-//     <div>
-//       <p>TT</p>
-//     </div>
-//   );
-// };
 
 export default AntChart;

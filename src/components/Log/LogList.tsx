@@ -53,25 +53,6 @@ const LogList = () => {
           });
         }
       });
-
-      console.log(newLoadedData);
-
-      // const loadedData: StudyLogObjFinal[] = [];
-      // const loadedDates = [];
-
-      // for (const key in data) {
-      //   loadedData.push({
-      //     date: data[key].date,
-      //     cost: data[key].cost,
-      //     hour: data[key].hour,
-      //     summary: data[key].summary,
-      //     location: data[key].location,
-      //   });
-      //   loadedDates.push({
-      //     date: data[key].date,
-      //   });
-      // }
-      // test
       setStudyLogs(newLoadedData);
       setIsLoading(false);
     } catch (error: any) {
@@ -94,7 +75,6 @@ const LogList = () => {
   }, [studyLogs]);
 
   useEffect(() => {
-    // console.log(testRef.current!.offsetWidth);
     if (
       window.innerWidth > 1023 &&
       testRef.current!.offsetWidth > 468 &&

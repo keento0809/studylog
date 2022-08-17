@@ -20,7 +20,6 @@ const Auth: React.FunctionComponent<AuthProps> = (props) => {
     if (user) {
       setLoading(false);
     } else {
-      console.log("unauthorized");
       navigate("/login");
     }
   });

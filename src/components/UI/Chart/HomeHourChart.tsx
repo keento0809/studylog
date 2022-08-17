@@ -42,7 +42,6 @@ const HomeHistoryChart: React.FC = () => {
       sortedQuerySnapshot.forEach((studyLog: StudyLogObjFinal) => {
         newLoadedData.push(Number(studyLog.hour));
       });
-      // console.log(newLoadedData);
       setHourData(newLoadedData);
     } catch (error: any) {
       console.log(error.message);

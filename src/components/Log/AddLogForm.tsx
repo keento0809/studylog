@@ -192,19 +192,6 @@ const AddLogForm = ({ setIsAlert }: PropsSetIsAlert) => {
     studyLogsCtx.updateStudyLogsData(studyLog);
 
     const sendRequest = async () => {
-      // I need to refactor this
-      // const res = await fetch(
-      //   "https://studylog-8e387-default-rtdb.firebaseio.com/studylogs.json",
-      //   {
-      //     method: "POST",
-      //     body: JSON.stringify(studyLog),
-      //   }
-      // );
-      // if (!res.ok) throw new Error();
-      // const data = await res.json();
-      // console.log(data);
-
-      // add data to firebase
       try {
         await setDoc(doc(db, "logs", `${studyLog.date}`), studyLog);
       } catch (error: any) {
