@@ -136,11 +136,11 @@ const Login = () => {
                           tab-index="0"
                           className="focus:outline-none text-sm mt-4 font-medium leading-none text-gray-500"
                         >
-                          Dont have account?{" "}
+                          Don't have account?{" "}
                           <Link
                             to="/signup"
                             className="hover:text-emerald-500 
-                            hover:dark:text-emerald-600 focus:text-emerald-500 focus:outline-none text-sm font-medium leading-none  text-gray-800 cursor-pointer"
+                            hover:dark:text-emerald-600 focus:text-emerald-500 focus:outline-none text-sm font-medium leading-none text-gray-800 dark:text-emerald-500 cursor-pointer"
                           >
                             {" "}
                             Sign up here

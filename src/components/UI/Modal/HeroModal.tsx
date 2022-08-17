@@ -17,12 +17,12 @@ const HeroModal = () => {
                 <h2 className="font-bold dark:text-slate-100 pb-4">
                   What is StudyLog?
                 </h2>
-                <p className="pb-4">
+                <p className="pb-4 dark:text-slate-300">
                   StudyLog is the web application logging your daily study
                   record to analyze it and to be more confident about yourself
                   looking back your progress and efforts in it.
                 </p>
-                <p className="pb-4">
+                <p className="pb-4 dark:text-slate-300">
                   It must be fun and helpful for you to start adding study
                   records on daily basis. You can also enter the amount of money
                   you spend and the location where you study as a portion of

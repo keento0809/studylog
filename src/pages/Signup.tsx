@@ -7,12 +7,7 @@ import LightModeContext from "../contexts/lightmode-context";
 import AuthContext from "../contexts/auth-context";
 
 // firebase
-import {
-  getAuth,
-  GoogleAuthProvider,
-  signInWithPopup,
-  createUserWithEmailAndPassword,
-} from "firebase/auth";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "./Main";
 
 const Signup = () => {
@@ -70,16 +65,6 @@ const Signup = () => {
           <div className="items-center lg:flex grow">
             <div className="w-full">
               <div className="py-4">
-                {/* <button
-                  className="py-4 px-10 rounded-lg border border-emerald-400"
-                  onClick={() => signInWithGoogle()}
-                  disabled={authing}
-                >
-                  Sign in with Google
-                </button> */}
-
-                {/* original */}
-                {/* <div className="h-full bg-gradient-to-tl from-green-400 to-indigo-900 w-full py-16 px-4"> */}
                 <div className="w-full px-4 フォームトップですよ">
                   <div className="flex flex-col items-center justify-center">
                     <div className="bg-white dark:bg-gray-800 dark:text-slate-100 rounded lg:w-1/3  md:w-1/2 w-full p-8 mt-4">
@@ -98,20 +83,14 @@ const Signup = () => {
                           <Link
                             to="/login"
                             className="hover:text-emerald-500 
-                          hover:dark:text-emerald-600 focus:text-emerald-500 focus:outline-none text-sm font-medium leading-none  text-gray-800 cursor-pointer"
+                          hover:dark:text-emerald-600 focus:text-emerald-500 focus:outline-none text-sm font-medium leading-none  text-gray-800 dark:text-emerald-500 cursor-pointer"
                           >
                             {" "}
                             Log in here
                           </Link>
                         </p>
                       </div>
-                      <div className="w-full flex items-center justify-between py-5">
-                        {/* <hr className="w-full bg-gray-600" />
-                        <p className="text-base font-medium leading-4 px-2.5 text-gray-600 dark:text-slate-100">
-                          OR
-                        </p>
-                        <hr className="w-full bg-gray-600 dark:bg-slate-100 " /> */}
-                      </div>
+                      <div className="w-full flex items-center justify-between py-5"></div>
                       <div>
                         <label
                           id="email"
