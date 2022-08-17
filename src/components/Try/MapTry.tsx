@@ -50,21 +50,15 @@ const MapTry: React.VFC = () => {
       setLocationData(loadedLocations);
     } catch (err: any) {
       setError(err.message);
-      console.log(err.message);
     }
     setIsLoading(false);
   };
 
   const onClick = (e: google.maps.MapMouseEvent) => {
-    // avoid directly mutating state
-
-    // I need to store lat and lng below
-    console.log(e.latLng!.toJSON().lat, e.latLng!.toJSON().lng);
     setClicks([...clicks, e.latLng!]);
   };
 
   const onIdle = (m: google.maps.Map) => {
-    console.log("onIdle");
     setZoom(m.getZoom()!);
     setCenter(m.getCenter()!.toJSON());
   };

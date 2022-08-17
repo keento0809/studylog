@@ -12,18 +12,6 @@ const MainComponent = () => {
   // declare useState
   const [isAlert, setIsAlert] = React.useState(false);
 
-  React.useEffect(() => {
-    // test
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        const uid = user.uid;
-        console.log(uid, "user is logged in.");
-      } else {
-        console.log("user is signed out.");
-      }
-    });
-  }, []);
-
   return (
     <div className="mx-auto lg:flex lg:flex-row md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl">
       <AddLogForm setIsAlert={setIsAlert} />

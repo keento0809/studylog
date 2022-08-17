@@ -60,7 +60,6 @@ const AnalysisHourChart = () => {
   let chart: any;
 
   useEffect(() => {
-    console.log("Rendered");
     fetchingData();
   }, []);
 

@@ -60,7 +60,6 @@ const AnalysisCostChart = () => {
   let chart: any;
 
   useEffect(() => {
-    console.log("Rendered");
     fetchingData();
   }, []);
 

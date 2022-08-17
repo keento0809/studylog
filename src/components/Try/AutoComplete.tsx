@@ -10,9 +10,9 @@ const AutoComplete = () => {
       <Autocomplete
         apiKey={GOOGLE_API_KEY}
         style={{ width: "90%" }}
-        onPlaceSelected={(place: any) => {
-          console.log(place);
-        }}
+        // onPlaceSelected={(place: any) => {
+        //   console.log(place);
+        // }}
         options={{ types: ["(cities)"] }}
       />
     </div>

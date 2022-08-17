@@ -12,7 +12,6 @@ const Hero = () => {
 
   const handleToggleMode = () => {
     lightModeCtx.toggleMode();
-    console.log(lightModeCtx.isLightMode);
     window.document.documentElement.classList.toggle("dark");
   };
 
