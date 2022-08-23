@@ -108,7 +108,7 @@ const Login = () => {
         className="bg-white dark:bg-gray-800 dark:text-slate-100"
         style={{ minHeight: "100vh" }}
       >
-        <div className="container min-h-screen md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl flex justify-center md:justify-start items-start px-6 pt-14 md:pt-8 lg:pt-28 mx-auto">
+        <div className="container min-h-screen md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl flex justify-center md:justify-start items-start px-6 pt-14 md:pt-8 lg:pt-20 mx-auto">
           <div className="items-center lg:flex grow">
             <div className="w-full">
               <div className="py-4">
