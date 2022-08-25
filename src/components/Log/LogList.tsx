@@ -28,13 +28,6 @@ const LogList = () => {
     setIsLoading(true);
 
     try {
-      // const response = await fetch(
-      //   "https://studylog-8e387-default-rtdb.firebaseio.com/studylogs.json"
-      // );
-      // if (!response.ok) throw new Error("Request failed.");
-      // const data = await response.json();
-
-      // test: get data
       const querySnapshot = await getDocs(collection(db, "logs"));
       const newLoadedData: StudyLogObjFinal[] = [];
 
