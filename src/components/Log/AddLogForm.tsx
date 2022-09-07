@@ -149,10 +149,6 @@ const AddLogForm = ({ setIsAlert }: PropsSetIsAlert) => {
   const [locationInfoState, setLocationInfoState] = useState<locationObj>();
 
   const currentUserId = auth.currentUser?.uid;
-  // original
-  // const GOOGLE_API_KEY = process.env.REACT_APP_GOOGLE_API_KEY_GEOCODING;
-  // var google = window.google;
-
   const GOOGLE_API_KEY_FOR_AUTOCOMPLETE = process.env.REACT_APP_GOOGLE_API_KEY;
 
   function handleSubmitLog(event: React.FormEvent) {
@@ -163,32 +159,23 @@ const AddLogForm = ({ setIsAlert }: PropsSetIsAlert) => {
     const enteredDate = DateInputRef.current!.value;
     const enteredLocationInfo = locationInfoState;
 
-    // validate date
     if (enteredDate > newDate || enteredDate === "") {
       alert("Invalid date input.");
       return;
     }
-
-    // validate other inputs
     if (enteredHour === "" || enteredCost === "" || enteredSummary === "") {
       alert("Invalid input");
       return;
     }
 
-    // original
-    // const studyLog: StudyLogObj = {
     const studyLog: StudyLogObjFinal = {
       date: enteredDate,
       hour: enteredHour!,
       cost: enteredCost!,
       summary: enteredSummary!,
-      // original
-      // location: enteredLocationInfo!,
       location: addressLatLng!,
       userId: currentUserId!,
     };
-
-    // test
     studyLogsCtx.updateStudyLogsData(studyLog);
 
     const sendRequest = async () => {
@@ -197,11 +184,9 @@ const AddLogForm = ({ setIsAlert }: PropsSetIsAlert) => {
       } catch (error: any) {
         console.log(error.message);
       }
-
       hourInputRef.current!.value = "";
       costInputRef.current!.value = "";
       summaryInputRef.current!.value = "";
-
       setIsAlert(true);
       window.setTimeout(() => setIsAlert(false), 1000);
     };
@@ -212,20 +197,15 @@ const AddLogForm = ({ setIsAlert }: PropsSetIsAlert) => {
 
   useEffect(() => {
     const today = new Date();
-
     const year = today.getFullYear();
     const month = today.getMonth() + 1;
     const day = today.getDate();
 
-    // original code
-    // newDate = `${month}/${day}/${year}`;
     newDate = `${year}-${month < 10 ? "0" : ""}${month}-${
       day < 10 ? "0" : ""
     }${day}`;
   }, []);
 
-  // regarding Maps Javascript API
-  // const [clicks, setClicks] = React.useState<google.maps.LatLng[]>([]);
   const [addressLatLng, setAddressLatLng] = React.useState<locationObj>();
   const [zoom, setZoom] = React.useState(12);
   const [center, setCenter] = React.useState<google.maps.LatLngLiteral>({
@@ -236,8 +216,6 @@ const AddLogForm = ({ setIsAlert }: PropsSetIsAlert) => {
   let currentLocation;
 
   useEffect(() => {
-    // test geolocation
-    // Try HTML5 geolocation.
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
         const pos = {
@@ -263,10 +241,7 @@ const AddLogForm = ({ setIsAlert }: PropsSetIsAlert) => {
   return (
     <Fragment>
       <Wrapper apiKey={process.env.REACT_APP_GOOGLE_API_KEY!} render={render}>
-        <div
-          className="bg-white py-8 dark:bg-gray-800 lg:basis-1/2 xl:basis-10/12"
-          // onSubmit={handleSubmitLog}
-        >
+        <div className="bg-white py-8 dark:bg-gray-800 lg:basis-1/2 xl:basis-10/12">
           <div className="max-w-3xl mx-auto text-center">
             <div className="map-containerです">
               <h1 className="text-3xl lg:text-2xl font-semibold text-gray-800 dark:text-gray-100">
@@ -277,11 +252,7 @@ const AddLogForm = ({ setIsAlert }: PropsSetIsAlert) => {
                   Click the spot where you studied on the map
                 </span>
               </div>
-              <div
-                // action=""
-                className="googleMap-search md:w-10/12 lg:w-full mx-auto md:flex md:flex-row md:items-center md:justify-center"
-                // onSubmit={handleSearchAddress}
-              >
+              <div className="googleMap-search md:w-10/12 lg:w-full mx-auto md:flex md:flex-row md:items-center md:justify-center">
                 <div className="w-full md:w-1/2 my-4 md:mb-0 rounded-lg flex items-center justify-center">
                   <Map
                     onClick={handleClick}
@@ -323,7 +294,6 @@ const AddLogForm = ({ setIsAlert }: PropsSetIsAlert) => {
                   </label>
                   <input
                     ref={DateInputRef}
-                    // onChange={handleCheckDate}
                     type="date"
                     className="w-6/12 mr-auto px-4 py-2 text-gray-700 bg-white border rounded-full sm:mx-2 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-emerald-500 dark:focus:border-emerald-500 focus:outline-none focus:ring focus:ring-emerald-500 focus:ring-opacity-40"
                     placeholder="Hour"
@@ -373,9 +343,6 @@ const AddLogForm = ({ setIsAlert }: PropsSetIsAlert) => {
                 </div>
 
                 <div className="py-4 md:py-7" onClick={handleSubmitLog}>
-                  {/* <button className="w-full md:w-7/12 lg:w-1/2 px-4 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-emerald-400 rounded-full sm:mx-2 hover:bg-emerald-500 focus:outline-none focus:bg-emerald-500 dark:bg-emerald-500">
-                    ADD
-                  </button> */}
                   <FilledButton />
                 </div>
               </div>
