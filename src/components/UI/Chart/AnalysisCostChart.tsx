@@ -64,7 +64,7 @@ const AnalysisCostChart = () => {
   }, []);
 
   return (
-    <HomeCard label="Costs" isHome={false}>
+    <HomeCard label="Costs ($)" isHome={false}>
       <Line {...config} onReady={(chartInstance) => (chart = chartInstance)} />
     </HomeCard>
   );

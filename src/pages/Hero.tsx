@@ -24,7 +24,7 @@ const Hero = () => {
       >
         <HeroNav handleToggleMode={handleToggleMode} />
 
-        <div className="flexboxつけるよ">
+        <div className="">
           <div className="container md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl flex justify-center md:justify-start items-start px-6 pt-14 md:pt-8 lg:pt-28 mx-auto">
             <div className="items-center lg:flex grow">
               <div className="w-full lg:w-1/2">
@@ -35,18 +35,15 @@ const Hero = () => {
                   </h1>
 
                   <p className="mt-4 text-gray-600 dark:text-gray-400">
-                    {/* be the first to knows when our{" "}
-                    <span className="font-medium text-emerald-400">Brand</span>{" "}
-                    is live */}
                     Memorize your progress and efforts for studying
                   </p>
 
                   <div className="flex flex-col mt-8 space-y-3 lg:space-y-0 lg:flex-row">
-                    <button className="w-full md:w-40 md:mr-auto lg:mx-0 px-4 py-2 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-emerald-400 dark:bg-emerald-500 rounded-full lg:w-auto hover:bg-emerald-500 focus:outline-none focus:bg-emerald-500">
-                      {/* original */}
-                      {/* <Link to="/home">Get started</Link> */}
-                      <Link to="/login">Get started</Link>
-                    </button>
+                    <Link to="/login">
+                      <button className="w-full md:w-40 md:mr-auto lg:mx-0 px-4 py-2 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-emerald-400 dark:bg-emerald-500 rounded-full lg:w-auto hover:bg-emerald-500 focus:outline-none focus:bg-emerald-500">
+                        Get started
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </div>
