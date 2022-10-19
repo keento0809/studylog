@@ -39,7 +39,7 @@ const Header = () => {
               <div className="text-xl font-semibold text-gray-700">
                 <div className="flex flex-row items-center">
                   <Link
-                    className="text-2xl font-bold text-gray-800 transition-colors duration-200 transform dark:text-white lg:text-3xl hover:text-gray-700 dark:hover:text-gray-300"
+                    className="text-xl lg:text-2xl font-bold tracking-tighter text-gray-800 transition-colors duration-200 transform dark:text-white hover:text-gray-700 dark:hover:text-gray-300"
                     // href="#"
                     to="/home"
                   >
@@ -48,7 +48,7 @@ const Header = () => {
                   {lightModeCtx.isLightMode && (
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="sun inline-block ml-4 h-6 w-6 text-gray-700 dark:text-slate-100 cursor-pointer"
+                      className="sun inline-block ml-4 h-5 w-5 text-gray-700 dark:text-slate-100 cursor-pointer"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -65,7 +65,7 @@ const Header = () => {
                   {!lightModeCtx.isLightMode && (
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="moon inline-block ml-4 h-6 w-6 text-gray-700 dark:text-slate-100 cursor-pointer"
+                      className="moon inline-block ml-4 h-5 w-5 text-gray-700 dark:text-slate-100 cursor-pointer"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -99,29 +99,25 @@ const Header = () => {
                 </button>
               </div>
               <div className="hidden lg:block">
-                <div className="flex flex-col text-center -mx-4 md:flex-row md:items-center md:mx-8">
+                <div className="flex flex-col text-center -mx-4 md:flex-row md:items-center md:mx-8 xl:ml-auto xl:mr-0">
                   <span
                     data-bs-dismiss="modal"
                     onClick={() => handleNavigatePage(0)}
-                    // to="/analysis"
-                    // href="#"
-                    className="px-4 py-2 mx-2 xl:mx-4 mt-2 text-sm font-medium text-gray-700 transition-colors duration-200 transform rounded-full md:mt-0 dark:text-gray-200 hover:bg-emerald-400 dark:hover:bg-emerald-500 cursor-pointer"
+                    className="px-4 py-2 mx-2 xl:mx-4 mt-2 text-xs font-semibold text-gray-700 transition-colors duration-200 transform rounded-full md:mt-0 dark:text-gray-200 hover:bg-emerald-400 hover:text-white dark:hover:bg-emerald-500 cursor-pointer"
                   >
                     {navMenuLabels[0]}
                   </span>
                   <span
                     data-bs-dismiss="modal"
                     onClick={() => handleNavigatePage(1)}
-                    // to="/logs"
-                    // href="#"
-                    className="px-4 py-2 mx-2 xl:mx-4 mt-2 text-sm font-medium text-gray-700 transition-colors duration-200 transform rounded-full md:mt-0 dark:text-gray-200 hover:bg-emerald-400 dark:hover:bg-emerald-500 cursor-pointer"
+                    className="px-4 py-2 mx-2 xl:mx-4 mt-2 text-xs font-semibold text-gray-700 transition-colors duration-200 transform rounded-full md:mt-0 dark:text-gray-200 hover:bg-emerald-400 hover:text-white dark:hover:bg-emerald-500 cursor-pointer"
                   >
                     {navMenuLabels[1]}
                   </span>
                   <span
                     data-bs-dismiss="modal"
                     onClick={() => handleNavigatePage(2)}
-                    className="px-4 py-2 mx-2 xl:mx-4 mt-2 text-sm font-medium text-gray-700 transition-colors duration-200 transform rounded-full md:mt-0 dark:text-gray-200 hover:bg-emerald-400 dark:hover:bg-emerald-500 cursor-pointer"
+                    className="px-4 py-2 mx-2 xl:mx-4 mt-2 text-xs font-semibold text-gray-700 transition-colors duration-200 transform rounded-full md:mt-0 dark:text-gray-200 hover:bg-emerald-400 hover:text-white dark:hover:bg-emerald-500 cursor-pointer"
                   >
                     {navMenuLabels[2]}
                   </span>
@@ -129,10 +125,10 @@ const Header = () => {
                     data-bs-dismiss="modal"
                     onClick={
                       localStorage.getItem("authState")
-                        ? () => handleLogout() // handleLogout
+                        ? () => handleLogout()
                         : () => handleNavigatePage(3)
                     }
-                    className="px-4 py-2 mx-2 xl:mx-4 mt-2 text-sm font-medium text-gray-700 transition-colors duration-200 transform rounded-full md:mt-0 dark:text-gray-200 hover:bg-emerald-400 dark:hover:bg-emerald-500 cursor-pointer"
+                    className="px-4 py-2 mx-2 xl:mx-4 mt-2 text-xs font-semibold text-gray-700 transition-colors duration-200 transform rounded-full md:mt-0 dark:text-gray-200 hover:bg-emerald-400 hover:text-white dark:hover:bg-emerald-500 cursor-pointer"
                   >
                     {localStorage.getItem("authState")
                       ? "Logout"
