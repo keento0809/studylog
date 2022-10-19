@@ -16,9 +16,7 @@ const HeroNav = ({ handleToggleMode }: PropsToggleMode) => {
         <div className="fixedにするよー z-10 sticky top-0 container bg-white dark:bg-gray-800 flex items-center justify-between px-6 py-3 mx-auto">
           <div className="flex flex-row items-center">
             <Link
-              className="text-2xl font-bold text-gray-800 dark:text-white lg:text-3xl hover:text-gray-700 dark:hover:text-gray-300"
-              // original
-              // to="/home"
+              className="text-xl font-extrabold tracking-tighter text-gray-800 dark:text-white lg:text-2xl hover:text-gray-700 dark:hover:text-gray-300"
               to="/"
             >
               StudyLog
@@ -26,7 +24,7 @@ const HeroNav = ({ handleToggleMode }: PropsToggleMode) => {
             {lightModeCtx.isLightMode && (
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="sun cursor-pointer inline-block ml-4 h-6 w-6 text-gray-700 dark:text-slate-100"
+                className="sun cursor-pointer inline-block ml-4 h-5 w-5 text-gray-700 dark:text-slate-100"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -43,7 +41,7 @@ const HeroNav = ({ handleToggleMode }: PropsToggleMode) => {
             {!lightModeCtx.isLightMode && (
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="moon cursor-pointer inline-block ml-4 h-6 w-6 text-gray-700 dark:text-slate-100"
+                className="moon cursor-pointer inline-block ml-4 h-5 w-5 text-gray-700 dark:text-slate-100"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -60,7 +58,7 @@ const HeroNav = ({ handleToggleMode }: PropsToggleMode) => {
           </div>
 
           <a
-            className="my-1 text-sm font-medium text-emerald-400 dark:text-emerald-500 hover:text-emerald-500 dark:hover:text-emerald-500 lg:mx-4 lg:my-0"
+            className="my-1 text-sm font-medium text-emerald-400 dark:text-emerald-500 hover:text-emerald-500 dark:hover:text-emerald-600 lg:mx-4 lg:my-0"
             href="#"
             data-bs-toggle="modal"
             data-bs-target="#heroModal"

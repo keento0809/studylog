@@ -29,7 +29,7 @@ const Hero = () => {
             <div className="items-center lg:flex grow">
               <div className="w-full lg:w-1/2">
                 <div className="lg:max-w-lg">
-                  <h1 className="text-2xl font-semibold text-gray-800 dark:text-white lg:text-3xl">
+                  <h1 className="text-2xl font-semibold tracking-tighter text-gray-800 dark:text-white lg:text-3xl">
                     Analyze your{" "}
                     <span className="text-emerald-400">Study-Log</span>
                   </h1>
@@ -40,7 +40,7 @@ const Hero = () => {
 
                   <div className="flex flex-col mt-8 space-y-3 lg:space-y-0 lg:flex-row">
                     <Link to="/login">
-                      <button className="w-full md:w-40 md:mr-auto lg:mx-0 px-4 py-2 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-emerald-400 dark:bg-emerald-500 rounded-full lg:w-auto hover:bg-emerald-500 focus:outline-none focus:bg-emerald-500">
+                      <button className="w-full md:w-40 md:mr-auto lg:mx-0 px-4 py-2 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-emerald-400 dark:bg-emerald-500 rounded-full lg:w-auto hover:bg-emerald-500 dark:hover:bg-emerald-600 focus:outline-none focus:bg-emerald-500">
                         Get started
                       </button>
                     </Link>
