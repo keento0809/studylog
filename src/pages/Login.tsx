@@ -112,24 +112,14 @@ const Login = () => {
           <div className="items-center lg:flex grow">
             <div className="w-full">
               <div className="py-4">
-                {/* <button
-                  className="py-4 px-10 rounded-lg border border-emerald-400"
-                  onClick={() => signInWithGoogle()}
-                  disabled={authing}
-                >
-                  Sign in with Google
-                </button> */}
-
-                {/* original */}
-                {/* <div className="h-full bg-gradient-to-tl from-green-400 to-indigo-900 w-full py-16 px-4"> */}
-                <div className="w-full px-4 フォームトップですよ">
+                <div className="w-full px-4">
                   <div className="flex flex-col items-center justify-center">
-                    <div className="bg-white dark:bg-gray-800 dark:text-slate-100 rounded lg:w-1/3  md:w-1/2 w-full p-8 mt-4">
+                    <div className="bg-white dark:bg-gray-800 dark:text-slate-100 rounded lg:w-1/3  md:w-1/2 w-full p-8">
                       <p
                         tab-index="0"
                         className="focus:outline-none text-2xl font-extrabold leading-6 text-center text-gray-800 dark:text-slate-100"
                       >
-                        Login to your account
+                        Login
                       </p>
                       <div className="text-center py-2">
                         <p
@@ -152,7 +142,7 @@ const Login = () => {
                         role="button"
                         onClick={() => signInWithGoogle()}
                         disabled={authing}
-                        className="focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-gray-700 py-3.5 px-4 border rounded-lg border-gray-600 dark:border-gray-600 hover:dark:border-emerald-500 flex items-center w-full my-5"
+                        className="focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-gray-700 py-3.5 px-4 border rounded-lg border-gray-600 dark:border-gray-600 hover:border-emerald-400 hover:dark:border-emerald-500 flex items-center w-full my-5"
                       >
                         <img
                           src="https://tuk-cdn.s3.amazonaws.com/can-uploader/sign_in-svg2.svg"

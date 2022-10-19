@@ -65,14 +65,14 @@ const Signup = () => {
           <div className="items-center lg:flex grow">
             <div className="w-full">
               <div className="py-4">
-                <div className="w-full px-4 フォームトップですよ">
+                <div className="w-full px-4">
                   <div className="flex flex-col items-center justify-center">
-                    <div className="bg-white dark:bg-gray-800 dark:text-slate-100 rounded lg:w-1/3  md:w-1/2 w-full p-8 mt-4">
+                    <div className="bg-white dark:bg-gray-800 dark:text-slate-100 rounded lg:w-1/3  md:w-1/2 w-full p-8">
                       <p
                         tab-index="0"
                         className="focus:outline-none text-2xl font-extrabold leading-6 text-center text-gray-800 dark:text-slate-100"
                       >
-                        Sign up here
+                        Sign up
                       </p>
                       <div className="text-center py-2">
                         <p
