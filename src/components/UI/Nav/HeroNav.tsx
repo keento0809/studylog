@@ -16,7 +16,7 @@ const HeroNav = ({ handleToggleMode }: PropsToggleMode) => {
         <div className="fixedにするよー z-10 sticky top-0 container bg-white dark:bg-gray-800 flex items-center justify-between px-6 py-3 mx-auto">
           <div className="flex flex-row items-center">
             <Link
-              className="text-xl font-extrabold tracking-tighter text-gray-800 dark:text-white lg:text-2xl hover:text-gray-700 dark:hover:text-gray-300"
+              className="text-xl font-extrabold tracking-tighter text-gray-800 dark:text-white hover:text-gray-700 dark:hover:text-gray-300"
               to="/"
             >
               StudyLog

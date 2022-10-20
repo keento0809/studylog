@@ -68,10 +68,12 @@ const LogList = () => {
   }, [studyLogs]);
 
   useEffect(() => {
+    console.log(window.innerWidth, " : ", testRef.current!.offsetWidth);
+
     if (
       window.innerWidth > 1023 &&
       testRef.current!.offsetWidth > 468 &&
-      testRef.current!.offsetWidth < 500
+      testRef.current!.offsetWidth < 513
     )
       setJustifyC(true);
   }, []);
@@ -93,11 +95,9 @@ const LogList = () => {
         </div>
       )}
       {!isLoading && (
-        // original code: lg:justify-start
-        // ${justifyC ? "justify-center" : ""}
         <div
           ref={testRef}
-          className={`lg:flex lg:justify-center lg:items-center lg:w-11/12 lg:mx-auto`}
+          className={`lg:flex lg:justify-center lg:items-center lg:w-full lg:mx-auto`}
         >
           <ul
             className={`overflow-scroll lg:flex ${
@@ -105,12 +105,9 @@ const LogList = () => {
             } lg:flex-row lg:flex-wrap`}
           >
             {studyLogsCtx.studyLogsData.map(
-              // original code
-              // (log: StudyLogObj, index: number) => {
               (log: StudyLogObjFinal, index: number) => {
                 return (
-                  // test minWidth min-w-298
-                  <li key={index} className="lg:basis-4/12 min-w-298">
+                  <li key={index} className="lg:basis-1/4 min-w-298">
                     <LogCard
                       date={log.date}
                       hour={log.hour}

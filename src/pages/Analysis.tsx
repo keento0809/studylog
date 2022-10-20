@@ -7,7 +7,7 @@ const Analysis = () => {
     <Layout>
       <div className="py-8">
         <div className="pb-3 text-center">
-          <h1 className="text-3xl font-semibold text-gray-800 dark:text-gray-100">
+          <h1 className="text-xl tracking-tighter font-semibold text-gray-800 dark:text-gray-100">
             Analysis
           </h1>
         </div>

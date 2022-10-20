@@ -37,12 +37,12 @@ const LogCard = ({ date, hour, cost, summary }: StudyLogObjFinal) => {
       <div className="flex items-center justify-between px-6 py-3 bg-emerald-400 dark:bg-emerald-500">
         <div className="flex flex-row items-center">
           <CalendarIcon className="block h-5 w-5 text-white dark:text-slate-100" />
-          <h1 className="mx-3 text-lg font-semibold text-white dark:text-slate-100">
+          <h1 className="mx-3 text-sm font-semibold text-white dark:text-slate-100">
             {date}
           </h1>
         </div>
         <div className="flex flex-row justify-end items-center">
-          <h1 className="mx-3 text-lg font-semibold text-white dark:text-slate-100">
+          <h1 className="mx-3 text-sm font-semibold text-white dark:text-slate-100">
             {hour} hrs
           </h1>
           {!isShown && (
@@ -63,11 +63,10 @@ const LogCard = ({ date, hour, cost, summary }: StudyLogObjFinal) => {
       {isShown && (
         <div className="px-6 py-4">
           <div className="min-h-50 lg:min-h-100 flex justify-center items-center">
-            <p className="text-lg py-2 text-gray-700 dark:text-white font-bold">
+            <p className="text-base xl:text-sm py-2 text-gray-700 dark:text-white font-bold">
               {summary}
             </p>
           </div>
-
           <div className="">
             <div className="flex flex-row justify-center items-center">
               <div className="flex items-center mt-4 text-gray-700 dark:text-gray-200">
