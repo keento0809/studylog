@@ -39,7 +39,7 @@ const Header = () => {
               <div className="text-xl font-semibold text-gray-700">
                 <div className="flex flex-row items-center">
                   <Link
-                    className="text-xl font-bold tracking-tighter text-gray-800 transition-colors duration-200 transform dark:text-white hover:text-gray-700 dark:hover:text-gray-300"
+                    className="text-lg font-bold tracking-tighter text-gray-800 transition-colors duration-200 transform dark:text-white hover:text-gray-700 dark:hover:text-gray-300"
                     // href="#"
                     to="/home"
                   >

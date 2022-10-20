@@ -256,6 +256,12 @@ const AddLogForm = ({ setIsAlert }: PropsSetIsAlert) => {
                   ></Map>
                 </div>
                 <div className="md:basis-2/4">
+                  <label
+                    htmlFor=""
+                    className="block pl-4 text-sm dark:text-emerald-300"
+                  >
+                    Location*
+                  </label>
                   <Autocomplete
                     apiKey={GOOGLE_API_KEY_FOR_AUTOCOMPLETE}
                     className="w-3/5 md:w-4/5 mr-auto px-4 py-2 text-sm text-gray-700 bg-white border rounded-full sm:mx-2 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-emerald-500 dark:focus:border-emerald-500 focus:outline-none focus:ring focus:ring-emerald-500 focus:ring-opacity-40"
