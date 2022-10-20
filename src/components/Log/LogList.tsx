@@ -1,36 +1,24 @@
 import { useContext, useEffect, useState, useRef, SetStateAction } from "react";
 import StudyLogsContext from "../../contexts/studyLogs-context";
-import {
-  PropsLogList,
-  StudyLogObj,
-  StudyLogObjFinal,
-} from "../../models/Model";
+import { StudyLogObjFinal } from "../../models/Model";
 import LogCard from "../UI/Card/LogCard";
 import { getDocs, collection } from "firebase/firestore";
 import { db } from "../../pages/Main";
 import { auth } from "../../pages/Main";
 
 const LogList = () => {
-  // declare useContext
   const studyLogsCtx = useContext(StudyLogsContext);
   const currentUserId = auth.currentUser?.uid;
-  // declare useState
-  // original code
-  // const [studyLogs, setStudyLogs] = useState<StudyLogObj[]>([]);
   const [studyLogs, setStudyLogs] = useState<StudyLogObjFinal[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [justifyC, setJustifyC] = useState(false);
-
   // declare useRef
   const testRef = useRef<HTMLDivElement>(null);
-
   const getStudyLogs = async () => {
     setIsLoading(true);
-
     try {
       const querySnapshot = await getDocs(collection(db, "logs"));
       const newLoadedData: StudyLogObjFinal[] = [];
-
       querySnapshot.forEach((doc: any) => {
         if (currentUserId === doc.data()["userId"]) {
           newLoadedData.push({
@@ -52,11 +40,16 @@ const LogList = () => {
       console.log(error.message);
     }
   };
-
   useEffect(() => {
     getStudyLogs();
+    console.log(window.innerWidth, " : ", testRef.current!.offsetWidth);
+    if (
+      window.innerWidth > 1023 &&
+      testRef.current!.offsetWidth > 468 &&
+      testRef.current!.offsetWidth < 513
+    )
+      setJustifyC(true);
   }, []);
-
   useEffect(() => {
     const sortedArr = studyLogs.sort(function (
       a: StudyLogObjFinal,
@@ -66,16 +59,15 @@ const LogList = () => {
     });
     studyLogsCtx.setInitialStudyLogs(sortedArr);
   }, [studyLogs]);
-
-  useEffect(() => {
-    if (
-      window.innerWidth > 1023 &&
-      testRef.current!.offsetWidth > 468 &&
-      testRef.current!.offsetWidth < 500
-    )
-      setJustifyC(true);
-  }, []);
-
+  // useEffect(() => {
+  //   console.log(window.innerWidth, " : ", testRef.current!.offsetWidth);
+  //   if (
+  //     window.innerWidth > 1023 &&
+  //     testRef.current!.offsetWidth > 468 &&
+  //     testRef.current!.offsetWidth < 513
+  //   )
+  //     setJustifyC(true);
+  // }, []);
   return (
     <div>
       {isLoading && (
@@ -93,11 +85,9 @@ const LogList = () => {
         </div>
       )}
       {!isLoading && (
-        // original code: lg:justify-start
-        // ${justifyC ? "justify-center" : ""}
         <div
           ref={testRef}
-          className={`lg:flex lg:justify-center lg:items-center lg:w-11/12 lg:mx-auto`}
+          className={`lg:flex lg:justify-center lg:items-center lg:w-full lg:mx-auto`}
         >
           <ul
             className={`overflow-scroll lg:flex ${
@@ -105,12 +95,9 @@ const LogList = () => {
             } lg:flex-row lg:flex-wrap`}
           >
             {studyLogsCtx.studyLogsData.map(
-              // original code
-              // (log: StudyLogObj, index: number) => {
               (log: StudyLogObjFinal, index: number) => {
                 return (
-                  // test minWidth min-w-298
-                  <li key={index} className="lg:basis-4/12 min-w-298">
+                  <li key={index} className="lg:basis-1/4 min-w-298">
                     <LogCard
                       date={log.date}
                       hour={log.hour}

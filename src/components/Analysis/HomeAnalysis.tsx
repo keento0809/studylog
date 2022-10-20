@@ -6,14 +6,14 @@ const HomeAnalysis = () => {
   return (
     <Fragment>
       {/* I gutta replace this section to HomeHistory component */}
-      <h1 className="text-xl font-semibold text-gray-800 dark:text-gray-100">
+      <h1 className="text-lg font-semibold text-gray-800 dark:text-gray-100">
         Analysis
       </h1>
       <div className="pt-8 lg:pb-8 lg:flex lg:flex-row">
         <div className="mx-auto lg:w-1/2">
           <HomeHourChart />
         </div>
-        <div className="mx-auto lg:w-1/2">
+        <div className="mx-auto lg:w-1/2 lg:ml-3">
           <HomeCostChart />
         </div>
       </div>

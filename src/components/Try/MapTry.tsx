@@ -155,7 +155,7 @@ const MapTry: React.VFC = () => {
           <div className="py-8">
             {/* need to add Map component here */}
             <div className="pb-3 text-center">
-              <h1 className="text-3xl font-semibold text-gray-800 dark:text-gray-100">
+              <h1 className="text-xl tracking-tighter font-semibold text-gray-800 dark:text-gray-100">
                 Location
               </h1>
             </div>

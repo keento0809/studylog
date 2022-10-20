@@ -5,7 +5,7 @@ import LogList from "./LogList";
 const HomeHistory = () => {
   return (
     <div className="hidden lg:block ">
-      <h1 className="text-xl font-semibold text-gray-800 dark:text-gray-100">
+      <h1 className="text-lg font-semibold text-gray-800 dark:text-gray-100">
         History
       </h1>
       <div className="mt-4 max-h-48 overflow-hidden">

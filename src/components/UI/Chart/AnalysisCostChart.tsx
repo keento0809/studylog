@@ -7,16 +7,12 @@ import { getDocs, collection } from "firebase/firestore";
 import { db } from "../../../pages/Main";
 
 const AnalysisCostChart = () => {
-  // declare useState
   const [dataForChart, setDataForChart] = useState<DataObj[]>([]);
-
   const currentUserId = auth.currentUser?.uid;
-
   const fetchingData = async () => {
     try {
       const querySnapshot = await getDocs(collection(db, "logs"));
       const newLoadedData: any = [];
-
       querySnapshot.forEach((doc) => {
         if (currentUserId === doc.data()["userId"]) {
           newLoadedData.push({
@@ -25,7 +21,6 @@ const AnalysisCostChart = () => {
           });
         }
       });
-      // test
       const sortedArr = newLoadedData.sort(function (
         a: CostDataObj,
         b: CostDataObj
@@ -37,7 +32,6 @@ const AnalysisCostChart = () => {
       console.log(error.message);
     }
   };
-
   const config = {
     data: dataForChart,
     width: 317,
@@ -56,13 +50,10 @@ const AnalysisCostChart = () => {
     },
     color: "#34D499",
   };
-
   let chart: any;
-
   useEffect(() => {
     fetchingData();
   }, []);
-
   return (
     <HomeCard label="Costs ($)" isHome={false}>
       <Line {...config} onReady={(chartInstance) => (chart = chartInstance)} />

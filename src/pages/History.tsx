@@ -6,7 +6,7 @@ const History = () => {
     <Layout>
       <div className="container mx-auto py-8 text-center max-h-fit overflow-scroll">
         <div className="pb-3">
-          <h1 className="text-3xl font-semibold text-gray-800 dark:text-gray-100">
+          <h1 className="text-xl tracking-tighter font-semibold text-gray-800 dark:text-gray-100">
             History
           </h1>
         </div>
