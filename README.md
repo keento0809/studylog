@@ -1,6 +1,6 @@
 # StudyLog
 
-A web application memorizing countries where you've ever been before and analyzing them visually with React and Typescript.
+A helpful web application that analyzes and visualizes users’ daily study records with React, Typescript, and Firebase.
 
 ## Demo link:
 
