@@ -255,26 +255,30 @@ const AddLogForm = ({ setIsAlert }: PropsSetIsAlert) => {
                     }}
                   ></Map>
                 </div>
-                <div className="md:basis-2/4">
-                  <label
-                    htmlFor=""
-                    className="block pl-4 text-sm dark:text-emerald-300"
-                  >
-                    Location*
-                  </label>
-                  <Autocomplete
-                    apiKey={GOOGLE_API_KEY_FOR_AUTOCOMPLETE}
-                    className="w-3/5 md:w-4/5 mr-auto px-4 py-2 text-sm text-gray-700 bg-white border rounded-full sm:mx-2 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-emerald-500 dark:focus:border-emerald-500 focus:outline-none focus:ring focus:ring-emerald-500 focus:ring-opacity-40"
-                    onPlaceSelected={(place: any) => {
-                      setCenter({
-                        lat: place.geometry.location.lat(),
-                        lng: place.geometry.location.lng(),
-                      });
-                    }}
-                  />
-                  <button className="w-1/3 md:w-4/5 px-3 py-2 md:mt-4 ml-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-emerald-400 rounded-full sm:mx-2 hover:bg-emerald-500 focus:outline-none focus:bg-emerald-500 dark:bg-emerald-500">
-                    Search
-                  </button>
+                <div className="md:basis-2/4 flex flex-col flex-wrap items-start">
+                  <div className="">
+                    <label
+                      htmlFor=""
+                      className="block pl-8 text-sm dark:text-emerald-300"
+                    >
+                      Location*
+                    </label>
+                  </div>
+                  <div className="">
+                    <Autocomplete
+                      apiKey={GOOGLE_API_KEY_FOR_AUTOCOMPLETE}
+                      className="w-3/5 md:w-4/5 mr-auto px-4 py-2 text-sm text-gray-700 bg-white border rounded-full sm:mx-2 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-emerald-500 dark:focus:border-emerald-500 focus:outline-none focus:ring focus:ring-emerald-500 focus:ring-opacity-40"
+                      onPlaceSelected={(place: any) => {
+                        setCenter({
+                          lat: place.geometry.location.lat(),
+                          lng: place.geometry.location.lng(),
+                        });
+                      }}
+                    />
+                    <button className="w-1/3 md:w-4/5 px-3 py-2 md:mt-4 ml-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-emerald-400 rounded-full sm:mx-2 hover:bg-emerald-500 focus:outline-none focus:bg-emerald-500 dark:bg-emerald-500">
+                      Search
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
