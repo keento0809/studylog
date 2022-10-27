@@ -31,7 +31,7 @@ Users can toggle the screen mode both light mode and dark mode.
 
 ## Screenshots
 
-![StudyLog](https://user-images.githubusercontent.com/65790344/184463458-3931c515-6634-4c1c-8d19-d13bb5adc488.png)
+![StudyLog](https://user-images.githubusercontent.com/65790344/198403202-71dcf713-6d85-4d57-b388-dfb71d1e172d.png)
 
 ## Technologies
 
